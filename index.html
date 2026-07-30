@@ -258,14 +258,11 @@
       <!-- PASO 5 -->
       <div class="step" data-step="5">
         <div class="step-label">Paso 5 de 5 · Últimos detalles</div>
-        <fieldset>
-          <div class="row">
-            <div><label>Presupuesto estimado</label><input type="text" id="presupuesto"></div>
-            <div><label>Plazo / urgencia</label><input type="text" id="plazo"></div>
+        <div class="radio-group">
+            <label class="opt"><input type="radio" name="presupuesto" value="$150.000 - $300.000"> $150.000 - $300.000</label>
+            <label class="opt"><input type="radio" name="presupuesto" value="Más de $300.000"> Más de $300.000</label>
+            <label class="opt"><input type="radio" name="presupuesto" value="Todavía no lo definí"> Todavía no lo definí</label>
           </div>
-          <label>¿Algo más que debería saber?</label>
-          <textarea id="comentarios"></textarea>
-        </fieldset>
       </div>
 
       <!-- RESULTADO -->
