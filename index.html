@@ -261,6 +261,7 @@
         <fieldset>
           <legend>Presupuesto estimado</legend>
           <div class="radio-group">
+            <label class="opt"><input type="radio" name="presupuesto" value="Menos de $150.000"> Menos de $150.000</label>
             <label class="opt"><input type="radio" name="presupuesto" value="$150.000 - $300.000"> $150.000 - $300.000</label>
             <label class="opt"><input type="radio" name="presupuesto" value="Más de $300.000"> Más de $300.000</label>
             <label class="opt"><input type="radio" name="presupuesto" value="Todavía no lo definí"> Todavía no lo definí</label>
@@ -283,10 +284,6 @@
         <div class="final-note">¡Gracias! 🎉</div>
         <p style="color:#5A5F6E;margin-top:0;">Ya guardamos tus respuestas. Este es el resumen:</p>
         <div id="resumen"></div>
-        <div class="copybar">
-          <button type="button" onclick="copiar()">Copiar resumen</button>
-          <span id="copiedMsg" class="ok hidden">Copiado ✓</span>
-        </div>
       </div>
 
       <div class="nav-row" id="navRow">
@@ -409,8 +406,8 @@ function generarResumenYEnviar(){
   t += radioVal('dominio') + '\n\n';
 
   t += '-- Presupuesto y plazos --\n';
-  t += 'Presupuesto: ' + (val('presupuesto')||'—') + '\n';
-  t += 'Plazo: ' + (val('plazo')||'—') + '\n\n';
+  t += 'Presupuesto: ' + radioVal('presupuesto') + '\n';
+  t += 'Plazo: ' + radioVal('plazo') + '\n\n';
 
   t += '-- Comentarios --\n';
   t += (val('comentarios')||'—') + '\n';
@@ -428,19 +425,12 @@ function generarResumenYEnviar(){
     colores: val('colores'), referencias: val('referencias'), estilo: radioVal('estilo'),
     funcionalidades: allCheckedInFieldset('¿Qué necesitás que tenga el sitio?'),
     dominio: radioVal('dominio'),
-    presupuesto: val('presupuesto'), plazo: val('plazo'),
+    presupuesto: radioVal('presupuesto'), plazo: radioVal('plazo'),
     comentarios: val('comentarios'),
     fecha: new Date().toISOString()
   };
 
   fetch(WEBAPP_URL, { method: 'POST', body: JSON.stringify(datos) }).catch(()=>{});
-}
-
-function copiar(){
-  navigator.clipboard.writeText(document.getElementById('resumen').textContent);
-  const m = document.getElementById('copiedMsg');
-  m.classList.remove('hidden');
-  setTimeout(()=>m.classList.add('hidden'), 2000);
 }
 
 renderProgress();
