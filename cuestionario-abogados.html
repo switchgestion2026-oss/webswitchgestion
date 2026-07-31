@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contanos sobre tu estudio · Switch Gestión</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#16243F; --navy2:#1F3155; --orange:#E5611F; --cream:#FAF6EF;
+    --line:#E4DDCB; --display:'Space Grotesk',sans-serif; --body:'DM Sans',Arial,sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;height:100%;}
+  body{background:var(--cream);color:var(--navy);font-family:var(--body);line-height:1.5;position:relative;overflow-x:hidden;}
+  .bg-svg{position:fixed;pointer-events:none;z-index:0;opacity:.10;}
+  .bg-svg.s1{top:-40px;right:-60px;width:260px;}
+  .bg-svg.s2{bottom:60px;left:-70px;width:220px;}
+  .bg-svg.s3{top:45%;right:-40px;width:150px;}
+  .wrap{position:relative;z-index:1;max-width:720px;margin:0 auto;padding:32px 20px 80px;}
+  .brand{display:flex;align-items:center;gap:10px;margin-bottom:28px;}
+  .brand .dot{width:34px;height:20px;border-radius:999px;background:var(--navy);position:relative;flex:none;}
+  .brand .dot::after{content:"";position:absolute;left:3px;top:3px;width:14px;height:14px;border-radius:50%;background:var(--orange);}
+  .brand span{font-family:var(--display);font-weight:700;font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);}
+  .hero{margin-bottom:8px;}
+  h1{font-family:var(--display);font-weight:700;font-size:30px;margin:0 0 8px;letter-spacing:-.01em;}
+  .hero p{margin:0 0 28px;color:#4B5265;font-size:15px;max-width:52ch;}
+  .progress{display:flex;align-items:center;gap:8px;margin-bottom:32px;}
+  .progress .seg{height:6px;flex:1;border-radius:999px;background:#E4DDCB;overflow:hidden;}
+  .progress .seg i{display:block;height:100%;width:0%;background:var(--orange);transition:width .35s ease;}
+  .progress .seg.done i{width:100%;}
+  .progress .seg.active i{width:100%;}
+  .step-label{font-family:var(--display);font-size:12px;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px;}
+  .card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:28px 26px;box-shadow:0 1px 2px rgba(22,36,63,.04);}
+  .step{display:none;animation:fade .25s ease;}
+  .step.active{display:block;}
+  @keyframes fade{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+  fieldset{border:none;padding:0;margin:0 0 22px;}
+  fieldset:last-of-type{margin-bottom:0;}
+  legend{font-family:var(--display);font-weight:700;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--navy);padding:0;margin-bottom:10px;}
+  label{display:block;font-family:var(--body);font-size:13.5px;margin:14px 0 5px;color:#5A5F6E;font-weight:500;}
+  input[type=text],input[type=email],input[type=tel],textarea,select{
+    width:100%;padding:11px 13px;border:1.5px solid var(--line);border-radius:12px;
+    font-family:var(--body);font-size:14.5px;background:#fff;color:var(--navy);transition:.15s;
+  }
+  input:focus,textarea:focus,select:focus{outline:none;border-color:var(--orange);}
+  textarea{resize:vertical;min-height:64px;}
+  .row{display:flex;gap:12px;}
+  .row > div{flex:1;}
+  .radio-group,.check-group{display:flex;flex-wrap:wrap;gap:8px;font-family:var(--body);}
+  .opt{border:1.5px solid var(--line);border-radius:999px;padding:9px 16px 9px 14px;font-size:13.5px;cursor:pointer;background:#fff;transition:.15s;user-select:none;}
+  .opt:hover{border-color:var(--navy);}
+  .opt:has(input:checked){background:var(--navy);color:var(--cream);border-color:var(--navy);}
+  .opt input{margin-right:7px;accent-color:var(--orange);}
+  .hidden{display:none !important;}
+  .hint{font-size:12px;color:#8A8F9E;font-family:var(--body);margin-top:6px;}
+  .plan-box{border:1.5px solid var(--line);border-radius:14px;padding:14px 16px;background:#FBF9F4;font-size:13.5px;}
+  .nav-row{display:flex;justify-content:space-between;align-items:center;margin-top:28px;gap:12px;}
+  button{font-family:var(--display);font-weight:700;border:none;border-radius:999px;font-size:15px;cursor:pointer;transition:.15s;}
+  .btn-next{background:var(--orange);color:#fff;padding:14px 26px;flex:1;}
+  .btn-next:hover{background:#c94e12;}
+  .btn-back{background:transparent;color:var(--navy);padding:14px 10px;font-weight:500;}
+  .btn-back:hover{text-decoration:underline;}
+  .btn-back.hidden{visibility:hidden;}
+  #resumen{white-space:pre-wrap;background:#FBF9F4;border:1px solid var(--line);border-radius:14px;padding:18px;font-family:var(--body);font-size:13px;margin-top:16px;}
+  .final-note{font-family:var(--display);font-weight:700;font-size:20px;margin:0 0 6px;}
+</style>
+</head>
+<body>
+
+<svg class="bg-svg s1" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+  <rect x="4" y="4" width="192" height="112" rx="56" fill="none" stroke="#16243F" stroke-width="8"/>
+  <circle cx="60" cy="60" r="30" fill="#E5611F"/>
+</svg>
+<svg class="bg-svg s2" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+  <rect x="4" y="4" width="192" height="112" rx="56" fill="none" stroke="#E5611F" stroke-width="8"/>
+  <circle cx="140" cy="60" r="30" fill="#16243F"/>
+</svg>
+<svg class="bg-svg s3" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+  <rect x="4" y="4" width="192" height="112" rx="56" fill="none" stroke="#16243F" stroke-width="8"/>
+  <circle cx="60" cy="60" r="30" fill="#16243F"/>
+</svg>
+
+<div class="wrap">
+  <div class="brand"><div class="dot"></div><span>Switch Gestión</span></div>
+
+  <div class="hero">
+    <h1>Contanos sobre tu estudio</h1>
+    <p>Unos minutos nada más. Con esto armamos una web que transmita la seriedad y confianza que tu práctica se merece.</p>
+  </div>
+
+  <div class="progress" id="progress"></div>
+
+  <form id="f">
+    <div class="card">
+
+      <!-- PASO 1 -->
+      <div class="step active" data-step="1">
+        <div class="step-label">Paso 1 de 6 · Datos del estudio</div>
+        <fieldset>
+          <div class="row">
+            <div><label>Nombre completo / Nombre del estudio</label><input type="text" id="nombre"></div>
+            <div><label>N° de matrícula / colegiado</label><input type="text" id="matricula"></div>
+          </div>
+          <label class="opt" style="display:inline-block;">
+            <input type="checkbox" id="mostrarMatricula"> Quiero mostrar la matrícula públicamente en la web
+          </label>
+          <div class="row" style="margin-top:14px;">
+            <div><label>Teléfono / WhatsApp</label><input type="tel" id="telefono"></div>
+            <div><label>Email</label><input type="email" id="email"></div>
+          </div>
+          <label>Dirección física (si atendés en oficina)</label>
+          <input type="text" id="direccion">
+          <label>Redes sociales actuales (LinkedIn, Instagram...)</label>
+          <input type="text" id="redes">
+        </fieldset>
+      </div>
+
+      <!-- PASO 2 -->
+      <div class="step" data-step="2">
+        <div class="step-label">Paso 2 de 6 · Áreas de práctica y público</div>
+        <fieldset>
+          <legend>Especialidades</legend>
+          <div class="check-group" id="especialidades">
+            <label class="opt"><input type="checkbox" value="Laboral"> Laboral</label>
+            <label class="opt"><input type="checkbox" value="Penal"> Penal</label>
+            <label class="opt"><input type="checkbox" value="Civil"> Civil</label>
+            <label class="opt"><input type="checkbox" value="Familia"> Familia</label>
+            <label class="opt"><input type="checkbox" value="Comercial"> Comercial</label>
+            <label class="opt"><input type="checkbox" value="Sucesiones"> Sucesiones</label>
+            <label class="opt"><input type="checkbox" value="Tributario"> Tributario</label>
+            <label class="opt"><input type="checkbox" value="Otro"> Otro</label>
+          </div>
+          <label>¿Cuál es tu área principal, la que más querés destacar?</label>
+          <input type="text" id="areaPrincipal">
+          <legend style="margin-top:16px;">¿Atendés todas las consultas o derivás algunas?</legend>
+          <div class="radio-group">
+            <label class="opt"><input type="radio" name="deriva" value="Atiendo todas las áreas"> Atiendo todas</label>
+            <label class="opt"><input type="radio" name="deriva" value="Derivo algunas áreas"> Derivo algunas</label>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>¿A quién apuntás?</legend>
+          <div class="radio-group">
+            <label class="opt"><input type="radio" name="publico" value="Particulares"> Particulares</label>
+            <label class="opt"><input type="radio" name="publico" value="Empresas"> Empresas</label>
+            <label class="opt"><input type="radio" name="publico" value="Ambos"> Ambos</label>
+          </div>
+          <legend style="margin-top:16px;">Tipo de clientes</legend>
+          <div class="radio-group">
+            <label class="opt"><input type="radio" name="tipoCliente" value="Consultas puntuales"> Consultas puntuales</label>
+            <label class="opt"><input type="radio" name="tipoCliente" value="Clientes recurrentes/empresariales"> Recurrentes/empresariales</label>
+            <label class="opt"><input type="radio" name="tipoCliente" value="Ambos"> Ambos</label>
+          </div>
+          <label>Zona geográfica que cubrís</label>
+          <input type="text" id="zona">
+        </fieldset>
+      </div>
+
+      <!-- PASO 3 -->
+      <div class="step" data-step="3">
+        <div class="step-label">Paso 3 de 6 · Objetivo y trayectoria</div>
+        <fieldset>
+          <legend>Objetivo principal de la web</legend>
+          <select id="objetivo">
+            <option>Generar consultas / contactos</option>
+            <option>Transmitir prestigio y experiencia</option>
+            <option>Mostrar casos de éxito o trayectoria</option>
+            <option>Educar con contenido (blog, notas legales)</option>
+          </select>
+        </fieldset>
+        <fieldset>
+          <label>Biografía profesional (formación, años de experiencia, universidad)</label>
+          <textarea id="biografia"></textarea>
+          <label>Logros destacados: publicaciones, docencia, membresías en colegios/asociaciones</label>
+          <textarea id="logros"></textarea>
+          <legend style="margin-top:16px;">Testimonios de clientes</legend>
+          <div class="radio-group">
+            <label class="opt"><input type="radio" name="testimonios" value="Sí, puedo compartir"> Sí, puedo compartir</label>
+            <label class="opt"><input type="radio" name="testimonios" value="No, por confidencialidad"> No, por confidencialidad</label>
+            <label class="opt"><input type="radio" name="testimonios" value="No tengo"> No tengo</label>
+          </div>
+          <legend style="margin-top:16px;">¿Tenés fotos profesionales?</legend>
+          <div class="radio-group">
+            <label class="opt"><input type="radio" name="fotos" value="Sí, tengo"> Sí, tengo</label>
+            <label class="opt"><input type="radio" name="fotos" value="Puedo conseguirlas por mi cuenta"> Puedo conseguirlas por mi cuenta</label>
+            <label class="opt"><input type="radio" name="fotos" value="No tengo, prefiero banco de imágenes"> No tengo, banco de imágenes</label>
+          </div>
+          <p class="hint">Las fotos profesionales son clave en abogacía — generan la confianza que el visitante busca antes de escribirte.</p>
+        </fieldset>
+      </div>
+
+      <!-- PASO 4 -->
+      <div class="step" data-step="4">
+        <div class="step-label">Paso 4 de 6 · Estructura y diseño</div>
+        <fieldset>
+          <legend>Plan básico incluye</legend>
+          <div class="plan-box">Inicio · Sobre mí / Estudio · Casos destacados · Contacto · Preguntas frecuentes · Blog</div>
+        </fieldset>
+        <fieldset>
+          <legend>Extras (con costo aparte) — marcá los que te interesen</legend>
+          <div class="check-group" id="extras">
+            <label class="opt"><input type="checkbox" value="Página dedicada por área de práctica"> Página por área de práctica</label>
+            <label class="opt"><input type="checkbox" value="Formulario con descripción del caso"> Formulario con descripción de caso</label>
+            <label class="opt"><input type="checkbox" value="Turnos/agenda online"> Turnos/agenda online</label>
+            <label class="opt"><input type="checkbox" value="Chat en vivo"> Chat en vivo</label>
+            <label class="opt"><input type="checkbox" value="Newsletter legal"> Newsletter legal</label>
+            <label class="opt"><input type="checkbox" value="Multilenguaje"> Multilenguaje</label>
+            <label class="opt"><input type="checkbox" value="Panel administrable"> Panel administrable</label>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>Colores</legend>
+          <div class="radio-group">
+            <label class="opt"><input type="radio" name="colores" value="Azul y gris"> Azul y gris</label>
+            <label class="opt"><input type="radio" name="colores" value="Bordó y dorado"> Bordó y dorado</label>
+            <label class="opt"><input type="radio" name="colores" value="Verde y beige"> Verde y beige</label>
+            <label class="opt"><input type="radio" name="colores" value="Negro y blanco"> Negro y blanco</label>
+          </div>
+          <label>Otro (describí los colores que tenés en mente)</label>
+          <input type="text" id="coloresOtro">
+          <legend style="margin-top:16px;">Estilo</legend>
+          <div class="radio-group">
+            <label class="opt"><input type="radio" name="estilo" value="Sobrio / corporativo"> Sobrio / corporativo</label>
+            <label class="opt"><input type="radio" name="estilo" value="Moderno y cercano"> Moderno y cercano</label>
+            <label class="opt"><input type="radio" name="estilo" value="Clásico y elegante"> Clásico y elegante</label>
+            <label class="opt"><input type="radio" name="estilo" value="Minimalista"> Minimalista</label>
+          </div>
+          <label>Webs de otros estudios que te gusten (link)</label>
+          <input type="text" id="referencias">
+        </fieldset>
+      </div>
+
+      <!-- PASO 5 -->
+      <div class="step" data-step="5">
+        <div class="step-label">Paso 5 de 6 · Técnico y mantenimiento</div>
+        <fieldset>
+          <legend>Dominio y hosting</legend>
+          <div class="radio-group">
+            <label class="opt"><input type="radio" name="dominio" value="Sí, ya tengo"> Sí, ya tengo</label>
+            <label class="opt"><input type="radio" name="dominio" value="No, hay que gestionarlo"> Hay que gestionarlo</label>
+            <label class="opt"><input type="radio" name="dominio" value="No sé qué es"> No sé qué es</label>
+          </div>
+          <legend style="margin-top:16px;">Mail corporativo (ej: contacto@estudioXXX.com)</legend>
+          <div class="radio-group">
+            <label class="opt"><input type="radio" name="mail" value="Sí, quiero"> Sí, quiero</label>
+            <label class="opt"><input type="radio" name="mail" value="No hace falta"> No hace falta</label>
+          </div>
+          <legend style="margin-top:16px;">¿Querés mantenimiento? (costo mensual)</legend>
+          <div class="radio-group">
+            <label class="opt"><input type="radio" name="mantenimiento" value="Sí, con mantenimiento"> Sí, con mantenimiento</label>
+            <label class="opt"><input type="radio" name="mantenimiento" value="No"> No</label>
+          </div>
+        </fieldset>
+      </div>
+
+      <!-- PASO 6 -->
+      <div class="step" data-step="6">
+        <div class="step-label">Paso 6 de 6 · Plazo y presupuesto</div>
+        <fieldset>
+          <legend>Plazo deseado</legend>
+          <div class="radio-group">
+            <label class="opt"><input type="radio" name="plazo" value="Lo antes posible"> Lo antes posible</label>
+            <label class="opt"><input type="radio" name="plazo" value="En el próximo mes"> En el próximo mes</label>
+            <label class="opt"><input type="radio" name="plazo" value="Sin apuro, estoy explorando"> Sin apuro, estoy explorando</label>
+          </div>
+          <legend style="margin-top:16px;">Presupuesto</legend>
+          <div class="radio-group">
+            <label class="opt"><input type="radio" name="presupuesto" value="Menos de $150.000"> Menos de $150.000</label>
+            <label class="opt"><input type="radio" name="presupuesto" value="$150.000 - $300.000"> $150.000 - $300.000</label>
+            <label class="opt"><input type="radio" name="presupuesto" value="Más de $300.000"> Más de $300.000</label>
+            <label class="opt"><input type="radio" name="presupuesto" value="Todavía no lo definí"> Todavía no lo definí</label>
+          </div>
+          <label>Si ya conversamos un número puntual, anotalo acá para que quede registrado</label>
+          <input type="text" id="presupuestoConversado">
+          <label>Algo adicional que quieras aclarar</label>
+          <textarea id="comentarios"></textarea>
+        </fieldset>
+      </div>
+
+      <!-- RESULTADO -->
+      <div class="step" data-step="final">
+        <div class="final-note">¡Gracias! 🎉</div>
+        <p style="color:#5A5F6E;margin-top:0;">Ya guardamos tus respuestas. Este es el resumen:</p>
+        <div id="resumen"></div>
+      </div>
+
+      <div class="nav-row" id="navRow">
+        <button type="button" class="btn-back" id="btnBack" onclick="prevStep()">Atrás</button>
+        <button type="button" class="btn-next" id="btnNext" onclick="nextStep()">Continuar</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<script>
+const WEBAPP_URL = "https://script.google.com/macros/s/AKfycbwhwdiNK_UywRV2bnDHu7cuwh5jhkogBXnWP8frfIes_daN4UdCtyJ5fNOabxgMcwBa/exec";
+
+const totalSteps = 6;
+let current = 1;
+
+function renderProgress(){
+  const p = document.getElementById('progress');
+  p.innerHTML = '';
+  for(let i=1;i<=totalSteps;i++){
+    const seg = document.createElement('div');
+    seg.className = 'seg' + (i < current ? ' done' : i === current ? ' active' : '');
+    seg.innerHTML = '<i></i>';
+    p.appendChild(seg);
+  }
+}
+
+function showStep(n){
+  document.querySelectorAll('.step').forEach(s=>s.classList.remove('active'));
+  document.querySelector('.step[data-step="'+n+'"]').classList.add('active');
+  document.getElementById('btnBack').classList.toggle('hidden', n===1);
+  document.getElementById('btnNext').textContent = (n===totalSteps) ? 'Enviar' : 'Continuar';
+  if(n==='final'){
+    document.getElementById('navRow').classList.add('hidden');
+    document.getElementById('progress').classList.add('hidden');
+  }
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function nextStep(){
+  if(current < totalSteps){
+    current++;
+    renderProgress();
+    showStep(current);
+  } else {
+    generarResumenYEnviar();
+    showStep('final');
+  }
+}
+function prevStep(){
+  if(current > 1){
+    current--;
+    renderProgress();
+    showStep(current);
+  }
+}
+
+function val(id){ return document.getElementById(id).value.trim(); }
+function checkedVals(containerId){
+  return [...document.querySelectorAll('#'+containerId+' input:checked')].map(i=>i.value).join(', ') || '—';
+}
+function radioVal(name){
+  const el = document.querySelector('input[name='+name+']:checked');
+  return el ? el.value : '—';
+}
+
+function generarResumenYEnviar(){
+  let t = '';
+  t += 'CUESTIONARIO ESTUDIO JURÍDICO\n';
+  t += '========================\n\n';
+
+  t += '-- Datos del estudio --\n';
+  t += 'Nombre/Estudio: ' + (val('nombre')||'—') + '\n';
+  t += 'Matrícula: ' + (val('matricula')||'—') + '\n';
+  t += 'Mostrar matrícula públicamente: ' + (document.getElementById('mostrarMatricula').checked ? 'Sí' : 'No') + '\n';
+  t += 'Teléfono: ' + (val('telefono')||'—') + '\n';
+  t += 'Email: ' + (val('email')||'—') + '\n';
+  t += 'Dirección: ' + (val('direccion')||'—') + '\n';
+  t += 'Redes sociales: ' + (val('redes')||'—') + '\n\n';
+
+  t += '-- Áreas de práctica y público --\n';
+  t += 'Especialidades: ' + checkedVals('especialidades') + '\n';
+  t += 'Área principal: ' + (val('areaPrincipal')||'—') + '\n';
+  t += 'Deriva consultas: ' + radioVal('deriva') + '\n';
+  t += 'Público objetivo: ' + radioVal('publico') + '\n';
+  t += 'Tipo de clientes: ' + radioVal('tipoCliente') + '\n';
+  t += 'Zona geográfica: ' + (val('zona')||'—') + '\n\n';
+
+  t += '-- Objetivo y trayectoria --\n';
+  t += 'Objetivo principal: ' + document.getElementById('objetivo').value + '\n';
+  t += 'Biografía: ' + (val('biografia')||'—') + '\n';
+  t += 'Logros: ' + (val('logros')||'—') + '\n';
+  t += 'Testimonios: ' + radioVal('testimonios') + '\n';
+  t += 'Fotos profesionales: ' + radioVal('fotos') + '\n\n';
+
+  t += '-- Estructura y diseño --\n';
+  t += 'Extras de interés: ' + checkedVals('extras') + '\n';
+  t += 'Colores: ' + radioVal('colores') + '\n';
+  t += 'Colores (otro): ' + (val('coloresOtro')||'—') + '\n';
+  t += 'Estilo: ' + radioVal('estilo') + '\n';
+  t += 'Referencias: ' + (val('referencias')||'—') + '\n\n';
+
+  t += '-- Técnico y mantenimiento --\n';
+  t += 'Dominio: ' + radioVal('dominio') + '\n';
+  t += 'Mail corporativo: ' + radioVal('mail') + '\n';
+  t += 'Mantenimiento mensual: ' + radioVal('mantenimiento') + '\n\n';
+
+  t += '-- Plazo y presupuesto --\n';
+  t += 'Plazo: ' + radioVal('plazo') + '\n';
+  t += 'Presupuesto: ' + radioVal('presupuesto') + '\n';
+  t += 'Presupuesto ya conversado: ' + (val('presupuestoConversado')||'—') + '\n\n';
+
+  t += '-- Comentarios --\n';
+  t += (val('comentarios')||'—') + '\n';
+
+  document.getElementById('resumen').textContent = t;
+
+  const datos = {
+    formulario: 'abogados',
+    nombre: val('nombre'), matricula: val('matricula'),
+    mostrarMatricula: document.getElementById('mostrarMatricula').checked ? 'Sí' : 'No',
+    telefono: val('telefono'), email: val('email'), direccion: val('direccion'), redes: val('redes'),
+    especialidades: checkedVals('especialidades'), areaPrincipal: val('areaPrincipal'),
+    deriva: radioVal('deriva'), publico: radioVal('publico'), tipoCliente: radioVal('tipoCliente'), zona: val('zona'),
+    objetivo: document.getElementById('objetivo').value,
+    biografia: val('biografia'), logros: val('logros'), testimonios: radioVal('testimonios'), fotos: radioVal('fotos'),
+    extras: checkedVals('extras'), colores: radioVal('colores'), coloresOtro: val('coloresOtro'), estilo: radioVal('estilo'), referencias: val('referencias'),
+    dominio: radioVal('dominio'), mail: radioVal('mail'), mantenimiento: radioVal('mantenimiento'),
+    plazo: radioVal('plazo'), presupuesto: radioVal('presupuesto'), presupuestoConversado: val('presupuestoConversado'),
+    comentarios: val('comentarios'),
+    fecha: new Date().toISOString()
+  };
+
+  fetch(WEBAPP_URL, { method: 'POST', body: JSON.stringify(datos) }).catch(()=>{});
+}
+
+renderProgress();
+</script>
+</body>
+</html>
