@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Página no encontrada — Switch Gestión</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#14233F; --orange:#F15A24; --orange-dark:#d6491a; --cream:#F7F3EC; --white:#FFFFFF;
+    --text2:#667085; --font-display:'Plus Jakarta Sans',system-ui,sans-serif; --font-mono:'JetBrains Mono',monospace;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; min-height:100dvh; min-height:100vh; font-family:var(--font-display); background:var(--navy); color:var(--white);
+    display:flex; align-items:center; justify-content:center; text-align:center; padding:24px;
+  }
+  .box{max-width:420px;}
+  .brand{display:flex; align-items:center; justify-content:center; gap:10px; font-weight:800; font-size:1.1rem; margin-bottom:32px;}
+  .toggle-logo{width:34px; height:20px; border-radius:999px; background:var(--white); position:relative; flex:none;}
+  .toggle-logo::after{content:''; position:absolute; top:3px; right:3px; width:14px; height:14px; border-radius:50%; background:var(--orange);}
+  .code{font-family:var(--font-mono); color:var(--orange); font-size:.85rem; letter-spacing:.1em; text-transform:uppercase; margin-bottom:8px;}
+  h1{font-size:1.8rem; font-weight:800; margin:0 0 12px;}
+  p{color:rgba(255,255,255,.7); margin:0 0 28px;}
+  a.btn{
+    display:inline-flex; padding:14px 26px; border-radius:999px; background:var(--orange); color:var(--white);
+    font-weight:700; text-decoration:none; transition:background .15s ease, transform .15s ease;
+  }
+  a.btn:hover{background:var(--orange-dark); transform:translateY(-2px);}
+</style>
+</head>
+<body>
+  <div class="box">
+    <div class="brand"><span class="toggle-logo"></span> Switch Gestión</div>
+    <div class="code">Error 404</div>
+    <h1>Esta página no existe.</h1>
+    <p>Puede que el enlace esté mal escrito o que la página se haya movido.</p>
+    <a class="btn" href="index.html">Volver al inicio</a>
+  </div>
+</body>
+</html>

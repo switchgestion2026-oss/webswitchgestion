@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aviso legal — Switch Gestión</title>
+<meta name="description" content="Aviso legal, política de privacidad y términos de uso de Switch Gestión.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#14233F; --orange:#F15A24; --orange-dark:#d6491a; --cream:#F7F3EC;
+    --white:#FFFFFF; --ink:#14233F; --text2:#667085; --line:rgba(20,35,63,.12); --line-strong:rgba(20,35,63,.20);
+    --font-display:'Plus Jakarta Sans',system-ui,sans-serif; --font-mono:'JetBrains Mono',monospace;
+    --header-h:76px; --sp-3:16px; --sp-4:24px; --sp-5:32px; --sp-6:48px; --sp-7:64px; --sp-8:88px;
+  }
+  *{box-sizing:border-box;}
+  html,body{overflow-x:clip;}
+  body{margin:0; font-family:var(--font-display); color:var(--ink); background:var(--cream); line-height:1.6;}
+  .wrap{max-width:760px; margin:0 auto; padding:0 var(--sp-4);}
+  a{color:var(--orange-dark);}
+  h1,h2{font-family:var(--font-display); line-height:1.15; margin:0 0 var(--sp-3);}
+  h1{font-size:clamp(1.8rem,4vw,2.4rem); font-weight:800;}
+  h2{font-size:1.3rem; font-weight:700; margin-top:var(--sp-7);}
+  p{color:var(--text2); margin:0 0 var(--sp-3);}
+  .topbar{position:sticky; top:0; z-index:10; height:var(--header-h); display:flex; align-items:center; background:rgba(247,243,236,.9); backdrop-filter:blur(10px); border-bottom:1px solid var(--line);}
+  .topbar .wrap{display:flex; align-items:center; justify-content:space-between; width:100%; max-width:1180px;}
+  .brand{display:flex; align-items:center; gap:10px; text-decoration:none; font-weight:800; font-size:1.1rem; color:var(--navy);}
+  .toggle-logo{width:34px; height:20px; border-radius:999px; background:var(--navy); position:relative; flex:none;}
+  .toggle-logo::after{content:''; position:absolute; top:3px; right:3px; width:14px; height:14px; border-radius:50%; background:var(--orange);}
+  .back{font-family:var(--font-mono); font-size:.85rem; text-decoration:none; color:var(--ink);}
+  main{padding:var(--sp-8) 0;}
+  footer{background:var(--navy); color:rgba(255,255,255,.7); padding:var(--sp-6) 0; font-size:.85rem; text-align:center;}
+  footer a{color:rgba(255,255,255,.75);}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap">
+    <a href="index.html" class="brand"><span class="toggle-logo"></span> Switch Gestión</a>
+    <a href="index.html" class="back">← Volver al inicio</a>
+  </div>
+</header>
+
+<main class="wrap">
+  <h1>Aviso legal, privacidad y términos</h1>
+  <h2 id="aviso">Aviso legal</h2>
+  <p>Switch Gestión ofrece servicios de diseño web, desarrollo de sistemas y gestión de campañas de publicidad digital. Los contenidos de este sitio tienen fines informativos y no constituyen asesoramiento profesional vinculante.</p>
+
+  <h2 id="privacidad">Política de privacidad</h2>
+  <p>Los datos de contacto que nos compartís (por ejemplo, a través de WhatsApp) se utilizan exclusivamente para responder tu consulta y no se comparten con terceros sin tu consentimiento.</p>
+  <p>Este sitio no utiliza cookies de terceros para publicidad. Si en el futuro se incorporan herramientas de analítica o pauta, esta política deberá actualizarse en consecuencia.</p>
+
+  <h2 id="terminos">Términos y condiciones</h2>
+  <p>El alcance, los plazos y el precio de cada servicio se acuerdan de forma particular con cada cliente antes de iniciar el trabajo. Los valores publicados en el sitio son de referencia y pueden estar sujetos a actualización.</p>
+  <p>Los pagos, formas de entrega y condiciones de mantenimiento se detallan en la propuesta enviada a cada cliente.</p>
+</main>
+
+<footer>
+  <div class="wrap">© <span id="year"></span> Switch Gestión — <a href="https://www.instagram.com/switchgestion/" target="_blank" rel="noopener">@Switchgestion</a></div>
+</footer>
+
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
