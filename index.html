@@ -232,10 +232,17 @@
   .cta-final .btn{margin-top:var(--sp-5);}
   .final-benefits{display:flex; flex-wrap:wrap; gap:var(--sp-5); justify-content:center; margin-top:var(--sp-6); font-size:.8rem; color:rgba(255,255,255,.75); font-weight:600;}
 
-  /* contacto */
-  .contacto{text-align:center;}
-  .contacto p{color:var(--text2); max-width:480px; margin:var(--sp-3) auto 0;}
-  .contacto .btn{margin-top:var(--sp-5);}
+  /* testimonios */
+  .testi-carousel{margin:var(--sp-6) auto 0; max-width:640px;}
+  .testi-track{display:flex; overflow-x:auto; scroll-snap-type:x mandatory; gap:var(--sp-4); padding-bottom:var(--sp-2); scrollbar-width:none;}
+  .testi-track::-webkit-scrollbar{display:none;}
+  .testi-card{scroll-snap-align:center; flex:0 0 100%; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.14); border-radius:var(--radius-md); padding:var(--sp-5); text-align:left;}
+  .testi-card .stars{color:var(--orange); font-size:1rem; letter-spacing:2px; margin-bottom:var(--sp-2);}
+  .testi-card .testi-text{color:rgba(255,255,255,.85); font-size:.92rem; font-style:italic;}
+  .testi-card .testi-name{display:block; margin-top:var(--sp-3); font-weight:700; font-size:.86rem; color:var(--white);}
+  .testi-dots{display:flex; gap:8px; justify-content:center; margin-top:var(--sp-3);}
+  .testi-dot{width:8px; height:8px; border-radius:50%; background:rgba(255,255,255,.25); border:none; cursor:pointer; padding:0;}
+  .testi-dot.active{background:var(--orange);}
 
   /* footer */
   footer{background:var(--navy); color:rgba(255,255,255,.75); padding:var(--sp-7) 0 var(--sp-4); font-size:.9rem;}
@@ -594,24 +601,42 @@
   </div>
 </section>
 
-<section class="cta-final" style="margin-top:var(--sp-8);">
+<section id="contacto" class="cta-final" style="margin-top:var(--sp-8);">
   <div class="wrap">
     <span class="toggle-logo"></span>
     <h2>Contanos tu proyecto.</h2>
     <p>No hay respuestas correctas, solo queremos entender cómo es tu negocio para proponerte la mejor solución.</p>
-    <a href="#contacto" class="btn btn-primary">Quiero recibir una propuesta →</a>
+
+    <div class="testi-carousel" aria-roledescription="carrusel" aria-label="Testimonios de clientes">
+      <div class="testi-track" id="testiTrack">
+        <div class="testi-card">
+          <div class="stars">★★★★★</div>
+          <p class="testi-text">"Excelente trabajo con la página web, quedó tal cual la quería!! Fueron muy profesionales durante todo el proceso, siempre atentas a cada detalle, con mucha dedicación y excelente predisposición para realizar los ajustes que fui solicitando. La comunicación fue siempre muy buena y el resultado final superó mis expectativas. Estoy realmente muy conforme y sin dudas las recomiendo!"</p>
+          <span class="testi-name">Mariela Vignola</span>
+        </div>
+        <div class="testi-card">
+          <div class="stars">★★★★★</div>
+          <p class="testi-text">"Quedé muy conforme con el resultado de la web. Nos acompañaron durante todo el proceso, siempre atentos a cada detalle y con un trato muy cordial y cercano. Fue un placer trabajar así."</p>
+          <span class="testi-name">Marcela</span>
+        </div>
+        <div class="testi-card">
+          <div class="stars">★★★★★</div>
+          <p class="testi-text">"Excelente experiencia de principio a fin. Destaco especialmente la predisposición, la cercanía y el acompañamiento durante todo el desarrollo de la página. El resultado superó mis expectativas."</p>
+          <span class="testi-name">Claudia</span>
+        </div>
+        <div class="testi-card">
+          <div class="stars">★★★★★</div>
+          <p class="testi-text">"Muy conforme con la página y con todo el proceso de trabajo. Siempre hubo buena comunicación, asesoramiento y mucha predisposición para resolver cada detalle. Un trato realmente cercano y profesional."</p>
+          <span class="testi-name">Guille</span>
+        </div>
+      </div>
+      <div class="testi-dots" id="testiDots"></div>
+    </div>
+
+    <a href="https://wa.me/?text=Hola%2C%20quiero%20consultar%20sobre%20un%20proyecto%20con%20Switch%20Gesti%C3%B3n" target="_blank" rel="noopener" class="btn btn-primary">Quiero recibir una propuesta →</a>
     <div class="final-benefits">
       <span>⏱ Rápido</span><span>✓ Sin compromiso</span><span>⚙ 100% personalizado</span>
     </div>
-  </div>
-</section>
-
-<section id="contacto" class="contacto">
-  <div class="wrap">
-    <span class="eyebrow">Contacto</span>
-    <h2>Escribinos y coordinamos.</h2>
-    <p>Contanos brevemente qué necesitás y te respondemos a la brevedad por WhatsApp.</p>
-    <a class="btn btn-primary" target="_blank" rel="noopener" href="https://wa.me/?text=Hola%2C%20quiero%20consultar%20sobre%20un%20proyecto%20con%20Switch%20Gesti%C3%B3n">Escribinos por WhatsApp →</a>
   </div>
 </section>
 
@@ -666,6 +691,32 @@
   }
   window.addEventListener('scroll', updateTopbar, {passive:true});
   updateTopbar();
+
+  var testiTrack = document.getElementById('testiTrack');
+  var testiDotsWrap = document.getElementById('testiDots');
+  if (testiTrack && testiDotsWrap) {
+    var cards = testiTrack.querySelectorAll('.testi-card');
+    cards.forEach(function(_, i){
+      var dot = document.createElement('button');
+      dot.className = 'testi-dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', 'Testimonio ' + (i + 1));
+      dot.addEventListener('click', function(){
+        cards[i].scrollIntoView({behavior:'smooth', inline:'center', block:'nearest'});
+      });
+      testiDotsWrap.appendChild(dot);
+    });
+    var dots = testiDotsWrap.querySelectorAll('.testi-dot');
+    var observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting) {
+          var idx = Array.prototype.indexOf.call(cards, entry.target);
+          dots.forEach(function(d){ d.classList.remove('active'); });
+          dots[idx].classList.add('active');
+        }
+      });
+    }, {root: testiTrack, threshold:.6});
+    cards.forEach(function(c){ observer.observe(c); });
+  }
 
   document.getElementById('year').textContent = new Date().getFullYear();
 })();
