@@ -226,11 +226,19 @@
   .cta-final{background:var(--navy); color:var(--white); text-align:center; border-radius:32px 32px 0 0; position:relative; overflow:hidden;}
   .cta-final::before{content:''; position:absolute; width:340px; height:340px; border:1px solid rgba(255,255,255,.12); border-radius:50%; top:-160px; right:-100px;}
   .cta-final::after{content:''; position:absolute; width:180px; height:180px; border:1px solid rgba(255,255,255,.1); border-radius:50%; bottom:-100px; left:-60px;}
-  .cta-final .wrap{position:relative; max-width:600px;}
+  .cta-final .wrap{position:relative; max-width:980px;}
   .cta-final .toggle-logo{margin:0 auto var(--sp-4);}
   .cta-final p{color:rgba(255,255,255,.8); margin-top:var(--sp-3);}
   .cta-final .btn{margin-top:var(--sp-5);}
   .final-benefits{display:flex; flex-wrap:wrap; gap:var(--sp-5); justify-content:center; margin-top:var(--sp-6); font-size:.8rem; color:rgba(255,255,255,.75); font-weight:600;}
+  .contanos-grid{display:grid; gap:var(--sp-6); align-items:center;}
+  .contanos-copy{text-align:center;}
+  @media (min-width:768px){
+    .contanos-grid{grid-template-columns:1fr 1fr; text-align:left;}
+    .contanos-copy{text-align:left;}
+    .contanos-copy .toggle-logo{margin:0 0 var(--sp-4);}
+    .contanos-copy .final-benefits{justify-content:flex-start;}
+  }
 
   /* testimonios */
   .testi-carousel{margin:var(--sp-6) auto 0; max-width:640px;}
@@ -604,24 +612,17 @@
 </section>
 
 <section id="contacto" class="cta-final" style="margin-top:var(--sp-8);">
-  <div class="wrap">
-    <span class="toggle-logo"></span>
-    <h2>Contanos tu proyecto.</h2>
-    <p>No hay respuestas correctas, solo queremos entender cómo es tu negocio para proponerte la mejor solución.</p>
-    <a href="https://wa.me/?text=Hola%2C%20quiero%20consultar%20sobre%20un%20proyecto%20con%20Switch%20Gesti%C3%B3n" target="_blank" rel="noopener" class="btn btn-primary">Quiero recibir una propuesta →</a>
-    <div class="final-benefits">
-      <span>⏱ Rápido</span><span>✓ Sin compromiso</span><span>⚙ 100% personalizado</span>
+  <div class="wrap contanos-grid">
+    <div class="contanos-copy">
+      <span class="toggle-logo"></span>
+      <h2>Contanos tu proyecto.</h2>
+      <p>No hay respuestas correctas, solo queremos entender cómo es tu negocio para proponerte la mejor solución.</p>
+      <a href="https://wa.me/?text=Hola%2C%20quiero%20consultar%20sobre%20un%20proyecto%20con%20Switch%20Gesti%C3%B3n" target="_blank" rel="noopener" class="btn btn-primary">Quiero recibir una propuesta →</a>
+      <div class="final-benefits">
+        <span>⏱ Rápido</span><span>✓ Sin compromiso</span><span>⚙ 100% personalizado</span>
+      </div>
     </div>
-  </div>
-</section>
-
-<section id="testimonios">
-  <div class="wrap">
-    <div class="section-head" style="max-width:640px;">
-      <span class="eyebrow">Testimonios</span>
-      <h2>Lo que dicen nuestros clientes.</h2>
-    </div>
-    <div class="testi-carousel" aria-roledescription="carrusel" aria-label="Testimonios de clientes" style="margin-top:var(--sp-6);">
+    <div class="testi-carousel" aria-roledescription="carrusel" aria-label="Testimonios de clientes">
       <div class="testi-track" id="testiTrack">
         <div class="testi-card">
           <div class="stars">★★★★★</div>
