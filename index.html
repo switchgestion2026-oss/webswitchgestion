@@ -166,14 +166,26 @@
   .card .more{display:inline-block; margin-top:var(--sp-3); font-weight:700; font-size:.86rem; color:var(--orange-dark); text-decoration:none;}
   .card .more:hover{text-decoration:underline;}
 
-  /* casos */
-  .grid-casos{display:grid; gap:var(--sp-4); grid-template-columns:1fr;}
-  .caso-card{border-radius:var(--radius-md); padding:var(--sp-5); text-decoration:none; color:var(--ink); background:var(--c-bg, var(--white)); border:1px solid var(--line); display:flex; flex-direction:column; gap:var(--sp-2); transition:transform .18s ease, box-shadow .18s ease;}
-  .caso-card:hover{transform:translateY(-4px); box-shadow:var(--shadow-md);}
-  .caso-tag{font-family:var(--font-mono); font-size:.68rem; text-transform:uppercase; letter-spacing:.08em; color:var(--orange-dark);}
-  .caso-card .swatches{display:flex; gap:6px; margin-top:4px;}
-  .caso-card .swatches span{width:15px; height:15px; border-radius:50%; border:1px solid rgba(0,0,0,.1);}
-  .caso-card .visit{margin-top:auto; font-weight:700; font-size:.84rem; color:var(--orange-dark);}
+  /* proyectos showcase */
+  .proj-showcase{position:relative; margin-top:var(--sp-6);}
+  .proj-track-wrap{overflow:hidden; -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent); mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);}
+  .proj-track{display:flex; align-items:center; gap:var(--sp-5); overflow-x:auto; scrollbar-width:none; padding:var(--sp-6) 6vw;}
+  .proj-track::-webkit-scrollbar{display:none;}
+  .proj-card{flex:none; width:150px; display:flex; flex-direction:column; align-items:center; text-align:center; text-decoration:none; color:var(--ink); border:1px solid var(--line); border-radius:14px; background:var(--white); padding:var(--sp-4) var(--sp-3); transition:transform .5s cubic-bezier(.22,1,.36,1), border-color .4s ease, box-shadow .4s ease;}
+  .proj-card .proj-dots{display:flex; gap:5px; margin-bottom:var(--sp-3);}
+  .proj-card .proj-dots span{width:7px; height:7px; border-radius:50%; border:1px solid rgba(0,0,0,.08);}
+  .proj-card .proj-logo{max-width:100%; max-height:38px; width:auto; filter:grayscale(1) contrast(.9) brightness(.85); opacity:.75; transition:filter .4s ease, opacity .4s ease;}
+  .proj-card .proj-info{max-height:0; overflow:hidden; opacity:0; transition:max-height .4s ease, opacity .4s ease, margin-top .4s ease;}
+  .proj-card .proj-info .proj-name{font-weight:700; font-size:.8rem; margin-top:var(--sp-3);}
+  .proj-card .proj-info .proj-visit{display:block; font-weight:700; font-size:.76rem; color:var(--orange-dark); margin-top:4px;}
+  .proj-card.active{transform:scale(1.18); border-color:var(--line-strong); box-shadow:var(--shadow-md); z-index:2;}
+  .proj-card.active .proj-logo{filter:grayscale(1) contrast(1); opacity:1;}
+  .proj-card.active .proj-info{max-height:60px; opacity:1; margin-top:2px;}
+  .proj-arrow{position:absolute; top:50%; transform:translateY(-50%); width:38px; height:38px; border-radius:50%; background:var(--white); border:1px solid var(--line); display:flex; align-items:center; justify-content:center; cursor:pointer; z-index:3; color:var(--navy); transition:border-color .2s ease, transform .15s ease;}
+  .proj-arrow:hover{border-color:var(--orange); transform:translateY(-50%) scale(1.06);}
+  .proj-arrow svg{width:16px; height:16px; stroke:currentColor; fill:none; stroke-width:1.8;}
+  .proj-arrow.prev{left:-6px;}
+  .proj-arrow.next{right:-6px;}
 
   /* FAQ */
   .faq-list{max-width:720px; margin:0 auto; display:flex; flex-direction:column; gap:var(--sp-2);}
@@ -226,16 +238,18 @@
     .ppanel.active{grid-template-columns:1fr 1fr;}
     .compare{grid-template-columns:1fr 1fr;}
     .mid-arrow{display:flex;}
-    .grid-casos{grid-template-columns:repeat(2,1fr);}
     .hero-note{display:block;}
     .float-card{display:block;}
+    .proj-card{width:170px;}
+    .proj-arrow{width:44px; height:44px;}
+    .proj-arrow.prev{left:-18px;}
+    .proj-arrow.next{right:-18px;}
   }
   @media (min-width:1024px){
     nav.mainnav{display:block;}
     .header-cta{display:inline-flex;}
     .burger{display:none;}
     .grid-cards{grid-template-columns:repeat(4,1fr);}
-    .grid-casos{grid-template-columns:repeat(3,1fr);}
   }
   @media (prefers-reduced-motion:reduce){ *{transition:none !important; scroll-behavior:auto !important;} }
 </style>
@@ -446,37 +460,43 @@
       <span class="eyebrow">Proyectos</span>
       <h2>Sitios que ya pusimos en marcha.</h2>
     </div>
-    <div class="grid-casos" style="margin-top:var(--sp-6);">
-      <a class="caso-card" style="--c-bg:#F4EFE6;" href="https://estudiojuridicocejas.com.ar/" target="_blank" rel="noopener">
-        <span class="caso-tag">Estudio jurídico</span><h3>Estudio Jurídico Cejas</h3>
-        <div class="swatches"><span style="background:#8a6a3f"></span><span style="background:#f4efe6"></span><span style="background:#2c2c2c"></span></div>
-        <span class="visit">Ver sitio →</span>
-      </a>
-      <a class="caso-card" style="--c-bg:#F2ECE3;" href="https://vaninagiorgettiabogada.com.ar/" target="_blank" rel="noopener">
-        <span class="caso-tag">Abogacía</span><h3>Vanina Giorgetti Abogada</h3>
-        <div class="swatches"><span style="background:#7a2e2e"></span><span style="background:#f2ece3"></span><span style="background:#3a3a3a"></span></div>
-        <span class="visit">Ver sitio →</span>
-      </a>
-      <a class="caso-card" style="--c-bg:#EFEFEF;" href="https://estudiojuridicosarrio.com.ar/" target="_blank" rel="noopener">
-        <span class="caso-tag">Estudio jurídico</span><h3>Estudio Jurídico Sarrio</h3>
-        <div class="swatches"><span style="background:#1f3b57"></span><span style="background:#efefef"></span><span style="background:#c9a24b"></span></div>
-        <span class="visit">Ver sitio →</span>
-      </a>
-      <a class="caso-card" style="--c-bg:#1c1c1c; color:#fff;" href="https://iuremarketingabogados.com.ar/" target="_blank" rel="noopener">
-        <span class="caso-tag" style="color:#c9a24b;">Marketing jurídico</span><h3>IURE Marketing Abogados</h3>
-        <div class="swatches"><span style="background:#c9a24b"></span><span style="background:#1c1c1c;border-color:rgba(255,255,255,.3)"></span><span style="background:#fff"></span></div>
-        <span class="visit" style="color:#c9a24b;">Ver sitio →</span>
-      </a>
-      <a class="caso-card" style="--c-bg:#EDEDED;" href="https://estudiojuridicoleitesyasoc.com.ar/" target="_blank" rel="noopener">
-        <span class="caso-tag">Estudio jurídico</span><h3>Leites y Asociados</h3>
-        <div class="swatches"><span style="background:#2f4858"></span><span style="background:#ededed"></span><span style="background:#8a8a8a"></span></div>
-        <span class="visit">Ver sitio →</span>
-      </a>
-      <a class="caso-card" style="--c-bg:#F5F0EA;" href="https://abogadamarielavignola.com.ar/" target="_blank" rel="noopener">
-        <span class="caso-tag">Abogacía</span><h3>Mariela Vignola Abogada</h3>
-        <div class="swatches"><span style="background:#6b3f2a"></span><span style="background:#f5f0ea"></span><span style="background:#2c2c2c"></span></div>
-        <span class="visit">Ver sitio →</span>
-      </a>
+    <div class="proj-showcase">
+      <button class="proj-arrow prev" aria-label="Anterior" data-dir="-1"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button>
+      <div class="proj-track-wrap">
+        <div class="proj-track" id="projTrack">
+          <a class="proj-card" href="https://estudiojuridicocejas.com.ar/" target="_blank" rel="noopener">
+            <span class="proj-dots"><span style="background:#8a6a3f"></span><span style="background:#f4efe6"></span><span style="background:#2c2c2c"></span></span>
+            <img class="proj-logo" src="logo-cejas.webp" alt="Estudio Jurídico Cejas">
+            <span class="proj-info"><span class="proj-name">Estudio Jurídico Cejas</span><span class="proj-visit">Ver sitio →</span></span>
+          </a>
+          <a class="proj-card" href="https://vaninagiorgettiabogada.com.ar/" target="_blank" rel="noopener">
+            <span class="proj-dots"><span style="background:#7a2e2e"></span><span style="background:#f2ece3"></span><span style="background:#3a3a3a"></span></span>
+            <img class="proj-logo" src="logo-giorgetti.webp" alt="Vanina Giorgetti Abogada">
+            <span class="proj-info"><span class="proj-name">Vanina Giorgetti Abogada</span><span class="proj-visit">Ver sitio →</span></span>
+          </a>
+          <a class="proj-card" href="https://estudiojuridicosarrio.com.ar/" target="_blank" rel="noopener">
+            <span class="proj-dots"><span style="background:#1f3b57"></span><span style="background:#efefef"></span><span style="background:#c9a24b"></span></span>
+            <img class="proj-logo" src="logo-sarrio.webp" alt="Estudio Jurídico Sarrio">
+            <span class="proj-info"><span class="proj-name">Estudio Jurídico Sarrio</span><span class="proj-visit">Ver sitio →</span></span>
+          </a>
+          <a class="proj-card" href="https://iuremarketingabogados.com.ar/" target="_blank" rel="noopener">
+            <span class="proj-dots"><span style="background:#c9a24b"></span><span style="background:#1c1c1c"></span><span style="background:#fff"></span></span>
+            <img class="proj-logo" src="logo-iure.webp" alt="IURE Marketing Abogados">
+            <span class="proj-info"><span class="proj-name">IURE Marketing Abogados</span><span class="proj-visit">Ver sitio →</span></span>
+          </a>
+          <a class="proj-card" href="https://estudiojuridicoleitesyasoc.com.ar/" target="_blank" rel="noopener">
+            <span class="proj-dots"><span style="background:#2f4858"></span><span style="background:#ededed"></span><span style="background:#8a8a8a"></span></span>
+            <img class="proj-logo" src="logo-leites.webp" alt="Leites y Asociados">
+            <span class="proj-info"><span class="proj-name">Leites y Asociados</span><span class="proj-visit">Ver sitio →</span></span>
+          </a>
+          <a class="proj-card" href="https://abogadamarielavignola.com.ar/" target="_blank" rel="noopener">
+            <span class="proj-dots"><span style="background:#6b3f2a"></span><span style="background:#f5f0ea"></span><span style="background:#2c2c2c"></span></span>
+            <img class="proj-logo" src="logo-vignola.webp" alt="Mariela Vignola Abogada">
+            <span class="proj-info"><span class="proj-name">Mariela Vignola Abogada</span><span class="proj-visit">Ver sitio →</span></span>
+          </a>
+        </div>
+      </div>
+      <button class="proj-arrow next" aria-label="Siguiente" data-dir="1"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button>
     </div>
   </div>
 </section>
@@ -621,6 +641,65 @@
   updateTopbar();
 
   document.getElementById('year').textContent = new Date().getFullYear();
+})();
+</script>
+
+<script>
+(function(){
+  var track = document.getElementById('projTrack');
+  if(!track) return;
+  var originalCards = Array.prototype.slice.call(track.children);
+  originalCards.map(function(c){ return c.cloneNode(true); }).forEach(function(c){ track.appendChild(c); });
+  var allCards = Array.prototype.slice.call(track.children);
+  var gap = parseFloat(getComputedStyle(track).gap || 0);
+  var setWidth = originalCards.reduce(function(sum, c){ return sum + c.offsetWidth + gap; }, 0);
+  track.scrollLeft = setWidth / 2;
+
+  var paused = false;
+  function autoScroll(){
+    if(!paused){
+      track.scrollLeft += 0.4;
+      if(track.scrollLeft >= setWidth * 1.5){ track.scrollLeft -= setWidth; }
+    }
+    updateActive();
+    requestAnimationFrame(autoScroll);
+  }
+  function updateActive(){
+    var trackRect = track.getBoundingClientRect();
+    var center = trackRect.left + trackRect.width / 2;
+    var closest = null, closestDist = Infinity;
+    allCards.forEach(function(card){
+      var r = card.getBoundingClientRect();
+      var dist = Math.abs((r.left + r.width / 2) - center);
+      if(dist < closestDist){ closestDist = dist; closest = card; }
+    });
+    allCards.forEach(function(card){ card.classList.toggle('active', card === closest); });
+  }
+  track.addEventListener('mouseenter', function(){ paused = true; });
+  track.addEventListener('mouseleave', function(){ paused = false; });
+  allCards.forEach(function(card){
+    card.addEventListener('click', function(e){
+      if(!card.classList.contains('active')){
+        e.preventDefault();
+        paused = true;
+        var trackRect = track.getBoundingClientRect();
+        var cardRect = card.getBoundingClientRect();
+        var delta = (cardRect.left + cardRect.width / 2) - (trackRect.left + trackRect.width / 2);
+        track.scrollTo({ left: track.scrollLeft + delta, behavior: 'smooth' });
+        setTimeout(function(){ paused = false; }, 2600);
+      }
+    });
+  });
+  document.querySelectorAll('.proj-arrow').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var dir = parseFloat(btn.dataset.dir);
+      var cardWidth = originalCards[0].offsetWidth + gap;
+      paused = true;
+      track.scrollTo({ left: track.scrollLeft + dir * cardWidth, behavior: 'smooth' });
+      setTimeout(function(){ paused = false; }, 2600);
+    });
+  });
+  requestAnimationFrame(autoScroll);
 })();
 </script>
 
