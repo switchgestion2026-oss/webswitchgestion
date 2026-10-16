@@ -16,6 +16,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,500&amp;family=Barlow+Condensed:wght@700&amp;family=DM+Mono:wght@400;500&amp;family=Caveat:wght@500;600&amp;display=swap">
+<script>if(!matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.className+=' js';}</script>
 <style>
 :root{
   --crema:#F7EFE2; --crema-2:#EFE5D2; --tarjeta:#FFFBF4; --marron:#241A14;
@@ -115,7 +116,7 @@ nav.mainnav a:hover{text-decoration:underline;text-decoration-color:var(--dorado
 
 .herr{background:linear-gradient(var(--crema),#F3E6D3)}
 .tools{display:grid;gap:20px;grid-template-columns:1fr}
-.tool{position:relative;overflow:hidden;background:rgba(255,251,244,.85);border:1px solid rgba(211,178,131,.5);border-radius:22px;min-height:340px}
+.tool{position:relative;overflow:visible;background:rgba(255,251,244,.85);border:1px solid rgba(211,178,131,.5);border-radius:22px;min-height:340px}
 .tool-in{position:relative;z-index:2;display:flex;gap:16px;padding:26px 22px}
 .tool-in .icon{width:60px;height:60px;font-size:32px}
 .tool-in>div{max-width:340px}
@@ -225,7 +226,7 @@ footer{background:var(--crema);border-top:1px solid var(--linea);padding:28px 0 
   .bot{width:170px;opacity:.85}
   .bot.dark{opacity:.5}
   .cards4{grid-template-columns:repeat(4,1fr)}
-  .ayuda-grid{grid-template-columns:1.25fr .75fr;gap:48px;align-items:center}
+  .ayuda-grid{grid-template-columns:1fr}
   .pilares{grid-template-columns:repeat(3,1fr);gap:22px}
   .pilar{flex-direction:column;border-bottom:0;border-right:1px solid #E1CFB4;padding:6px 18px 6px 0}
   .pilar:last-child{border-right:0}
@@ -250,6 +251,44 @@ footer{background:var(--crema);border-top:1px solid var(--linea);padding:28px 0 
   .bot.ajo{width:110px}
   .bot.hierbas{width:240px}
 }
+.sticker{position:absolute;z-index:3;right:14px;top:-34px;width:68px;aspect-ratio:1;object-fit:cover;border-radius:50%;border:4px solid var(--tarjeta);box-shadow:0 12px 24px rgba(36,26,20,.22);rotate:8deg}
+.tool-art{border-radius:0 22px 22px 0;overflow:hidden}
+.btn{position:relative;overflow:hidden;isolation:isolate;transition:color .3s ease,border-color .3s ease,transform .15s ease}
+.btn::before{content:'';position:absolute;inset:0;z-index:-1;background:var(--marron);transform:translateX(-101%);transition:transform .38s cubic-bezier(.7,0,.2,1)}
+.btn::after{content:'';position:absolute;top:50%;left:8px;width:12px;height:12px;margin-top:-6px;border-radius:50%;background:var(--dorado);opacity:0;transition:left .38s cubic-bezier(.7,0,.2,1),opacity .2s ease}
+.btn:hover,.btn:focus-visible{background:transparent;color:var(--crema)}
+.btn:hover::before,.btn:focus-visible::before{transform:none}
+.btn:hover::after,.btn:focus-visible::after{opacity:1;left:calc(100% - 20px)}
+.btn.primary:hover,.btn.primary:focus-visible{background:var(--marron);color:var(--marron)}
+.btn.primary::before{background:var(--dorado)}
+.btn.primary::after{background:var(--marron)}
+.btn.wa-btn:hover,.btn.wa-btn:focus-visible{background:var(--verde);color:#fff}
+.btn.wa-btn::before{background:var(--verde-h)}
+.btn.wa-btn::after{background:#fff}
+.pcard,.tool{transition:translate .25s ease,box-shadow .25s ease,border-color .25s ease}
+.pcard:hover,.tool:hover{translate:0 -4px;box-shadow:0 16px 30px rgba(36,26,20,.09);border-color:var(--dorado)}
+.pcard .icon,.pilar .icon,.tool-in .icon{transition:transform .3s cubic-bezier(.3,1.5,.5,1),background .25s ease}
+.pcard:hover .icon,.pilar:hover .icon,.tool:hover .tool-in .icon{transform:rotate(-10deg) scale(1.1);background:var(--dorado);color:var(--marron)}
+.sw{position:absolute;left:0;right:0;bottom:-1px;height:2px;opacity:0;transition:opacity .25s ease;background:linear-gradient(var(--dorado),var(--dorado)) 0 0/calc(var(--p,0)*100%) 100% no-repeat}
+.sw i{position:absolute;top:-4px;left:calc(var(--p,0)*(100% - 10px));width:10px;height:10px;border-radius:50%;background:var(--dorado);box-shadow:0 0 0 3px var(--crema)}
+.topbar.scrolled .sw{opacity:1}
+.wa{transition:opacity .25s ease,translate .25s ease,transform .15s ease}
+.wa.off{opacity:0;translate:0 20px;pointer-events:none}
+html.js .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease var(--d,0s),transform .7s cubic-bezier(.2,.7,.2,1) var(--d,0s),translate .25s ease,box-shadow .25s ease,border-color .25s ease}
+html.js .reveal.in{opacity:1;transform:none}
+html.js .step .icon{background:var(--crema-2);color:#B7A58C;transform:scale(.88);transition:background .4s ease .3s,color .4s ease .3s,transform .5s cubic-bezier(.3,1.5,.5,1) .3s}
+html.js .step.on .icon{background:#F5E4C9;color:#8B5517;transform:none}
+html.js .arrow path,html.js .step-arrow path{stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 1s ease .5s}
+html.js .art.in .arrow path,html.js .step.on .step-arrow path{stroke-dashoffset:0}
+html.js .fb rect[rx="3"]{transform-box:fill-box;transform-origin:50% 100%;transform:scaleY(0);transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+html.js .fb g[fill="#C58A2B"]>rect{transform-box:fill-box;transform-origin:0 50%;transform:scaleX(0);transition:transform .9s cubic-bezier(.2,.8,.2,1) .6s}
+html.js .art.in .fb rect[rx="3"],html.js .art.in .fb g[fill="#C58A2B"]>rect{transform:none}
+@keyframes tw{0%,100%{opacity:.45}50%{opacity:1}}
+@keyframes fl{0%,100%{translate:0 0}50%{translate:0 -7px}}
+html.js .spark{animation:tw 2.4s ease-in-out infinite}
+html.js .art .dash{animation:fl 6s ease-in-out infinite}
+@media(min-width:768px){.sticker{width:140px;right:40px;top:auto;bottom:-40px}}
+@media(min-width:1024px){.sticker{width:170px}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
@@ -311,6 +350,7 @@ footer{background:var(--crema);border-top:1px solid var(--linea);padding:28px 0 
     <a class="btn primary header-cta" href="calculadora-costos.html">Calcular mis costos <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
     <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menú"><span></span><span></span><span></span></button>
   </div>
+<div class="sw" aria-hidden="true"><i></i></div>
 </header>
 
 <div class="mobile-menu" id="menu">
@@ -421,6 +461,7 @@ footer{background:var(--crema);border-top:1px solid var(--linea);padding:28px 0 
     </div>
     <div class="tools">
       <article class="tool">
+        <img class="sticker" src="plato1.webp" alt="" aria-hidden="true" loading="lazy" onerror="this.remove()">
         <div class="tool-in">
           <span class="icon"><svg class="ico" aria-hidden="true"><use href="#i-calc"/></svg></span>
           <div>
@@ -437,7 +478,6 @@ footer{background:var(--crema);border-top:1px solid var(--linea);padding:28px 0 
         </div>
         <div class="tool-art" aria-hidden="true">
           <svg viewBox="0 0 200 300" preserveAspectRatio="xMidYMid slice"><g fill="none" stroke="#8F5E12" stroke-width="2.5" stroke-linecap="round"><ellipse cx="110" cy="180" rx="80" ry="22"/><path d="M40 170C40 232 78 262 110 262 142 262 180 232 180 170"/><path d="M62 150c10-26 32-40 50-40s40 14 50 40"/><circle cx="95" cy="138" r="7"/><circle cx="125" cy="130" r="9"/><circle cx="145" cy="148" r="6"/></g></svg>
-          <img src="plato1.webp" alt="" loading="lazy" onerror="this.remove()">
         </div>
       </article>
       <article class="tool">
@@ -487,7 +527,7 @@ footer{background:var(--crema);border-top:1px solid var(--linea);padding:28px 0 
           <div><h3>Anotar cómo se hace cada cosa</h3><p>Recetas, pasos y tareas por escrito, para que otra persona las haga igual y vos puedas delegar.</p></div>
         </article>
       </div>
-      <div class="plato" aria-hidden="true">
+      <div class="plato" aria-hidden="true" hidden>
         <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice"><rect width="400" height="300" fill="#EFE5D2"/><g fill="none" stroke="#8F5E12" stroke-width="2.5" stroke-linecap="round"><circle cx="200" cy="150" r="104"/><circle cx="200" cy="150" r="78"/><path d="M160 130c14-22 52-24 72-4M168 170c20 18 52 12 66-8"/><circle cx="196" cy="150" r="8"/><path d="M330 60v90M322 60v26a8 8 0 0016 0V60M70 60v90M70 60c-10 14-10 40 0 52"/></g></svg>
         <img src="plato2.webp" alt="" loading="lazy" onerror="this.remove()">
       </div>
@@ -649,6 +689,60 @@ footer{background:var(--crema);border-top:1px solid var(--linea);padding:28px 0 
     img.onload=function(){ s.replaceWith(img); };
     img.src=u.getAttribute('href').replace('#bot-','')+'.webp';
   });
+  var wa=document.querySelector('.wa');
+  var contacto=document.getElementById('contacto');
+  if('IntersectionObserver' in window&&wa&&contacto){
+    new IntersectionObserver(function(es){ wa.classList.toggle('off',es[0].isIntersecting); },{threshold:.25}).observe(contacto);
+  }
+  if(!document.documentElement.classList.contains('js')||!('IntersectionObserver' in window)){ return; }
+  function fmt(n){ return String(n).replace(/\B(?=(\d{3})+(?!\d))/g,'.'); }
+  function count(t){
+    var m=/^(\$?)([\d.]+)(%?)$/.exec(t.textContent.trim());
+    if(!m){ return; }
+    var end=parseInt(m[2].replace(/\./g,''),10);
+    var t0=null;
+    function tick(ts){
+      if(t0===null){ t0=ts; }
+      var k=Math.min(1,(ts-t0)/1000);
+      t.textContent=m[1]+fmt(Math.round(end*(1-Math.pow(1-k,3))))+m[3];
+      if(k<1){ requestAnimationFrame(tick); }
+    }
+    requestAnimationFrame(tick);
+  }
+  [].slice.call(document.querySelectorAll('.arrow path,.step-arrow path')).forEach(function(p){ p.setAttribute('pathLength','1'); });
+  [].slice.call(document.querySelectorAll('.fb rect[rx="3"]')).forEach(function(r,i){ r.style.transitionDelay=(i*70)+'ms'; });
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting){ return; }
+      var el=e.target;
+      el.classList.add('in');
+      if(el.classList.contains('step')){ el.classList.add('on'); }
+      if(el.classList.contains('art')){ [].slice.call(el.querySelectorAll('.fb text')).forEach(count); }
+      io.unobserve(el);
+    });
+  },{threshold:.2,rootMargin:'0px 0px -6% 0px'});
+  [].slice.call(document.querySelectorAll('.head,.pcard,.tool,.pilar,.step,.quien-grid>div,.faq-list,.c-grid>div,.art')).forEach(function(el,i){
+    el.classList.add('reveal');
+    el.style.setProperty('--d',((i%4)*0.08)+'s');
+    io.observe(el);
+  });
+  var busy=false;
+  function frame(){
+    busy=false;
+    var h=window.innerHeight;
+    var max=document.documentElement.scrollHeight-h;
+    document.documentElement.style.setProperty('--p',max>0?Math.min(1,window.scrollY/max):0);
+    [].slice.call(document.querySelectorAll('.bot,.sticker')).forEach(function(el){
+      var r=el.parentElement.getBoundingClientRect();
+      if(r.bottom<0||r.top>h){ return; }
+      var k=el.classList.contains('sticker')?0.1:0.06;
+      el.style.translate='0 '+Math.round((h/2-(r.top+r.height/2))*k)+'px';
+    });
+  }
+  function queue(){ if(!busy){ busy=true; requestAnimationFrame(frame); } }
+  window.addEventListener('scroll',queue,{passive:true});
+  window.addEventListener('resize',queue);
+  frame();
 })();
 </script>
 </body>
