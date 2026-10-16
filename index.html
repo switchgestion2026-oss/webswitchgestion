@@ -235,6 +235,7 @@ footer{background:var(--crema);border-top:1px solid var(--linea);padding:28px 0 
   .mitad{width:clamp(300px,28vw,440px);right:calc(clamp(300px,28vw,440px)/-2)}
 }
 .tool-art{border-radius:0 22px 22px 0;overflow:hidden}
+@media(min-width:768px){.tool-wide{grid-column:1/-1;min-height:260px}.tool-wide .tool-in>div{max-width:520px}}
 .btn{position:relative;overflow:hidden;isolation:isolate;transition:color .3s ease,border-color .3s ease,transform .15s ease}
 .btn::before{content:'';position:absolute;inset:0;z-index:-1;background:var(--marron);transform:translateX(-101%);transition:transform .38s cubic-bezier(.7,0,.2,1)}
 .btn::after{content:'';position:absolute;top:50%;left:8px;width:12px;height:12px;margin-top:-6px;border-radius:50%;background:var(--dorado);opacity:0;transition:left .38s cubic-bezier(.7,0,.2,1),opacity .2s ease}
@@ -418,9 +419,9 @@ html.js .flora.in .rotulo{opacity:1}
   <div class="flora f-herr" aria-hidden="true"><img src="tomillo.webp" alt="" onerror="this.parentNode.remove()"><span class="rotulo">tomillo</span></div>
   <div class="wrap">
     <div class="head">
-      <p class="eyebrow">Dos formas de empezar hoy</p>
+      <p class="eyebrow">Tres formas de empezar</p>
       <h2 class="h2">Elegí la herramienta que necesitás</h2>
-      <p class="sec-sub">Las dos son gratis y no piden registrarte.</p>
+      <p class="sec-sub">Las dos primeras son gratis y no piden registrarte.</p>
     </div>
     <div class="tools">
       <article class="tool">
@@ -459,6 +460,24 @@ html.js .flora.in .rotulo{opacity:1}
         </div>
         <div class="tool-art" aria-hidden="true">
           <svg viewBox="0 0 200 300" preserveAspectRatio="xMidYMid slice"><g fill="none" stroke="#8F5E12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="50" y="40" width="120" height="180" rx="8" transform="rotate(-6 110 130)"/><g transform="rotate(-6 110 130)"><path d="M76 80H146M76 106H146M76 132H120"/><path d="M70 164l8 8 14-16M104 168H146"/><path d="M62 40v180" stroke-dasharray="2 9"/></g><path d="M158 214l34-60 10 6-34 60-14 4z"/></g></svg>
+        </div>
+      </article>
+      <article class="tool tool-wide">
+        <div class="tool-in">
+          <span class="icon"><svg class="ico" aria-hidden="true"><use href="#i-chart"/></svg></span>
+          <div>
+            <p class="eyebrow">Material descargable</p>
+            <h3>Recetas estandarizadas</h3>
+            <p>Mirá cómo se ve una ficha de receta estandarizada: cantidades, rendimiento y procedimiento, con una planilla donde cargás tus costos reales.</p>
+            <ul>
+              <li><svg class="ico" aria-hidden="true"><use href="#i-tick"/></svg>Se ven una por una o en pack</li>
+              <li><svg class="ico" aria-hidden="true"><use href="#i-tick"/></svg>Cargás tus precios y ves tu costo real</li>
+            </ul>
+            <a class="btn primary" href="recetas.html">Ver cómo se ve una receta <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </div>
+        </div>
+        <div class="tool-art" aria-hidden="true">
+          <svg viewBox="0 0 200 300" preserveAspectRatio="xMidYMid meet"><g fill="none" stroke="#8F5E12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="50" y="40" width="110" height="170" rx="8"/><path d="M66 70H144M66 96H144M66 122H120M66 148H144M66 174H110"/><circle cx="150" cy="215" r="26"/><path d="M138 215 147 224 163 206"/></g></svg>
         </div>
       </article>
     </div>
