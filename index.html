@@ -80,7 +80,9 @@ nav.mainnav a:hover{text-decoration:underline;text-decoration-color:var(--dorado
 .mobile-menu ul{list-style:none;margin:0 0 32px;padding:0;display:flex;flex-direction:column;gap:24px}
 .mobile-menu ul a{font-family:var(--f-display);font-weight:700;text-transform:uppercase;font-size:36px;text-decoration:none}
 
-.hero{padding:36px 0 64px;background:radial-gradient(ellipse at 88% 20%,rgba(226,190,132,.28),transparent 40%),var(--crema)}
+.hero{position:relative;padding:36px 0 64px;background:radial-gradient(ellipse at 88% 20%,rgba(226,190,132,.28),transparent 40%),var(--crema)}
+.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:right center;z-index:0;pointer-events:none}
+.hero::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:linear-gradient(180deg,rgba(247,239,226,.82),rgba(247,239,226,.5))}
 .hero-grid{display:grid;gap:28px;align-items:center}
 .hero-grid>*{min-width:0}
 .hero h1{font-size:clamp(38px,10.4vw,76px);margin:18px 0;max-width:13ch}
@@ -88,14 +90,9 @@ nav.mainnav a:hover{text-decoration:underline;text-decoration-color:var(--dorado
 .hero-ctas{display:flex;flex-direction:column;gap:12px;margin-top:28px;max-width:420px}
 .hero-ctas .btn{width:100%}
 .priv{margin-top:14px;font-family:var(--f-mono);font-size:12px;letter-spacing:.02em;color:var(--gris)}
-.art{position:relative;padding:8px 0 28px}
-.art .dash{width:100%;height:auto;display:block;position:relative;z-index:3;filter:drop-shadow(0 18px 22px rgba(73,49,23,.14))}
 .ticket{position:absolute;left:-2%;top:22%;width:17%;z-index:2;transform:rotate(-11deg);opacity:.7}
 .spark{position:absolute;left:1%;top:2%;width:11%;z-index:4;color:var(--dorado)}
 .arrow{position:absolute;left:0;bottom:-2%;width:26%;z-index:4;color:var(--dorado)}
-.caption{position:absolute;right:0;bottom:0;z-index:4;background:rgba(255,250,240,.94);border:1px solid rgba(207,138,28,.35);border-radius:999px;padding:7px 12px;font-family:var(--f-mono);font-size:11px;color:#51453c}
-.caption::before{content:'●';color:var(--dorado);margin-right:6px}
-.wave{position:absolute;bottom:-90px;left:-5%;right:-5%;height:140px;background:rgba(230,208,175,.32);border-radius:50% 50% 0 0/60% 60% 0 0;transform:rotate(-1deg);z-index:0}
 
 .problemas{background:var(--tarjeta)}
 .cards4{display:grid;gap:14px;grid-template-columns:1fr}
@@ -208,7 +205,7 @@ footer{background:var(--crema);border-top:1px solid var(--linea);padding:28px 0 
   .burger{display:none}
   .hero{padding:56px 0 80px}
   .hero-grid{grid-template-columns:.93fr 1.07fr;gap:48px}
-  .art{padding:16px 0 32px}
+  .hero::before{display:none}
   .hero h1{font-size:clamp(52px,4.6vw,72px)}
   .cards4{grid-template-columns:repeat(4,1fr)}
   .ayuda-grid{grid-template-columns:1fr}
@@ -270,7 +267,6 @@ html.js .art.in .arrow path,html.js .step.on .step-arrow path{stroke-dashoffset:
 @keyframes tw{0%,100%{opacity:.45}50%{opacity:1}}
 @keyframes fl{0%,100%{translate:0 0}50%{translate:0 -7px}}
 html.js .spark{animation:tw 2.4s ease-in-out infinite}
-html.js .art .dash{animation:fl 6s ease-in-out infinite}
 @media(min-width:768px){.sticker{width:140px;right:40px;top:auto;bottom:-40px}}
 @media(min-width:1024px){.sticker{width:170px}}
 .flora{position:absolute;z-index:1;pointer-events:none}
@@ -364,6 +360,7 @@ html.js .flora.in .rotulo{opacity:1}
 <main id="contenido">
 
 <section class="hero" id="inicio">
+  <img class="hero-bg" src="hero-dashboard.webp" alt="" aria-hidden="true" fetchpriority="high" onerror="this.remove()">
   <div class="flora f-hero" aria-hidden="true"><img src="romero.webp" alt="" onerror="this.parentNode.remove()"><span class="rotulo">romero</span></div>
   <div class="wrap hero-grid">
     <div>
@@ -376,15 +373,7 @@ html.js .flora.in .rotulo{opacity:1}
       </div>
       <p class="priv">Gratis · sin registrarte · tus datos quedan en tu navegador</p>
     </div>
-    <div class="art" aria-hidden="true">
-      <svg class="ticket" viewBox="0 0 160 270" fill="none" stroke="#94734E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3H157V267L144 258 128 267 112 258 96 267 80 258 64 267 48 258 32 267 16 258 3 267Z" fill="#FFFAF1" fill-opacity=".5"/><path d="M28 40H100M28 66H118M28 92H88" stroke="#B69A77"/><circle cx="52" cy="220" r="23"/><path d="M52 207V233M58 211C56 208 47 208 47 214 47 220 58 218 58 225 58 231 48 231 46 227" stroke-width="2.6"/></svg>
-      <svg class="spark" viewBox="0 0 70 70" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"><path d="M12 4 27 29M39 1 42 22M57 13 46 32"/></svg>
-      <img class="dash" src="hero-dashboard.webp" alt="" onerror="this.remove()">
-      <svg class="arrow" viewBox="0 0 180 90" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 40 C35 80 92 68 130 24m-19 1 20-4-2 20"/></svg>
-      <span class="caption">Costos · márgenes · procesos</span>
-    </div>
   </div>
-  <div class="wave"></div>
 </section>
 
 <section class="problemas" id="problemas">
@@ -665,7 +654,7 @@ html.js .flora.in .rotulo{opacity:1}
       io.unobserve(el);
     });
   },{threshold:.2,rootMargin:'0px 0px -6% 0px'});
-  [].slice.call(document.querySelectorAll('.head,.pcard,.tool,.pilar,.step,.quien-grid>div,.faq-list,.c-grid>div,.art')).forEach(function(el,i){
+  [].slice.call(document.querySelectorAll('.head,.pcard,.tool,.pilar,.step,.quien-grid>div,.faq-list,.c-grid>div')).forEach(function(el,i){
     el.classList.add('reveal');
     el.style.setProperty('--d',((i%4)*0.08)+'s');
     io.observe(el);
