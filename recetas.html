@@ -83,6 +83,14 @@ section{padding:56px 0}
 .inc article{background:var(--tarjeta);border:1px solid var(--linea);border-radius:18px;padding:22px}
 .inc h3{font-family:var(--f-display);text-transform:uppercase;font-size:26px;line-height:1;margin-bottom:8px}
 .inc p{color:var(--gris);font-size:16px}
+.ejemplo{margin-top:24px;background:var(--tarjeta);border:1px solid var(--linea);border-radius:18px;padding:clamp(18px,3vw,28px)}
+.ejemplo h3{font-family:var(--f-display);text-transform:uppercase;font-size:28px;line-height:1;margin-bottom:8px}
+.ejemplo p{color:var(--gris);font-size:16px}
+.ej-grid{display:grid;gap:12px;margin:16px 0}
+.ej-grid div{border:1px dashed var(--linea);border-radius:12px;padding:14px;color:var(--gris);font-size:15.5px}
+.ej-grid div>b:first-child{display:block;font-family:var(--f-mono);font-weight:500;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--dorado-t);margin-bottom:4px}
+.ej-nota{color:var(--marron)!important;font-weight:500}
+.conc{background:linear-gradient(var(--crema),#F3E6D3)}
 .cierre{background:var(--marron);color:var(--crema);text-align:center}
 .cierre h2{font-size:clamp(34px,6vw,52px);margin:0 auto;max-width:18ch}
 .cierre p{margin:14px auto 24px;max-width:52ch;color:#E6D9C3}
@@ -94,6 +102,7 @@ footer{padding:36px 0;border-top:1px solid var(--linea);font-size:14.5px;color:v
   .chips{grid-template-columns:repeat(4,1fr)}
   .dos{grid-template-columns:1fr 1fr}
   .inc{grid-template-columns:repeat(3,1fr)}
+  .ej-grid{grid-template-columns:1fr 1fr}
   section{padding:80px 0}
 }
 html.js .reveal{opacity:0;translate:0 18px;transition:opacity .7s ease,translate .7s ease}
@@ -166,6 +175,38 @@ html.js .reveal.in{opacity:1;translate:0 0}
         <div class="caja"><h4>Conservación</h4>Dónde se guarda, a qué temperatura y por cuánto tiempo.</div>
       </div>
 
+      <div class="bloque">
+        <h4>Porcentajes</h4>
+        <div style="overflow-x:auto">
+          <table class="tabla">
+            <thead><tr><th>Dato</th><th>Qué te dice</th><th>Resultado</th></tr></thead>
+            <tbody>
+              <tr><td>Peso de cada ingrediente</td><td>Qué parte del costo se lleva cada uno</td><td class="vos">se calcula</td></tr>
+              <tr><td>Cuánto del precio se va en ingredientes</td><td>El costo sobre el precio de venta</td><td class="vos">se calcula</td></tr>
+              <tr><td>Margen</td><td>Lo que te queda sobre el precio</td><td class="vos">se calcula</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="bloque dos">
+        <div class="caja"><h4>Dónde se puede ahorrar</h4>Sustituciones, rendimientos y formas de compra que bajan el costo sin cambiar el resultado.</div>
+        <div class="caja"><h4>Excepciones</h4>Variantes de la receta: otro ingrediente, otro tamaño u otra época del año.</div>
+      </div>
+
+      <div class="bloque">
+        <h4>Si pasa esto, hacé esto</h4>
+        <div style="overflow-x:auto">
+          <table class="tabla">
+            <thead><tr><th>Si pasa…</th><th>Puede ser por…</th><th>Se soluciona…</th></tr></thead>
+            <tbody>
+              <tr><td>El problema que aparece</td><td>La causa más probable</td><td>Cómo se corrige y cómo evitarlo</td></tr>
+              <tr><td>Otro problema frecuente</td><td>Su causa</td><td>Su solución</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
       <div class="leyenda" aria-label="Referencias">
         <span><i class="l-receta"></i>Viene escrito en la receta</span>
         <span><i class="l-vos"></i>Lo completás vos con tus precios</span>
@@ -192,6 +233,37 @@ html.js .reveal.in{opacity:1;translate:0 0}
         <h3>Sueltas o en pack</h3>
         <p>Elegís la receta que necesitás o un pack con varias.</p>
       </article>
+    </div>
+  </div>
+</section>
+
+<section class="conc">
+  <div class="wrap">
+    <p class="eyebrow">Para entender tus números</p>
+    <h2 class="h2">Margen, markup y costo: qué es cada uno</h2>
+    <p class="sub">Se confunden seguido y dan precios distintos. Con la misma cuenta se ve la diferencia.</p>
+    <div class="inc">
+      <article class="reveal">
+        <h3>Costo de ingredientes</h3>
+        <p>Cuánto del precio de venta se va en ingredientes. Se calcula dividiendo el costo por el precio. En la jerga se le dice <b>CMV</b>.</p>
+      </article>
+      <article class="reveal">
+        <h3>Margen</h3>
+        <p>La ganancia medida sobre el <b>precio de venta</b>. Si el precio es 100 y el margen es 40 %, te quedan 40 de cada 100.</p>
+      </article>
+      <article class="reveal">
+        <h3>Markup</h3>
+        <p>Lo que le sumás al <b>costo</b> para llegar al precio. Es otra forma de mirar lo mismo, con un porcentaje distinto.</p>
+      </article>
+    </div>
+    <div class="ejemplo reveal">
+      <h3>La misma cuenta, vista de las dos formas</h3>
+      <p>Con números redondos, para ver la diferencia: un producto que cuesta <b>$1.000</b>.</p>
+      <div class="ej-grid">
+        <div><b>Querés un margen del 40 %</b>Precio = 1.000 ÷ (1 − 0,40) = <b>$1.667</b>. Equivale a un markup de 67 %.</div>
+        <div><b>Aplicás un markup del 40 %</b>Precio = 1.000 × 1,40 = <b>$1.400</b>. Equivale a un margen de 29 %.</div>
+      </div>
+      <p class="ej-nota">Mismo 40 %, precios distintos. Por eso la calculadora y las fichas usan siempre el margen: lo que te queda sobre lo que cobrás.</p>
     </div>
   </div>
 </section>
