@@ -238,6 +238,18 @@ footer{background:var(--crema);border-top:1px solid var(--linea);padding:28px 0 
   .faq-grid{grid-template-columns:.75fr 1.25fr;gap:60px}
   .c-grid{grid-template-columns:1.1fr .9fr;gap:40px}
 }
+.contacto{padding-bottom:120px}
+.bot.ajo{left:6px;bottom:-4px;top:auto;width:72px;transform:none;opacity:1}
+.bot.hierbas{right:-14px;bottom:-10px;top:auto;left:auto;width:110px;transform:none;opacity:1}
+@media(min-width:768px){
+  .contacto{padding-bottom:56px}
+  .bot.ajo{left:-8px;width:100px}
+  .bot.hierbas{width:200px;top:50%;bottom:auto;transform:translateY(-50%)}
+}
+@media(min-width:1024px){
+  .bot.ajo{width:110px}
+  .bot.hierbas{width:240px}
+}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
@@ -452,6 +464,7 @@ footer{background:var(--crema);border-top:1px solid var(--linea);padding:28px 0 
 </section>
 
 <section class="ayuda" id="ayuda">
+  <svg class="bot bl" viewBox="0 0 180 410" aria-hidden="true"><use href="#bot-tomillo"/></svg>
   <svg class="bot tr" viewBox="0 0 180 410" aria-hidden="true"><use href="#bot-rosemary"/></svg>
   <div class="wrap">
     <div class="head">
@@ -541,6 +554,7 @@ footer{background:var(--crema);border-top:1px solid var(--linea);padding:28px 0 
 </section>
 
 <section class="faq" id="preguntas">
+  <svg class="bot bl" viewBox="0 0 180 410" aria-hidden="true"><use href="#bot-tomillo"/></svg>
   <svg class="bot tr" viewBox="0 0 180 410" aria-hidden="true"><use href="#bot-rosemary"/></svg>
   <div class="wrap faq-grid">
     <div class="head">
@@ -569,8 +583,9 @@ footer{background:var(--crema);border-top:1px solid var(--linea);padding:28px 0 
 </section>
 
 <section class="contacto" id="contacto">
-  <svg class="bot dark bl" viewBox="0 0 180 410" aria-hidden="true"><use href="#bot-sage"/></svg>
-  <svg class="bot dark tr" viewBox="0 0 180 410" aria-hidden="true"><use href="#bot-rosemary"/></svg>
+  <svg class="bot dark tl" viewBox="0 0 180 410" aria-hidden="true"><use href="#bot-rosemary"/></svg>
+  <svg class="bot ajo" viewBox="0 0 180 410" aria-hidden="true"><use href="#bot-ajo"/></svg>
+  <svg class="bot hierbas" viewBox="0 0 180 410" aria-hidden="true"><use href="#bot-plato-hierbas"/></svg>
   <div class="wrap c-grid">
     <div>
       <p class="eyebrow">Hablemos de tu negocio</p>
