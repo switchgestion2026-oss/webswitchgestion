@@ -1,66 +1,83 @@
 <!doctype html>
-<html lang="es">
+<html lang="es-AR">
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Aviso legal — Switch Gestión</title>
+<title>Aviso legal, privacidad y términos | Switch Gestión</title>
 <meta name="description" content="Aviso legal, política de privacidad y términos de uso de Switch Gestión.">
+<meta name="theme-color" content="#F7EFE2">
+<link rel="icon" href="logo.webp" type="image/webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&amp;family=Barlow+Condensed:wght@700&amp;family=DM+Mono:wght@400;500&amp;display=swap">
 <style>
-  :root{
-    --navy:#14233F; --orange:#F15A24; --orange-dark:#d6491a; --cream:#F7F3EC;
-    --white:#FFFFFF; --ink:#14233F; --text2:#667085; --line:rgba(20,35,63,.12); --line-strong:rgba(20,35,63,.20);
-    --font-display:'Plus Jakarta Sans',system-ui,sans-serif; --font-mono:'JetBrains Mono',monospace;
-    --header-h:76px; --sp-3:16px; --sp-4:24px; --sp-5:32px; --sp-6:48px; --sp-7:64px; --sp-8:88px;
-  }
-  *{box-sizing:border-box;}
-  html,body{overflow-x:clip;}
-  body{margin:0; font-family:var(--font-display); color:var(--ink); background:var(--cream); line-height:1.6;}
-  .wrap{max-width:760px; margin:0 auto; padding:0 var(--sp-4);}
-  a{color:var(--orange-dark);}
-  h1,h2{font-family:var(--font-display); line-height:1.15; margin:0 0 var(--sp-3);}
-  h1{font-size:clamp(1.8rem,4vw,2.4rem); font-weight:800;}
-  h2{font-size:1.3rem; font-weight:700; margin-top:var(--sp-7);}
-  p{color:var(--text2); margin:0 0 var(--sp-3);}
-  .topbar{position:sticky; top:0; z-index:10; height:var(--header-h); display:flex; align-items:center; background:rgba(247,243,236,.9); backdrop-filter:blur(10px); border-bottom:1px solid var(--line);}
-  .topbar .wrap{display:flex; align-items:center; justify-content:space-between; width:100%; max-width:1180px;}
-  .brand{display:flex; align-items:center; gap:10px; text-decoration:none; font-weight:800; font-size:1.1rem; color:var(--navy);}
-  .toggle-logo{width:34px; height:20px; border-radius:999px; background:var(--navy); position:relative; flex:none;}
-  .toggle-logo::after{content:''; position:absolute; top:3px; right:3px; width:14px; height:14px; border-radius:50%; background:var(--orange);}
-  .back{font-family:var(--font-mono); font-size:.85rem; text-decoration:none; color:var(--ink);}
-  main{padding:var(--sp-8) 0;}
-  footer{background:var(--navy); color:rgba(255,255,255,.7); padding:var(--sp-6) 0; font-size:.85rem; text-align:center;}
-  footer a{color:rgba(255,255,255,.75);}
+:root{
+  --crema:#F7EFE2; --crema-2:#EFE5D2; --marron:#241A14; --gris:#6B5D50; --dorado:#C58A2B; --linea:#D9CBB5;
+  --f-display:'Barlow Condensed','Arial Narrow',sans-serif; --f-body:'Barlow',system-ui,sans-serif; --f-mono:'DM Mono',ui-monospace,monospace;
+  --header-h:72px;
+}
+*{box-sizing:border-box}
+html,body{overflow-x:clip}
+html{scroll-padding-top:calc(var(--header-h) + 8px)}
+body{margin:0;background:var(--crema);color:var(--marron);font-family:var(--f-body);font-size:18px;line-height:1.6}
+img{max-width:100%;display:block}
+a{color:var(--marron)}
+:focus-visible{outline:3px solid var(--marron);outline-offset:3px}
+.wrap{max-width:760px;margin:0 auto;padding:0 20px}
+.topbar{position:sticky;top:0;z-index:10;height:var(--header-h);display:flex;align-items:center;background:rgba(247,239,226,.88);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--linea)}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;width:100%}
+.brand{display:inline-block;line-height:0}
+.brand img{height:52px;width:auto}
+.back{font-size:16px;font-weight:500}
+main{padding:48px 0 72px}
+h1,h2{font-family:var(--f-display);font-weight:700;text-transform:uppercase;line-height:1;margin:0}
+h1{font-size:clamp(40px,8vw,64px)}
+h1::after,h2::after{content:'';display:block;width:64px;height:6px;background:var(--dorado);margin-top:14px}
+h2{font-size:34px;margin-top:56px}
+p{margin:16px 0 0;color:var(--gris)}
+ul{margin:16px 0 0;padding-left:20px;color:var(--gris)}
+li{margin-top:8px}
+footer{border-top:1px solid var(--linea);padding:24px 0 40px;font-size:15px;color:var(--gris);text-align:center}
+footer a{color:var(--gris)}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
 </style>
 </head>
 <body>
 <header class="topbar">
   <div class="wrap">
-    <a href="index.html" class="brand"><span class="toggle-logo"></span> Switch Gestión</a>
-    <a href="index.html" class="back">← Volver al inicio</a>
+    <a class="brand" href="index.html" aria-label="Switch Gestión, volver al inicio"><img src="logo.webp" width="132" height="101" alt="Switch Gestión"></a>
+    <a class="back" href="index.html">← Volver al inicio</a>
   </div>
 </header>
 
 <main class="wrap">
   <h1>Aviso legal, privacidad y términos</h1>
+
   <h2 id="aviso">Aviso legal</h2>
-  <p>Switch Gestión ofrece servicios de diseño web, desarrollo de sistemas y gestión de campañas de publicidad digital. Los contenidos de este sitio tienen fines informativos y no constituyen asesoramiento profesional vinculante.</p>
+  <p>Switch Gestión es un emprendimiento con base en Olavarría, Buenos Aires, Argentina. Ofrece herramientas y acompañamiento en gestión gastronómica: costos, números y procesos.</p>
+  <p>Los contenidos y herramientas de este sitio, como la calculadora de costos y las preguntas de «Cómo está mi negocio», son orientativos. Los resultados dependen de los datos que cargues y no reemplazan el asesoramiento contable, impositivo o legal de un profesional.</p>
 
   <h2 id="privacidad">Política de privacidad</h2>
-  <p>Los datos de contacto que nos compartís (por ejemplo, a través de WhatsApp) se utilizan exclusivamente para responder tu consulta y no se comparten con terceros sin tu consentimiento.</p>
-  <p>Este sitio no utiliza cookies de terceros para publicidad. Si en el futuro se incorporan herramientas de analítica o pauta, esta política deberá actualizarse en consecuencia.</p>
+  <p>Este sitio es estático: no tiene servidor propio ni base de datos, y no te pide registrarte.</p>
+  <ul>
+    <li><strong>Calculadora de costos:</strong> lo que cargás se guarda solo en tu dispositivo, en el almacenamiento local de tu navegador. No se envía a ningún servidor. Podés borrarlo con el botón «Empezar de nuevo» o limpiando los datos del sitio en tu navegador.</li>
+    <li><strong>Cómo está mi negocio:</strong> tus respuestas se procesan en tu dispositivo y no se envían ni se guardan. Si tocás el botón de WhatsApp, se abre un mensaje con tu resultado para que lo envíes vos. Recién ahí lo recibo.</li>
+    <li><strong>WhatsApp e Instagram:</strong> si me escribís, uso tus datos de contacto y lo que me cuentes solo para responderte. Esos mensajes también quedan sujetos a las políticas de WhatsApp e Instagram (Meta) y de las herramientas de mensajería automática que se usen en Instagram.</li>
+    <li><strong>Fuentes tipográficas:</strong> el sitio carga tipografías desde Google Fonts, por lo que Google puede recibir tu dirección IP al abrir las páginas.</li>
+  </ul>
+  <p>Este sitio no usa cookies publicitarias ni herramientas de seguimiento. Si en el futuro se incorporan, esta política se actualizará.</p>
+  <p>No comparto tus datos con terceros sin tu consentimiento. Si querés que borre una conversación o tus datos de contacto, pedímelo por WhatsApp o Instagram.</p>
 
   <h2 id="terminos">Términos y condiciones</h2>
-  <p>El alcance, los plazos y el precio de cada servicio se acuerdan de forma particular con cada cliente antes de iniciar el trabajo. Los valores publicados en el sitio son de referencia y pueden estar sujetos a actualización.</p>
-  <p>Los pagos, formas de entrega y condiciones de mantenimiento se detallan en la propuesta enviada a cada cliente.</p>
+  <p>La calculadora y las preguntas del sitio son de uso gratuito y se ofrecen tal cual están, como referencia. Revisá siempre los resultados antes de tomar decisiones sobre precios o costos de tu negocio.</p>
+  <p>El alcance, los plazos y el valor de cualquier servicio de acompañamiento se acuerdan de forma particular antes de empezar a trabajar. Lo publicado en este sitio no constituye una oferta vinculante.</p>
+  <p>Los textos, el logo y el diseño de este sitio pertenecen a Switch Gestión. No se pueden copiar ni reutilizar sin autorización.</p>
 </main>
 
 <footer>
-  <div class="wrap">© <span id="year"></span> Switch Gestión — <a href="https://www.instagram.com/switchgestion/" target="_blank" rel="noopener">@Switchgestion</a></div>
+  <div class="wrap">© <span id="year"></span> Switch Gestión · <a href="https://www.instagram.com/switchgestion/" target="_blank" rel="noopener">@Switchgestion</a></div>
 </footer>
 
-<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<script>document.getElementById('year').textContent=new Date().getFullYear();</script>
 </body>
 </html>
