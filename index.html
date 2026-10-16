@@ -284,11 +284,11 @@ html.js .art .dash{animation:fl 6s ease-in-out infinite}
 .f-hero{top:0;right:-14px;width:72px}
 .f-bl{left:-24px;bottom:0;width:100px}
 .f-tr{right:-12px;top:16px;width:100px}
+.f-br{right:-12px;bottom:0;width:100px}
 .f-herr{left:-18px;bottom:24px;width:100px}
 .f-faq{left:-10px;bottom:0;width:100px}
 .f-ajo{left:-10px;bottom:-14px;width:130px}
 .f-hierbas{right:-34px;bottom:-26px;width:190px}
-.f-comp{display:none}
 html.js .flora:not(.f-hero){opacity:0;translate:0 14px;transition:opacity 2s ease,translate 2s ease}
 html.js .flora.in{opacity:1;translate:none}
 html.js .f-hero{opacity:0;clip-path:inset(0 0 100% 0);transition:opacity .9s ease,clip-path 3.6s cubic-bezier(.4,.1,.2,1)}
@@ -299,17 +299,16 @@ html.js .flora.in .rotulo{opacity:1}
   .rotulo{font-size:24px}
   .f-bl,.f-herr,.f-faq{width:140px}
   .f-tr{right:0;width:150px}
+  .f-br{right:0;width:140px}
   .f-ajo{width:190px}
   .f-hierbas{width:280px}
-  .f-comp{display:flex;gap:10px;width:170px;left:calc(50% - 85px);bottom:20px}
-  .f-comp .par{flex:1}
 }
 @media(min-width:1024px){
   .f-bl,.f-herr,.f-faq{width:clamp(120px,10vw,170px)}
   .f-tr{width:clamp(130px,11vw,190px)}
+  .f-br{width:clamp(120px,10vw,170px)}
   .f-ajo{left:-12px;bottom:-28px;width:clamp(150px,15vw,250px)}
   .f-hierbas{right:-56px;top:50%;bottom:auto;width:clamp(240px,26vw,420px);transform:translateY(-50%)}
-  .f-comp{left:14px;top:10px;bottom:auto;width:130px}
   .f-hero{top:56px;right:0;width:clamp(110px,10vw,150px)}
   .hero-grid{padding-right:clamp(0px,9vw,150px)}
 }
@@ -569,6 +568,7 @@ html.js .flora.in .rotulo{opacity:1}
 
 <section class="quien" id="quien-soy">
   <div class="flora f-bl" aria-hidden="true"><img src="albahaca.webp" alt="" onerror="this.parentNode.remove()"><span class="rotulo">albahaca</span></div>
+  <div class="flora f-br" aria-hidden="true"><img src="Albahacacherry.webp" alt="" onerror="this.parentNode.remove()"><span class="rotulo">albahaca cherry</span></div>
   <div class="wrap quien-grid">
     <div>
       <p class="eyebrow">Quién soy</p>
@@ -620,7 +620,6 @@ html.js .flora.in .rotulo{opacity:1}
 </section>
 
 <section class="contacto" id="contacto">
-  <div class="flora f-comp" aria-hidden="true"><div class="par"><img src="salvia.webp" alt="" onerror="this.parentNode.remove()"><span class="rotulo">salvia</span></div><div class="par"><img src="ajo.webp" alt="" onerror="this.parentNode.remove()"><span class="rotulo">ajo</span></div></div>
   <div class="flora f-ajo" aria-hidden="true"><img src="ajo.webp" alt="" onerror="this.parentNode.remove()"></div>
   <div class="flora f-hierbas" aria-hidden="true"><img src="plato-hierbas.webp" alt="" onerror="this.parentNode.remove()"></div>
   <div class="wrap c-grid">
@@ -732,7 +731,7 @@ html.js .flora.in .rotulo{opacity:1}
     secs.forEach(function(x,i){
       var q=max>0?Math.min(1,x.getBoundingClientRect().top/max+window.scrollY/max):0;
       dots[i].style.left=(q*100)+'%';
-      var on=p>=q-0.002;
+      var on=x.getBoundingClientRect().top<=window.innerHeight*0.4||p>=0.999;
       dots[i].classList.toggle('on',on);
       if(on){ cur=i; }
     });
