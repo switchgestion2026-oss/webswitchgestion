@@ -1,439 +1,357 @@
-<!DOCTYPE html>
-<html lang="es">
+<!doctype html>
+<html lang="es-AR">
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Contanos sobre tu proyecto · Switch Gestión</title>
+<title>Cómo está tu negocio gastronómico | Switch Gestión</title>
+<meta name="description" content="Seis preguntas cortas para ver cómo están tus números, tu plata y tus procesos. Sin registrarte y sin enviar datos a ningún servidor.">
+<meta name="theme-color" content="#F7EFE2">
+<meta property="og:title" content="Cómo está tu negocio gastronómico | Switch Gestión">
+<meta property="og:description" content="Seis preguntas cortas y un resultado al instante.">
+<meta property="og:type" content="website">
+<link rel="icon" href="logo.webp" type="image/webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&amp;family=Barlow+Condensed:wght@700&amp;family=DM+Mono:wght@400;500&amp;display=swap">
 <style>
-  :root{
-    --navy:#16243F; --navy2:#1F3155; --orange:#E5611F; --cream:#FAF6EF;
-    --line:#E4DDCB; --display:'Space Grotesk',sans-serif; --body:'DM Sans',Arial,sans-serif;
-  }
-  *{box-sizing:border-box;}
-  html,body{margin:0;height:100%;}
-  body{
-    background:var(--cream); color:var(--navy); font-family:var(--body); line-height:1.5;
-    position:relative; overflow-x:hidden;
-  }
-  /* --- fondo decorativo: switches flotando --- */
-  .bg-svg{position:fixed;pointer-events:none;z-index:0;opacity:.10;}
-  .bg-svg.s1{top:-40px;right:-60px;width:260px;}
-  .bg-svg.s2{bottom:60px;left:-70px;width:220px;}
-  .bg-svg.s3{top:45%;right:-40px;width:150px;}
+:root{
+  --crema:#F7EFE2; --crema-2:#EFE5D2; --tarjeta:#FFFBF4; --marron:#241A14;
+  --gris:#6B5D50; --dorado:#C58A2B; --naranja:#ED681D; --linea:#D9CBB5; --borde:#8F7F68;
+  --f-display:'Barlow Condensed','Arial Narrow',sans-serif;
+  --f-body:'Barlow',system-ui,sans-serif;
+  --f-mono:'DM Mono',ui-monospace,monospace;
+  --radio:14px;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{overflow-x:clip}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--crema);color:var(--marron);font-family:var(--f-body);font-size:18px;line-height:1.5}
+img{max-width:100%;display:block}
+h1,h2,h3{font-family:var(--f-display);font-weight:700;text-transform:uppercase;line-height:1;margin:0}
+p{margin:0}
+a{color:var(--marron)}
+:focus-visible{outline:3px solid var(--marron);outline-offset:3px}
+.wrap{max-width:720px;margin:0 auto;padding:0 20px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 0}
+.brand{display:inline-block;line-height:0}
+.brand img{height:52px;width:auto}
+.back{font-size:16px;font-weight:500}
+.bar{width:96px;height:8px;background:var(--dorado);margin-bottom:20px}
+.hero{padding:16px 0 8px}
+.hero h1{font-size:clamp(40px,9vw,68px);max-width:15ch}
+.hero p{margin-top:16px;max-width:46ch;font-size:19px}
+.priv{margin-top:12px!important;font-family:var(--f-mono);font-size:13px!important;color:var(--gris)}
 
-  .wrap{position:relative;z-index:1;max-width:720px;margin:0 auto;padding:32px 20px 80px;}
+.prog{margin:28px 0 16px}
+.prog-label{font-family:var(--f-mono);font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--gris);margin-bottom:8px}
+.prog-bar{display:flex;gap:6px}
+.prog-bar i{flex:1;height:6px;border-radius:999px;background:var(--linea)}
+.prog-bar i.on{background:var(--dorado)}
 
-  .brand{display:flex;align-items:center;gap:10px;margin-bottom:28px;}
-  .brand .dot{width:34px;height:20px;border-radius:999px;background:var(--navy);position:relative;flex:none;}
-  .brand .dot::after{content:"";position:absolute;left:3px;top:3px;width:14px;height:14px;border-radius:50%;background:var(--orange);}
-  .brand span{font-family:var(--display);font-weight:700;font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);}
+.card{background:var(--tarjeta);border:1px solid var(--linea);border-radius:var(--radio);padding:24px;margin-bottom:120px}
+.step{display:none}
+.step.active{display:block}
+.step h2{font-size:36px;margin-bottom:6px}
+.step h2:focus{outline:none}
+.help{color:var(--gris);font-size:16px;margin-bottom:18px}
 
-  .hero{margin-bottom:8px;}
-  h1{font-family:var(--display);font-weight:700;font-size:30px;margin:0 0 8px;letter-spacing:-.01em;}
-  .hero p{margin:0 0 28px;color:#4B5265;font-size:15px;max-width:52ch;}
+fieldset{border:0;margin:0 0 24px;padding:0;min-width:0}
+legend{font-weight:600;font-size:19px;padding:0;margin-bottom:10px}
+.opts{display:grid;gap:10px}
+.opt{display:block;position:relative}
+.opt input{position:absolute;opacity:0;width:100%;height:100%;top:0;left:0;margin:0;cursor:pointer}
+.opt span{display:flex;align-items:center;gap:12px;min-height:56px;padding:12px 16px;border:1.5px solid var(--borde);border-radius:12px;background:#fff;font-size:17px;line-height:1.3}
+.opt span::before{content:'';flex:none;width:20px;height:20px;border-radius:50%;border:2px solid var(--borde);background:#fff}
+.opt input:checked + span{background:var(--crema-2);border-color:var(--marron);font-weight:600}
+.opt input:checked + span::before{border-color:var(--marron);background:radial-gradient(circle,var(--marron) 0 5px,#fff 6px)}
+.opt input:focus-visible + span{outline:3px solid var(--marron);outline-offset:2px}
+.opts.chips{grid-template-columns:1fr 1fr}
+@media(max-width:420px){.opts.chips{grid-template-columns:1fr}}
 
-  /* progreso */
-  .progress{display:flex;align-items:center;gap:8px;margin-bottom:32px;}
-  .progress .seg{height:6px;flex:1;border-radius:999px;background:#E4DDCB;overflow:hidden;}
-  .progress .seg i{display:block;height:100%;width:0%;background:var(--orange);transition:width .35s ease;}
-  .progress .seg.done i{width:100%;}
-  .progress .seg.active i{width:100%;}
-  .step-label{font-family:var(--display);font-size:12px;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px;}
+label.f{display:block}
+label.f > span{display:block;font-size:16px;font-weight:600;margin-bottom:6px}
+input[type=text]{font:inherit;font-size:17px;color:var(--marron);background:#fff;border:1.5px solid var(--borde);border-radius:10px;min-height:48px;padding:8px 12px;width:100%}
 
-  .card{
-    background:#fff;border:1px solid var(--line);border-radius:20px;padding:28px 26px;
-    box-shadow:0 1px 2px rgba(22,36,63,.04);
-  }
-  .step{display:none;animation:fade .25s ease;}
-  .step.active{display:block;}
-  @keyframes fade{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+.msg{color:#A8400F;font-weight:500;font-size:16px;min-height:1.4em;margin-top:4px}
+.nav{display:flex;gap:12px;margin-top:20px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:10px 24px;border-radius:999px;border:2px solid var(--marron);background:transparent;color:var(--marron);font:inherit;font-weight:600;font-size:17px;text-decoration:none;cursor:pointer}
+.btn:hover{background:var(--crema-2)}
+.btn.primary{background:var(--marron);color:var(--crema)}
+.btn.primary:hover{background:#3a2c22}
+.nav .primary{flex:1}
 
-  fieldset{border:none;padding:0;margin:0 0 22px;}
-  fieldset:last-of-type{margin-bottom:0;}
-  legend{font-family:var(--display);font-weight:700;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--navy);padding:0;margin-bottom:10px;}
+.area{padding:18px 0;border-top:1px solid var(--linea)}
+.area:first-of-type{border-top:0;padding-top:0}
+.area-h{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:8px}
+.area-h h3{font-size:30px}
+.nivel{font-family:var(--f-mono);font-size:14px;font-weight:500}
+.meter{height:10px;border-radius:999px;background:var(--linea);overflow:hidden;margin-bottom:10px}
+.meter i{display:block;height:100%;width:0;background:var(--dorado)}
+.area p{color:var(--gris);font-size:17px}
+.start{background:var(--crema-2);border-radius:12px;padding:16px;margin:8px 0 20px;font-weight:500}
+.res-actions{display:flex;flex-direction:column;gap:12px}
+.res-note{margin-top:14px;font-size:14px;color:var(--gris)}
+.u{text-decoration:underline;text-decoration-color:var(--dorado);text-decoration-thickness:3px;text-underline-offset:5px;font-weight:600}
 
-  label{display:block;font-family:var(--body);font-size:13.5px;margin:14px 0 5px;color:#5A5F6E;font-weight:500;}
-  input[type=text],input[type=email],input[type=tel],textarea,select{
-    width:100%;padding:11px 13px;border:1.5px solid var(--line);border-radius:12px;
-    font-family:var(--body);font-size:14.5px;background:#fff;color:var(--navy);transition:.15s;
-  }
-  input:focus,textarea:focus,select:focus{outline:none;border-color:var(--orange);}
-  textarea{resize:vertical;min-height:64px;}
-  .row{display:flex;gap:12px;}
-  .row > div{flex:1;}
-
-  .radio-group,.check-group{display:flex;flex-wrap:wrap;gap:8px;font-family:var(--body);}
-  .opt{
-    border:1.5px solid var(--line);border-radius:999px;padding:9px 16px 9px 14px;font-size:13.5px;
-    cursor:pointer;background:#fff;transition:.15s;user-select:none;
-  }
-  .opt:hover{border-color:var(--navy);}
-  .opt:has(input:checked){background:var(--navy);color:var(--cream);border-color:var(--navy);}
-  .opt input{margin-right:7px;accent-color:var(--orange);}
-  .hidden{display:none !important;}
-  .hint{font-size:12px;color:#8A8F9E;font-family:var(--body);margin-top:6px;}
-
-  .prof-box{
-    border:1.5px dashed var(--orange);border-radius:14px;padding:16px 16px 4px;margin-top:12px;background:#FFF6EF;
-  }
-
-  .nav-row{display:flex;justify-content:space-between;align-items:center;margin-top:28px;gap:12px;}
-  button{font-family:var(--display);font-weight:700;border:none;border-radius:999px;font-size:15px;cursor:pointer;transition:.15s;}
-  .btn-next{background:var(--orange);color:#fff;padding:14px 26px;flex:1;}
-  .btn-next:hover{background:#c94e12;}
-  .btn-back{background:transparent;color:var(--navy);padding:14px 10px;font-weight:500;}
-  .btn-back:hover{text-decoration:underline;}
-  .btn-back.hidden{visibility:hidden;}
-
-  #resumen{white-space:pre-wrap;background:#FBF9F4;border:1px solid var(--line);border-radius:14px;padding:18px;font-family:var(--body);font-size:13px;margin-top:16px;}
-  .copybar{display:flex;gap:10px;align-items:center;margin-top:12px;}
-  .copybar button{width:auto;background:var(--navy);color:#fff;padding:10px 18px;font-size:13px;}
-  .ok{color:var(--orange);font-size:12.5px;font-weight:700;}
-  .final-note{font-family:var(--display);font-weight:700;font-size:20px;margin:0 0 6px;}
+footer{border-top:1px solid var(--linea);padding:22px 0 40px;font-size:15px;color:var(--gris)}
+footer a{color:var(--gris)}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
 </style>
 </head>
 <body>
-
-<svg class="bg-svg s1" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
-  <rect x="4" y="4" width="192" height="112" rx="56" fill="none" stroke="#16243F" stroke-width="8"/>
-  <circle cx="60" cy="60" r="30" fill="#E5611F"/>
-</svg>
-<svg class="bg-svg s2" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
-  <rect x="4" y="4" width="192" height="112" rx="56" fill="none" stroke="#E5611F" stroke-width="8"/>
-  <circle cx="140" cy="60" r="30" fill="#16243F"/>
-</svg>
-<svg class="bg-svg s3" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
-  <rect x="4" y="4" width="192" height="112" rx="56" fill="none" stroke="#16243F" stroke-width="8"/>
-  <circle cx="60" cy="60" r="30" fill="#16243F"/>
-</svg>
-
 <div class="wrap">
 
-  <div class="brand"><div class="dot"></div><span>Switch Gestión</span></div>
+<header class="top">
+  <a class="brand" href="index.html" aria-label="Switch Gestión, volver al inicio"><img src="logo.webp" width="132" height="101" alt="Switch Gestión"></a>
+  <a class="back" href="index.html">Volver al sitio</a>
+</header>
 
-  <div class="hero">
-    <h1>Contanos sobre tu proyecto</h1>
-    <p>Unos minutos nada más. Con esto armamos una propuesta a medida — no hay respuestas correctas, solo contanos cómo es tu negocio.</p>
+<main>
+  <section class="hero">
+    <div class="bar"></div>
+    <h1>¿Cómo está tu negocio hoy?</h1>
+    <p>Seis preguntas cortas sobre tus números, tu plata y tus procesos. Al final ves en qué estás firme y por dónde conviene empezar.</p>
+    <p class="priv">Gratis · sin registrarte · tus respuestas no salen de tu celular</p>
+    <noscript><p class="priv">Necesitás activar JavaScript para responder las preguntas.</p></noscript>
+  </section>
+
+  <div class="prog" id="prog">
+    <div class="prog-label" id="progLabel" aria-live="polite">Paso 1 de 4</div>
+    <div class="prog-bar" id="progBar" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
   </div>
 
-  <div class="progress" id="progress"></div>
+  <form class="card" id="f" novalidate>
 
-  <form id="f">
-    <div class="card">
+    <div class="step active" data-step="0">
+      <h2 tabindex="-1">Tu negocio</h2>
+      <p class="help">Para empezar, contame qué tipo de negocio tenés.</p>
+      <fieldset>
+        <legend>¿Qué tenés?</legend>
+        <div class="opts chips">
+          <label class="opt"><input type="radio" name="tipo" value="Local con salón o mostrador"><span>Local con salón o mostrador</span></label>
+          <label class="opt"><input type="radio" name="tipo" value="Delivery"><span>Delivery</span></label>
+          <label class="opt"><input type="radio" name="tipo" value="Productos por encargo"><span>Productos por encargo</span></label>
+          <label class="opt"><input type="radio" name="tipo" value="Otro"><span>Otro</span></label>
+        </div>
+      </fieldset>
+      <label class="f"><span>Tu nombre (opcional)</span><input type="text" id="nombre" maxlength="60" autocomplete="given-name"></label>
+    </div>
 
-      <!-- PASO 1 -->
-      <div class="step active" data-step="1">
-        <div class="step-label">Paso 1 de 5 · Tu proyecto</div>
-        <fieldset>
-          <legend>¿Qué tipo de sitio necesitás?</legend>
-          <div class="radio-group">
-            <label class="opt"><input type="radio" name="tipo" value="Landing page" checked> Landing page</label>
-            <label class="opt"><input type="radio" name="tipo" value="Web profesional / institucional"> Web profesional</label>
-            <label class="opt"><input type="radio" name="tipo" value="Tienda online"> Tienda online</label>
-            <label class="opt"><input type="radio" name="tipo" value="Otro"> Otro</label>
-          </div>
-        </fieldset>
-        <fieldset>
-          <legend>¿Qué querés que haga quien te visite?</legend>
-          <select id="objetivo">
-            <option>Que me contacte por WhatsApp/teléfono</option>
-            <option>Que complete un formulario</option>
-            <option>Que reserve un turno</option>
-            <option>Que compre online</option>
-            <option>Que conozca mi marca/trayectoria</option>
-            <option>Otro</option>
-          </select>
-          <label>Contanos brevemente qué resolvés para tus clientes</label>
-          <textarea id="objetivoDesc" placeholder="Ej: ayudo a comercios a controlar sus costos y márgenes..."></textarea>
-        </fieldset>
+    <div class="step" data-step="1">
+      <h2 tabindex="-1">Tus números</h2>
+      <p class="help">Costos y precios.</p>
+      <fieldset>
+        <legend>¿Sabés cuánto te cuesta hacer cada plato o producto?</legend>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q1" value="2"><span>Sí, lo tengo calculado y al día</span></label>
+          <label class="opt"><input type="radio" name="q1" value="1"><span>Tengo una idea, pero no está calculado</span></label>
+          <label class="opt"><input type="radio" name="q1" value="0"><span>No lo sé</span></label>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>¿Cómo definiste tus precios?</legend>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q2" value="2"><span>Con lo que me cuesta y lo que quiero ganar</span></label>
+          <label class="opt"><input type="radio" name="q2" value="1"><span>Mirando lo que cobran otros</span></label>
+          <label class="opt"><input type="radio" name="q2" value="0"><span>A ojo o por costumbre</span></label>
+        </div>
+      </fieldset>
+    </div>
+
+    <div class="step" data-step="2">
+      <h2 tabindex="-1">Tu plata</h2>
+      <p class="help">Lo que entra, lo que sale y lo que queda.</p>
+      <fieldset>
+        <legend>A fin de mes, ¿sabés cuánta plata te quedó?</legend>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q3" value="2"><span>Sí, lo veo cada mes con números</span></label>
+          <label class="opt"><input type="radio" name="q3" value="1"><span>Más o menos, por lo que hay en la cuenta</span></label>
+          <label class="opt"><input type="radio" name="q3" value="0"><span>No lo tengo claro</span></label>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>¿Separás la plata del negocio de la tuya?</legend>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q4" value="2"><span>Sí, están separadas</span></label>
+          <label class="opt"><input type="radio" name="q4" value="1"><span>A veces se mezclan</span></label>
+          <label class="opt"><input type="radio" name="q4" value="0"><span>Es todo lo mismo</span></label>
+        </div>
+      </fieldset>
+    </div>
+
+    <div class="step" data-step="3">
+      <h2 tabindex="-1">Tus procesos</h2>
+      <p class="help">Cómo se hace cada cosa y quién la puede hacer.</p>
+      <fieldset>
+        <legend>¿Tenés anotado cómo se hace cada cosa (recetas, pasos, tareas)?</legend>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q5" value="2"><span>Sí, está escrito y otros lo pueden seguir</span></label>
+          <label class="opt"><input type="radio" name="q5" value="1"><span>Algo anotado, el resto está en mi cabeza</span></label>
+          <label class="opt"><input type="radio" name="q5" value="0"><span>Está todo en mi cabeza</span></label>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Si faltás unos días, ¿el negocio sigue andando?</legend>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q6" value="2"><span>Sí, mi equipo sabe qué hacer</span></label>
+          <label class="opt"><input type="radio" name="q6" value="1"><span>Sí, pero con muchos llamados míos</span></label>
+          <label class="opt"><input type="radio" name="q6" value="0"><span>No, se frena</span></label>
+        </div>
+      </fieldset>
+    </div>
+
+    <div class="step" data-step="4" id="resultado">
+      <h2 tabindex="-1">Así está tu negocio hoy</h2>
+      <p class="help">Es una mirada rápida según lo que respondiste, no un diagnóstico completo.</p>
+      <div class="area" data-area="numeros">
+        <div class="area-h"><h3>Números</h3><span class="nivel"></span></div>
+        <div class="meter"><i></i></div>
+        <p></p>
       </div>
-
-      <!-- PASO 2 -->
-      <div class="step" data-step="2">
-        <div class="step-label">Paso 2 de 5 · Contacto</div>
-        <fieldset>
-          <div class="row">
-            <div><label>Nombre y apellido</label><input type="text" id="nombre"></div>
-            <div><label>Empresa / marca</label><input type="text" id="empresa"></div>
-          </div>
-          <div class="row">
-            <div><label>Email</label><input type="email" id="email"></div>
-            <div><label>WhatsApp / teléfono</label><input type="tel" id="telefono"></div>
-          </div>
-          <label>Rubro / actividad</label>
-          <input type="text" id="rubro" placeholder="Ej: gastronomía, abogacía, real estate...">
-        </fieldset>
-        <fieldset>
-          <label class="opt" style="display:inline-block;">
-            <input type="checkbox" id="esProfesional"> Soy profesional matriculado (abogado, médico, contador...)
-          </label>
-          <div id="camposProfesional" class="hidden prof-box">
-            <div class="row">
-              <div><label>Nombre completo (como figura en la matrícula)</label><input type="text" id="profNombre"></div>
-              <div><label>Profesión / especialidad</label><input type="text" id="profEspecialidad"></div>
-            </div>
-            <div class="row">
-              <div><label>Universidad / institución</label><input type="text" id="profUniversidad"></div>
-              <div><label>N° de matrícula y colegio</label><input type="text" id="profMatricula"></div>
-            </div>
-          </div>
-        </fieldset>
+      <div class="area" data-area="plata">
+        <div class="area-h"><h3>Plata</h3><span class="nivel"></span></div>
+        <div class="meter"><i></i></div>
+        <p></p>
       </div>
-
-      <!-- PASO 3 -->
-      <div class="step" data-step="3">
-        <div class="step-label">Paso 3 de 5 · Contenido y estilo</div>
-        <fieldset>
-          <legend>Secciones que te gustaría incluir</legend>
-          <div class="check-group" id="secciones">
-            <label class="opt"><input type="checkbox" value="Inicio"> Inicio</label>
-            <label class="opt"><input type="checkbox" value="Sobre mí / nosotros"> Sobre mí</label>
-            <label class="opt"><input type="checkbox" value="Servicios"> Servicios</label>
-            <label class="opt"><input type="checkbox" value="Productos"> Productos</label>
-            <label class="opt"><input type="checkbox" value="Testimonios"> Testimonios</label>
-            <label class="opt"><input type="checkbox" value="Preguntas frecuentes"> Preguntas frecuentes</label>
-            <label class="opt"><input type="checkbox" value="Blog / noticias"> Blog</label>
-            <label class="opt"><input type="checkbox" value="Contacto"> Contacto</label>
-            <label class="opt"><input type="checkbox" value="Turnos / reservas"> Turnos</label>
-            <label class="opt"><input type="checkbox" value="Ubicación / mapa"> Ubicación</label>
-          </div>
-        </fieldset>
-        <fieldset>
-          <legend>¿Ya tenés los textos escritos?</legend>
-          <div class="radio-group">
-            <label class="opt"><input type="radio" name="textos" value="Sí, listos"> Sí, listos</label>
-            <label class="opt"><input type="radio" name="textos" value="A medias"> A medias</label>
-            <label class="opt"><input type="radio" name="textos" value="Necesito ayuda"> Necesito ayuda</label>
-          </div>
-          <legend style="margin-top:16px;">¿Tenés fotos/logo en buena calidad?</legend>
-          <div class="radio-group">
-            <label class="opt"><input type="radio" name="fotos" value="Sí, tengo todo"> Sí, tengo todo</label>
-            <label class="opt"><input type="radio" name="fotos" value="Tengo algunas"> Tengo algunas</label>
-            <label class="opt"><input type="radio" name="fotos" value="No tengo"> No tengo</label>
-          </div>
-        </fieldset>
-        <fieldset>
-          <legend>Identidad visual</legend>
-          <div class="row">
-            <div><label>Colores de tu marca</label><input type="text" id="colores" placeholder="Ej: verde y beige"></div>
-            <div><label>Sitios de referencia (link)</label><input type="text" id="referencias"></div>
-          </div>
-          <div class="radio-group" style="margin-top:10px;">
-            <label class="opt"><input type="radio" name="estilo" value="Minimalista"> Minimalista</label>
-            <label class="opt"><input type="radio" name="estilo" value="Moderno / colorido"> Moderno</label>
-            <label class="opt"><input type="radio" name="estilo" value="Clásico / elegante"> Clásico</label>
-            <label class="opt"><input type="radio" name="estilo" value="No tengo preferencia"> No tengo preferencia</label>
-          </div>
-        </fieldset>
+      <div class="area" data-area="procesos">
+        <div class="area-h"><h3>Procesos</h3><span class="nivel"></span></div>
+        <div class="meter"><i></i></div>
+        <p></p>
       </div>
-
-      <!-- PASO 4 -->
-      <div class="step" data-step="4">
-        <div class="step-label">Paso 4 de 5 · Funcionalidades</div>
-        <fieldset>
-          <legend>¿Qué necesitás que tenga el sitio?</legend>
-          <div class="check-group">
-            <label class="opt"><input type="checkbox" value="Formulario de contacto"> Formulario</label>
-            <label class="opt"><input type="checkbox" value="Botón de WhatsApp"> WhatsApp</label>
-            <label class="opt"><input type="checkbox" value="Mapa / ubicación"> Mapa</label>
-            <label class="opt"><input type="checkbox" value="Redes sociales"> Redes sociales</label>
-            <label class="opt"><input type="checkbox" value="Turnos/reservas online"> Turnos online</label>
-            <label class="opt"><input type="checkbox" value="Pagos online"> Pagos online</label>
-            <label class="opt"><input type="checkbox" value="Panel administrable"> Panel administrable</label>
-            <label class="opt"><input type="checkbox" value="Multilenguaje"> Multilenguaje</label>
-          </div>
-        </fieldset>
-        <fieldset>
-          <legend>¿Ya tenés dominio propio?</legend>
-          <div class="radio-group">
-            <label class="opt"><input type="radio" name="dominio" value="Sí, ya tengo"> Sí, ya tengo</label>
-            <label class="opt"><input type="radio" name="dominio" value="No, hay que comprarlo"> Hay que comprarlo</label>
-            <label class="opt"><input type="radio" name="dominio" value="No sé qué es"> No sé qué es</label>
-          </div>
-        </fieldset>
+      <p class="start" id="start"></p>
+      <div class="res-actions">
+        <a class="btn primary" id="waSend" href="#" target="_blank" rel="noopener">Mandarme este resultado por WhatsApp</a>
+        <a class="u" id="calcLink" href="calculadora-costos.html" hidden>Calcular el costo de mis platos</a>
+        <button class="btn" type="button" id="again">Responder de nuevo</button>
       </div>
+      <p class="res-note">Al tocar el botón de WhatsApp se abre un mensaje con tu resultado para que lo envíes vos. Nada se envía automáticamente.</p>
+    </div>
 
-      <!-- PASO 5 -->
-      <div class="step" data-step="5">
-        <div class="step-label">Paso 5 de 5 · Últimos detalles</div>
-        <fieldset>
-          <legend>Presupuesto estimado</legend>
-          <div class="radio-group">
-            <label class="opt"><input type="radio" name="presupuesto" value="Menos de $150.000"> Menos de $150.000</label>
-            <label class="opt"><input type="radio" name="presupuesto" value="$150.000 - $300.000"> $150.000 - $300.000</label>
-            <label class="opt"><input type="radio" name="presupuesto" value="Más de $300.000"> Más de $300.000</label>
-            <label class="opt"><input type="radio" name="presupuesto" value="Todavía no lo definí"> Todavía no lo definí</label>
-          </div>
-        </fieldset>
-        <fieldset>
-          <legend>Plazo / urgencia</legend>
-          <div class="radio-group">
-            <label class="opt"><input type="radio" name="plazo" value="Lo antes posible"> Lo antes posible</label>
-            <label class="opt"><input type="radio" name="plazo" value="En el próximo mes"> En el próximo mes</label>
-            <label class="opt"><input type="radio" name="plazo" value="Sin apuro, estoy explorando"> Sin apuro, estoy explorando</label>
-          </div>
-          <label>¿Algo más que debería saber?</label>
-          <textarea id="comentarios"></textarea>
-        </fieldset>
-      </div>
-
-      <!-- RESULTADO -->
-      <div class="step" data-step="final">
-        <div class="final-note">¡Gracias! 🎉</div>
-        <p style="color:#5A5F6E;margin-top:0;">Ya guardamos tus respuestas. Este es el resumen:</p>
-        <div id="resumen"></div>
-      </div>
-
-      <div class="nav-row" id="navRow">
-        <button type="button" class="btn-back" id="btnBack" onclick="prevStep()">Atrás</button>
-        <button type="button" class="btn-next" id="btnNext" onclick="nextStep()">Continuar</button>
-      </div>
+    <p class="msg" id="msg" role="alert"></p>
+    <div class="nav" id="nav">
+      <button class="btn" type="button" id="back" hidden>Atrás</button>
+      <button class="btn primary" type="button" id="next">Continuar</button>
     </div>
   </form>
+</main>
+
+<footer>
+  <p>Hecho por Switch Gestión. Tus respuestas no se guardan en ningún servidor. <a href="legal.html#privacidad">Privacidad</a></p>
+</footer>
 </div>
 
 <script>
-const WEBAPP_URL = "https://script.google.com/macros/s/AKfycbwhwdiNK_UywRV2bnDHu7cuwh5jhkogBXnWP8frfIes_daN4UdCtyJ5fNOabxgMcwBa/exec";
+(function(){
+'use strict';
 
-const totalSteps = 5;
-let current = 1;
+var WA_NUM='5492284673329';
+var TOTAL=4;
+var steps=[].slice.call(document.querySelectorAll('.step'));
+var cur=0;
 
-const esProf = document.getElementById('esProfesional');
-esProf.addEventListener('change', ()=>{
-  document.getElementById('camposProfesional').classList.toggle('hidden', !esProf.checked);
-});
+var $=function(id){return document.getElementById(id)};
+var radio=function(n){var e=document.querySelector('input[name="'+n+'"]:checked');return e?e.value:null};
 
-function renderProgress(){
-  const p = document.getElementById('progress');
-  p.innerHTML = '';
-  for(let i=1;i<=totalSteps;i++){
-    const seg = document.createElement('div');
-    seg.className = 'seg' + (i < current ? ' done' : i === current ? ' active' : '');
-    seg.innerHTML = '<i></i>';
-    p.appendChild(seg);
+var NIVELES=['Para ordenar','En camino','Firme'];
+var TEXTOS={
+  numeros:[
+    'Hoy tus precios no se apoyan en el costo real de cada plato. Es el primer paso, y la calculadora lo resuelve en unos minutos.',
+    'Tenés una idea de tus costos, falta dejarla calculada y al día.',
+    'Tenés costos y precios claros. Revisalos cuando suban los ingredientes.'
+  ],
+  plata:[
+    'Falta ver con claridad cuánta plata queda a fin de mes y separar la del negocio de la tuya.',
+    'Vas viendo la plata, pero falta ordenarla para mirarla siempre de la misma forma.',
+    'Ves lo que entra, lo que sale y lo que queda. Seguí mirándolo cada mes.'
+  ],
+  procesos:[
+    'Hoy casi todo depende de vos. Anotar cómo se hace cada cosa es lo que te permite delegar.',
+    'Hay cosas anotadas y otras en tu cabeza. Conviene pasar a papel lo que más se repite.',
+    'Tu equipo puede seguir los pasos sin vos. Mantené las notas al día.'
+  ]
+};
+var NOMBRES={numeros:'Números',plata:'Plata',procesos:'Procesos'};
+
+function nivel(p){ return p>=4?2:(p>=2?1:0); }
+
+function showStep(n,initial){
+  cur=n;
+  steps.forEach(function(s,i){ s.classList.toggle('active',i===n); });
+  var result=n===TOTAL;
+  $('nav').hidden=result;
+  $('prog').hidden=result;
+  $('back').hidden=n===0;
+  $('next').textContent=n===TOTAL-1?'Ver mi resultado':'Continuar';
+  $('msg').textContent='';
+  $('progLabel').textContent='Paso '+(n+1)+' de '+TOTAL;
+  [].slice.call($('progBar').children).forEach(function(b,i){ b.classList.toggle('on',i<=n); });
+  if(initial) return;
+  var h=steps[n].querySelector('h2');
+  if(h){ h.focus({preventScroll:true}); }
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  window.scrollTo({top:0,behavior:reduce?'auto':'smooth'});
+}
+
+function validate(n){
+  var names={0:['tipo'],1:['q1','q2'],2:['q3','q4'],3:['q5','q6']}[n]||[];
+  for(var i=0;i<names.length;i++){
+    if(radio(names[i])===null){
+      $('msg').textContent=n===0?'Elegí qué tipo de negocio tenés.':'Elegí una opción en cada pregunta.';
+      return false;
+    }
   }
+  return true;
 }
 
-function showStep(n){
-  document.querySelectorAll('.step').forEach(s=>s.classList.remove('active'));
-  document.querySelector('.step[data-step="'+n+'"]').classList.add('active');
-  document.getElementById('btnBack').classList.toggle('hidden', n===1);
-  document.getElementById('btnNext').textContent = (n===totalSteps) ? 'Enviar' : 'Continuar';
-  if(n==='final'){
-    document.getElementById('navRow').classList.add('hidden');
-    document.getElementById('progress').classList.add('hidden');
-  }
-  window.scrollTo({top:0,behavior:'smooth'});
-}
-
-function nextStep(){
-  if(current < totalSteps){
-    current++;
-    renderProgress();
-    showStep(current);
-  } else {
-    generarResumenYEnviar();
-    showStep('final');
-  }
-}
-function prevStep(){
-  if(current > 1){
-    current--;
-    renderProgress();
-    showStep(current);
-  }
-}
-
-function val(id){ return document.getElementById(id).value.trim(); }
-function checkedVals(containerId){
-  return [...document.querySelectorAll('#'+containerId+' input:checked')].map(i=>i.value).join(', ') || '—';
-}
-function radioVal(name){
-  const el = document.querySelector('input[name='+name+']:checked');
-  return el ? el.value : '—';
-}
-function allCheckedInFieldset(legendText){
-  const fs = [...document.querySelectorAll('fieldset')].find(f=>{
-    const l = f.querySelector('legend');
-    return l && l.textContent.includes(legendText);
-  });
-  return fs ? ([...fs.querySelectorAll('input[type=checkbox]:checked')].map(i=>i.value).join(', ') || '—') : '—';
-}
-
-function generarResumenYEnviar(){
-  let t = '';
-  t += 'CUESTIONARIO SITIO WEB\n';
-  t += '========================\n\n';
-  t += 'Tipo de sitio: ' + radioVal('tipo') + '\n\n';
-
-  t += '-- Contacto --\n';
-  t += 'Nombre: ' + (val('nombre')||'—') + '\n';
-  t += 'Empresa/Marca: ' + (val('empresa')||'—') + '\n';
-  t += 'Email: ' + (val('email')||'—') + '\n';
-  t += 'Teléfono: ' + (val('telefono')||'—') + '\n';
-  t += 'Rubro: ' + (val('rubro')||'—') + '\n\n';
-
-  if(esProf.checked){
-    t += '-- Datos profesionales --\n';
-    t += 'Nombre completo: ' + (val('profNombre')||'—') + '\n';
-    t += 'Profesión/especialidad: ' + (val('profEspecialidad')||'—') + '\n';
-    t += 'Universidad/institución: ' + (val('profUniversidad')||'—') + '\n';
-    t += 'Matrícula/colegiado: ' + (val('profMatricula')||'—') + '\n\n';
-  }
-
-  t += '-- Objetivo --\n';
-  t += 'Objetivo principal: ' + document.getElementById('objetivo').value + '\n';
-  t += 'Descripción: ' + (val('objetivoDesc')||'—') + '\n\n';
-
-  t += '-- Secciones deseadas --\n';
-  t += checkedVals('secciones') + '\n\n';
-
-  t += '-- Contenido --\n';
-  t += 'Textos: ' + radioVal('textos') + '\n';
-  t += 'Fotos/logo: ' + radioVal('fotos') + '\n\n';
-
-  t += '-- Identidad visual --\n';
-  t += 'Colores: ' + (val('colores')||'—') + '\n';
-  t += 'Referencias: ' + (val('referencias')||'—') + '\n';
-  t += 'Estilo: ' + radioVal('estilo') + '\n\n';
-
-  t += '-- Funcionalidades --\n';
-  t += allCheckedInFieldset('¿Qué necesitás que tenga el sitio?') + '\n\n';
-
-  t += '-- Dominio --\n';
-  t += radioVal('dominio') + '\n\n';
-
-  t += '-- Presupuesto y plazos --\n';
-  t += 'Presupuesto: ' + radioVal('presupuesto') + '\n';
-  t += 'Plazo: ' + radioVal('plazo') + '\n\n';
-
-  t += '-- Comentarios --\n';
-  t += (val('comentarios')||'—') + '\n';
-
-  document.getElementById('resumen').textContent = t;
-
-  const datos = {
-    tipo: radioVal('tipo'),
-    nombre: val('nombre'), empresa: val('empresa'), email: val('email'), telefono: val('telefono'), rubro: val('rubro'),
-    esProfesional: esProf.checked ? 'Sí' : 'No',
-    profNombre: val('profNombre'), profEspecialidad: val('profEspecialidad'), profUniversidad: val('profUniversidad'), profMatricula: val('profMatricula'),
-    objetivo: document.getElementById('objetivo').value, objetivoDesc: val('objetivoDesc'),
-    secciones: checkedVals('secciones'),
-    textos: radioVal('textos'), fotos: radioVal('fotos'),
-    colores: val('colores'), referencias: val('referencias'), estilo: radioVal('estilo'),
-    funcionalidades: allCheckedInFieldset('¿Qué necesitás que tenga el sitio?'),
-    dominio: radioVal('dominio'),
-    presupuesto: radioVal('presupuesto'), plazo: radioVal('plazo'),
-    comentarios: val('comentarios'),
-    fecha: new Date().toISOString()
+function scores(){
+  return {
+    numeros:Number(radio('q1'))+Number(radio('q2')),
+    plata:Number(radio('q3'))+Number(radio('q4')),
+    procesos:Number(radio('q5'))+Number(radio('q6'))
   };
-
-  fetch(WEBAPP_URL, { method: 'POST', body: JSON.stringify(datos) }).catch(()=>{});
 }
 
-renderProgress();
+function buildResult(){
+  var s=scores();
+  var keys=['numeros','plata','procesos'];
+  var min=4, first=null;
+  keys.forEach(function(k){
+    var p=s[k], l=nivel(p);
+    var box=document.querySelector('.area[data-area="'+k+'"]');
+    box.querySelector('.nivel').textContent=NIVELES[l];
+    box.querySelector('.meter i').style.width=(p/4*100)+'%';
+    box.querySelector('p').textContent=TEXTOS[k][l];
+    if(p<min){ min=p; first=k; }
+  });
+  $('start').textContent=min>=4
+    ? 'Estás firme en las tres áreas. Si querés revisar algo puntual, escribime.'
+    : 'Por dónde empezaría: '+NOMBRES[first]+'.';
+  $('calcLink').hidden=s.numeros>=4;
+
+  var nombre=$('nombre').value.trim();
+  var msg='Hola, hice «Cómo está mi negocio» en la web de Switch Gestión.\n'+
+    (nombre?'Nombre: '+nombre+'\n':'')+
+    'Negocio: '+radio('tipo')+'\n'+
+    'Números: '+NIVELES[nivel(s.numeros)]+'\n'+
+    'Plata: '+NIVELES[nivel(s.plata)]+'\n'+
+    'Procesos: '+NIVELES[nivel(s.procesos)]+'\n'+
+    'Quiero ver cómo seguir.';
+  $('waSend').href='https://wa.me/'+WA_NUM+'?text='+encodeURIComponent(msg);
+}
+
+$('next').addEventListener('click',function(){
+  if(!validate(cur)) return;
+  if(cur===TOTAL-1){ buildResult(); showStep(TOTAL); }
+  else { showStep(cur+1); }
+});
+$('back').addEventListener('click',function(){ if(cur>0) showStep(cur-1); });
+$('again').addEventListener('click',function(){ $('f').reset(); showStep(0); });
+$('f').addEventListener('submit',function(e){ e.preventDefault(); });
+$('f').addEventListener('change',function(){ $('msg').textContent=''; });
+
+showStep(0,true);
+})();
 </script>
 </body>
 </html>
