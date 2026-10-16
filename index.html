@@ -153,7 +153,6 @@ nav.mainnav a:hover{text-decoration:underline;text-decoration-color:var(--dorado
 .t1{width:30px;left:3%;top:10%}
 .t2{width:26px;right:36%;top:16%}
 .t3{width:32px;right:8%;top:64%}
-img.dash~svg.fb{display:none}
 .estrella{position:absolute;top:0;left:4%;width:44px;color:var(--dorado)}
 
 .faq{background:#F6EDDF}
@@ -268,9 +267,6 @@ html.js .step .icon{background:var(--crema-2);color:#B7A58C;transform:scale(.88)
 html.js .step.on .icon{background:#F5E4C9;color:#8B5517;transform:none}
 html.js .arrow path,html.js .step-arrow path{stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 1s ease .5s}
 html.js .art.in .arrow path,html.js .step.on .step-arrow path{stroke-dashoffset:0}
-html.js .fb rect[rx="3"]{transform-box:fill-box;transform-origin:50% 100%;transform:scaleY(0);transition:transform .8s cubic-bezier(.2,.8,.2,1)}
-html.js .fb g[fill="#C58A2B"]>rect{transform-box:fill-box;transform-origin:0 50%;transform:scaleX(0);transition:transform .9s cubic-bezier(.2,.8,.2,1) .6s}
-html.js .art.in .fb rect[rx="3"],html.js .art.in .fb g[fill="#C58A2B"]>rect{transform:none}
 @keyframes tw{0%,100%{opacity:.45}50%{opacity:1}}
 @keyframes fl{0%,100%{translate:0 0}50%{translate:0 -7px}}
 html.js .spark{animation:tw 2.4s ease-in-out infinite}
@@ -384,28 +380,6 @@ html.js .flora.in .rotulo{opacity:1}
       <svg class="ticket" viewBox="0 0 160 270" fill="none" stroke="#94734E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3H157V267L144 258 128 267 112 258 96 267 80 258 64 267 48 258 32 267 16 258 3 267Z" fill="#FFFAF1" fill-opacity=".5"/><path d="M28 40H100M28 66H118M28 92H88" stroke="#B69A77"/><circle cx="52" cy="220" r="23"/><path d="M52 207V233M58 211C56 208 47 208 47 214 47 220 58 218 58 225 58 231 48 231 46 227" stroke-width="2.6"/></svg>
       <svg class="spark" viewBox="0 0 70 70" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"><path d="M12 4 27 29M39 1 42 22M57 13 46 32"/></svg>
       <img class="dash" src="hero-dashboard.webp" alt="" onerror="this.remove()">
-      <svg class="dash fb" viewBox="0 0 560 400" role="presentation">
-        <rect x="2" y="2" width="440" height="318" rx="18" fill="#FFFBF4" stroke="#D9CBB5" stroke-width="2"/>
-        <circle cx="26" cy="26" r="4" fill="#E0B070"/><circle cx="42" cy="26" r="4" fill="#E9D3AE"/><circle cx="58" cy="26" r="4" fill="#E9D3AE"/>
-        <text x="26" y="64" font-family="Barlow Condensed,Arial Narrow,sans-serif" font-weight="700" font-size="24" fill="#241A14" letter-spacing=".5">RESUMEN DEL NEGOCIO</text>
-        <rect x="26" y="80" width="124" height="68" rx="12" fill="#F7EFE2"/><text x="40" y="104" font-family="Barlow,sans-serif" font-size="13" fill="#6B5D50">Costo por plato</text><text x="40" y="134" font-family="Barlow Condensed,sans-serif" font-weight="700" font-size="30" fill="#241A14">$1.250</text>
-        <rect x="160" y="80" width="124" height="68" rx="12" fill="#F7EFE2"/><text x="174" y="104" font-family="Barlow,sans-serif" font-size="13" fill="#6B5D50">Margen</text><text x="174" y="134" font-family="Barlow Condensed,sans-serif" font-weight="700" font-size="30" fill="#2F7D46">68%</text>
-        <rect x="294" y="80" width="124" height="68" rx="12" fill="#F7EFE2"/><text x="308" y="104" font-family="Barlow,sans-serif" font-size="13" fill="#6B5D50">Ventas</text><text x="308" y="134" font-family="Barlow Condensed,sans-serif" font-weight="700" font-size="25" fill="#241A14">$1.320.000</text>
-        <path d="M26 176H418M26 214H418M26 252H418" stroke="#E9DCC6" stroke-width="1.5"/>
-        <rect x="30" y="226" width="15" height="26" rx="3" fill="#E3B56D"/><rect x="53" y="214" width="15" height="38" rx="3" fill="#E3B56D"/><rect x="76" y="220" width="15" height="32" rx="3" fill="#E3B56D"/><rect x="99" y="200" width="15" height="52" rx="3" fill="#E3B56D"/><rect x="122" y="208" width="15" height="44" rx="3" fill="#E3B56D"/><rect x="145" y="190" width="15" height="62" rx="3" fill="#E3B56D"/><rect x="168" y="196" width="15" height="56" rx="3" fill="#E3B56D"/><rect x="191" y="182" width="15" height="70" rx="3" fill="#E3B56D"/><rect x="214" y="172" width="15" height="80" rx="3" fill="#C58A2B"/><rect x="237" y="164" width="15" height="88" rx="3" fill="#C58A2B"/><g font-family="DM Mono,monospace" font-size="11" fill="#6B5D50" text-anchor="middle"><text x="37.5" y="274">E</text><text x="60.5" y="274">F</text><text x="83.5" y="274">M</text><text x="106.5" y="274">A</text><text x="129.5" y="274">M</text><text x="152.5" y="274">J</text><text x="175.5" y="274">J</text><text x="198.5" y="274">A</text><text x="221.5" y="274">S</text><text x="244.5" y="274">O</text></g>
-        <text x="26" y="305" font-family="DM Mono,monospace" font-size="11" fill="#6B5D50">Ejemplo ilustrativo</text>
-        <g>
-          <rect x="268" y="176" width="288" height="218" rx="18" fill="#fff" stroke="#D9CBB5" stroke-width="2"/>
-          <text x="288" y="212" font-family="Barlow Condensed,Arial Narrow,sans-serif" font-weight="700" font-size="20" fill="#241A14" letter-spacing=".3">DETALLE DE UN PLATO</text>
-          <text x="288" y="238" font-family="Barlow,sans-serif" font-weight="600" font-size="15" fill="#241A14">Ñoquis caseros</text>
-          <text x="288" y="266" font-family="Barlow,sans-serif" font-size="12" fill="#6B5D50">Costo total</text><text x="288" y="288" font-family="Barlow Condensed,sans-serif" font-weight="700" font-size="24" fill="#241A14">$1.250</text>
-          <text x="378" y="266" font-family="Barlow,sans-serif" font-size="12" fill="#6B5D50">Precio sugerido</text><text x="378" y="288" font-family="Barlow Condensed,sans-serif" font-weight="700" font-size="24" fill="#241A14">$3.300</text>
-          <text x="478" y="266" font-family="Barlow,sans-serif" font-size="12" fill="#6B5D50">Margen</text><text x="478" y="288" font-family="Barlow Condensed,sans-serif" font-weight="700" font-size="24" fill="#2F7D46">62%</text>
-          <g font-family="Barlow,sans-serif" font-size="12" fill="#6B5D50"><text x="288" y="320">Harina</text><text x="288" y="341">Papa</text><text x="288" y="362">Huevos</text><text x="288" y="383">Otros</text></g>
-          <g fill="#E9D3AE"><rect x="346" y="311" width="190" height="9" rx="4.5"/><rect x="346" y="332" width="190" height="9" rx="4.5"/><rect x="346" y="353" width="190" height="9" rx="4.5"/><rect x="346" y="374" width="190" height="9" rx="4.5"/></g>
-          <g fill="#C58A2B"><rect x="346" y="311" width="84" height="9" rx="4.5"/><rect x="346" y="332" width="62" height="9" rx="4.5"/><rect x="346" y="353" width="38" height="9" rx="4.5"/><rect x="346" y="374" width="24" height="9" rx="4.5"/></g>
-        </g>
-      </svg>
       <svg class="arrow" viewBox="0 0 180 90" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 40 C35 80 92 68 130 24m-19 1 20-4-2 20"/></svg>
       <span class="caption">Costos · márgenes · procesos</span>
     </div>
@@ -681,29 +655,13 @@ html.js .flora.in .rotulo{opacity:1}
     new IntersectionObserver(function(es){ wa.classList.toggle('off',es[0].isIntersecting); },{threshold:.25}).observe(contacto);
   }
   if(!document.documentElement.classList.contains('js')||!('IntersectionObserver' in window)){ return; }
-  function fmt(n){ return String(n).replace(/\B(?=(\d{3})+(?!\d))/g,'.'); }
-  function count(t){
-    var m=/^(\$?)([\d.]+)(%?)$/.exec(t.textContent.trim());
-    if(!m){ return; }
-    var end=parseInt(m[2].replace(/\./g,''),10);
-    var t0=null;
-    function tick(ts){
-      if(t0===null){ t0=ts; }
-      var k=Math.min(1,(ts-t0)/1000);
-      t.textContent=m[1]+fmt(Math.round(end*(1-Math.pow(1-k,3))))+m[3];
-      if(k<1){ requestAnimationFrame(tick); }
-    }
-    requestAnimationFrame(tick);
-  }
   [].slice.call(document.querySelectorAll('.arrow path,.step-arrow path')).forEach(function(p){ p.setAttribute('pathLength','1'); });
-  [].slice.call(document.querySelectorAll('.fb rect[rx="3"]')).forEach(function(r,i){ r.style.transitionDelay=(i*70)+'ms'; });
   var io=new IntersectionObserver(function(es){
     es.forEach(function(e){
       if(!e.isIntersecting){ return; }
       var el=e.target;
       el.classList.add('in');
       if(el.classList.contains('step')){ el.classList.add('on'); }
-      if(el.classList.contains('art')){ [].slice.call(el.querySelectorAll('.fb text')).forEach(count); }
       io.unobserve(el);
     });
   },{threshold:.2,rootMargin:'0px 0px -6% 0px'});
