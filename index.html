@@ -62,14 +62,6 @@ section{padding:56px 0;position:relative;isolation:isolate;overflow:hidden}
 .btn.wa-btn:hover{background:var(--verde-h)}
 .btn .ico{font-size:18px}
 
-.bot{position:absolute;z-index:1;pointer-events:none;overflow:visible;color:var(--hoja);opacity:.3;width:78px;height:auto}
-.bot.dark{color:#A3A979;opacity:.35}
-.bot.hero-a{top:6px;right:-14px;transform:rotate(10deg)}
-.bot.hero-b{left:-26px;top:14px;transform:rotate(-18deg)}
-.bot.tl{left:-26px;top:10px;transform:rotate(-20deg)}
-.bot.tr{right:-22px;top:8px;transform:rotate(18deg)}
-.bot.bl{left:-26px;bottom:4px;transform:rotate(-22deg)}
-.bot.br{right:-24px;bottom:4px;transform:rotate(16deg)}
 
 .topbar{position:sticky;top:0;z-index:100;height:var(--header-h);display:flex;align-items:center;background:rgba(247,239,226,.9);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:border-color .25s ease}
 .topbar.scrolled{border-bottom-color:var(--linea)}
@@ -161,9 +153,6 @@ nav.mainnav a:hover{text-decoration:underline;text-decoration-color:var(--dorado
 .t1{width:30px;left:3%;top:10%}
 .t2{width:26px;right:36%;top:16%}
 .t3{width:32px;right:8%;top:64%}
-.bot.ml{left:-6px;bottom:6px;top:auto;width:64px;transform:rotate(-8deg);opacity:1}
-.bot.mr{left:42%;bottom:-6px;top:auto;right:auto;width:72px;transform:rotate(6deg);opacity:1}
-img.bot{height:auto}
 img.dash~svg.fb{display:none}
 .estrella{position:absolute;top:0;left:4%;width:44px;color:var(--dorado)}
 
@@ -204,7 +193,6 @@ footer{background:var(--crema);border-top:1px solid var(--linea);padding:28px 0 
 
 @media(min-width:768px){
   section{padding:80px 0}
-  .bot{width:130px}
   .hero-ctas{flex-direction:row;max-width:none}
   .hero-ctas .btn{width:auto}
   .cards4{grid-template-columns:repeat(2,1fr)}
@@ -223,8 +211,6 @@ footer{background:var(--crema);border-top:1px solid var(--linea);padding:28px 0 
   .hero-grid{grid-template-columns:.93fr 1.07fr;gap:48px}
   .art{padding:16px 0 32px}
   .hero h1{font-size:clamp(52px,4.6vw,72px)}
-  .bot{width:170px;opacity:.85}
-  .bot.dark{opacity:.5}
   .cards4{grid-template-columns:repeat(4,1fr)}
   .ayuda-grid{grid-template-columns:1fr}
   .pilares{grid-template-columns:repeat(3,1fr);gap:22px}
@@ -239,19 +225,19 @@ footer{background:var(--crema);border-top:1px solid var(--linea);padding:28px 0 
   .faq-grid{grid-template-columns:.75fr 1.25fr;gap:60px}
   .c-grid{grid-template-columns:1.1fr .9fr;gap:40px}
 }
-.contacto{padding-bottom:120px}
-.bot.ajo{left:6px;bottom:-4px;top:auto;width:72px;transform:none;opacity:1}
-.bot.hierbas{right:-14px;bottom:-10px;top:auto;left:auto;width:110px;transform:none;opacity:1}
+.contacto{padding-bottom:190px}
+.mitad{position:absolute;z-index:1;border-radius:50%;object-fit:cover;aspect-ratio:1;border:6px solid var(--tarjeta);box-shadow:0 18px 40px rgba(36,26,20,.18);pointer-events:none;width:160px;bottom:-66px;right:-66px}
+.problemas,.ayuda{padding-bottom:120px}
 @media(min-width:768px){
-  .contacto{padding-bottom:56px}
-  .bot.ajo{left:-8px;width:100px}
-  .bot.hierbas{width:200px;top:50%;bottom:auto;transform:translateY(-50%)}
+  .contacto{padding-bottom:230px}
+  .problemas,.ayuda{padding-bottom:88px}
+  .mitad{width:300px;bottom:auto;top:20px;right:-150px}
 }
 @media(min-width:1024px){
-  .bot.ajo{width:110px}
-  .bot.hierbas{width:240px}
+  .contacto{padding-bottom:56px}
+  .c-grid{padding-left:clamp(0px,13vw,210px);padding-right:clamp(0px,18vw,290px)}
+  .mitad{width:clamp(300px,28vw,440px);right:calc(clamp(300px,28vw,440px)/-2)}
 }
-.sticker{position:absolute;z-index:3;right:14px;top:-34px;width:68px;aspect-ratio:1;object-fit:cover;border-radius:50%;border:4px solid var(--tarjeta);box-shadow:0 12px 24px rgba(36,26,20,.22);rotate:8deg}
 .tool-art{border-radius:0 22px 22px 0;overflow:hidden}
 .btn{position:relative;overflow:hidden;isolation:isolate;transition:color .3s ease,border-color .3s ease,transform .15s ease}
 .btn::before{content:'';position:absolute;inset:0;z-index:-1;background:var(--marron);transform:translateX(-101%);transition:transform .38s cubic-bezier(.7,0,.2,1)}
@@ -269,8 +255,10 @@ footer{background:var(--crema);border-top:1px solid var(--linea);padding:28px 0 
 .pcard:hover,.tool:hover{translate:0 -4px;box-shadow:0 16px 30px rgba(36,26,20,.09);border-color:var(--dorado)}
 .pcard .icon,.pilar .icon,.tool-in .icon{transition:transform .3s cubic-bezier(.3,1.5,.5,1),background .25s ease}
 .pcard:hover .icon,.pilar:hover .icon,.tool:hover .tool-in .icon{transform:rotate(-10deg) scale(1.1);background:var(--dorado);color:var(--marron)}
-.sw{position:absolute;left:0;right:0;bottom:-1px;height:2px;opacity:0;transition:opacity .25s ease;background:linear-gradient(var(--dorado),var(--dorado)) 0 0/calc(var(--p,0)*100%) 100% no-repeat}
-.sw i{position:absolute;top:-4px;left:calc(var(--p,0)*(100% - 10px));width:10px;height:10px;border-radius:50%;background:var(--dorado);box-shadow:0 0 0 3px var(--crema)}
+.sw{position:absolute;left:0;right:0;bottom:-1px;height:1px;opacity:0;transition:opacity .25s ease;background:linear-gradient(var(--dorado),var(--dorado)) 0 0/calc(var(--p,0)*100%) 100% no-repeat,var(--linea)}
+.sw b{position:absolute;top:-2px;width:5px;height:5px;margin-left:-2px;border-radius:50%;background:var(--crema);box-shadow:0 0 0 1px var(--linea);transition:background .3s ease,box-shadow .3s ease}
+.sw b.on{background:var(--dorado);box-shadow:0 0 0 1px var(--dorado)}
+.sw em{position:absolute;top:-16px;left:calc(var(--p,0)*100%);transform:translateX(calc(var(--p,0)*-100%));font:600 15px/1 var(--f-mano,'Caveat',cursive);font-style:normal;color:var(--dorado-t);text-shadow:0 0 4px var(--crema),0 0 8px var(--crema);white-space:nowrap;padding:0 clamp(20px,4vw,64px)}
 .topbar.scrolled .sw{opacity:1}
 .wa{transition:opacity .25s ease,translate .25s ease,transform .15s ease}
 .wa.off{opacity:0;translate:0 20px;pointer-events:none}
@@ -289,6 +277,42 @@ html.js .spark{animation:tw 2.4s ease-in-out infinite}
 html.js .art .dash{animation:fl 6s ease-in-out infinite}
 @media(min-width:768px){.sticker{width:140px;right:40px;top:auto;bottom:-40px}}
 @media(min-width:1024px){.sticker{width:170px}}
+.flora{position:absolute;z-index:1;pointer-events:none}
+.flora img{display:block;width:100%;height:auto}
+.rotulo{display:block;text-align:center;font-family:'Caveat','Segoe Script',cursive;font-weight:600;font-size:18px;line-height:1;color:#7B5837;margin-top:4px}
+.contacto .rotulo{color:#E3B56D}
+.f-hero{top:0;right:-14px;width:72px}
+.f-bl{left:-24px;bottom:0;width:100px}
+.f-tr{right:-12px;top:16px;width:100px}
+.f-herr{left:-18px;bottom:24px;width:100px}
+.f-faq{left:-10px;bottom:0;width:100px}
+.f-ajo{left:-10px;bottom:-14px;width:130px}
+.f-hierbas{right:-34px;bottom:-26px;width:190px}
+.f-comp{display:none}
+html.js .flora:not(.f-hero){opacity:0;translate:0 14px;transition:opacity 2s ease,translate 2s ease}
+html.js .flora.in{opacity:1;translate:none}
+html.js .f-hero{opacity:0;clip-path:inset(0 0 100% 0);transition:opacity .9s ease,clip-path 3.6s cubic-bezier(.4,.1,.2,1)}
+html.js .f-hero.in{opacity:1;clip-path:inset(0)}
+html.js .flora .rotulo{opacity:0;transition:opacity 1.6s ease 1.8s}
+html.js .flora.in .rotulo{opacity:1}
+@media(min-width:768px){
+  .rotulo{font-size:24px}
+  .f-bl,.f-herr,.f-faq{width:140px}
+  .f-tr{right:0;width:150px}
+  .f-ajo{width:190px}
+  .f-hierbas{width:280px}
+  .f-comp{display:flex;gap:10px;width:170px;left:calc(50% - 85px);bottom:20px}
+  .f-comp .par{flex:1}
+}
+@media(min-width:1024px){
+  .f-bl,.f-herr,.f-faq{width:clamp(120px,10vw,170px)}
+  .f-tr{width:clamp(130px,11vw,190px)}
+  .f-ajo{left:-12px;bottom:-28px;width:clamp(150px,15vw,250px)}
+  .f-hierbas{right:-56px;top:50%;bottom:auto;width:clamp(240px,26vw,420px);transform:translateY(-50%)}
+  .f-comp{left:14px;top:10px;bottom:auto;width:130px}
+  .f-hero{top:56px;right:0;width:clamp(110px,10vw,150px)}
+  .hero-grid{padding-right:clamp(0px,9vw,150px)}
+}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
@@ -296,27 +320,6 @@ html.js .art .dash{animation:fl 6s ease-in-out infinite}
 
 <svg class="sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
  <defs>
-  <g id="bot-rosemary" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-   <path d="M98 385 C91 318 108 254 94 193 C87 151 65 101 43 54"/>
-   <path d="M95 327 Q61 309 48 280 Q76 283 95 310 M99 301 Q126 276 128 246 Q106 258 98 285 M94 264 Q61 246 52 218 Q77 223 95 248 M95 232 Q119 208 117 181 Q99 193 94 216 M88 198 Q60 177 55 151 Q77 160 89 185 M79 166 Q99 143 94 119 Q80 132 77 151 M67 135 Q44 119 39 95 Q58 105 71 124 M55 103 Q73 84 64 63 Q52 76 52 91"/>
-   <path d="M94 343 Q123 325 137 297 M89 282 Q113 260 119 235 M88 218 Q68 199 65 178 M74 157 Q56 139 54 120" opacity=".75"/>
-  </g>
-  <g id="bot-oregano" fill="#8a9a67" fill-opacity=".2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-   <path d="M100 385 C91 320 112 259 93 204 C82 169 67 131 46 93" fill="none"/>
-   <path d="M94 326 C60 334 37 316 31 289 C60 288 83 303 94 326Z"/><path d="M98 303 C126 307 150 289 153 265 C127 266 106 281 98 303Z"/>
-   <path d="M94 270 C62 271 42 250 41 225 C66 229 85 245 94 270Z"/><path d="M95 246 C122 246 143 226 143 202 C119 207 101 222 95 246Z"/>
-   <path d="M86 212 C58 207 43 186 47 163 C68 171 81 188 86 212Z"/><path d="M83 190 C104 185 119 165 113 143 C94 153 84 169 83 190Z"/>
-   <path d="M70 162 C47 151 38 131 47 111 C63 124 70 141 70 162Z"/><path d="M63 140 C81 128 88 109 77 92 C63 106 60 123 63 140Z"/>
-   <path d="M52 113 C33 101 29 82 40 66 C53 81 56 97 52 113Z"/>
-  </g>
-  <g id="bot-sage" fill="#8e9b70" fill-opacity=".22" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-   <path d="M100 390 C91 326 104 259 92 202 C83 162 68 119 48 79" fill="none"/>
-   <path d="M94 330 C57 346 29 326 27 294 C57 293 82 307 94 330Z"/><path d="M98 301 C136 308 163 286 161 254 C131 260 107 278 98 301Z"/>
-   <path d="M91 264 C54 274 30 250 35 220 C64 224 83 240 91 264Z"/><path d="M94 238 C126 242 148 218 142 190 C116 197 99 215 94 238Z"/>
-   <path d="M85 204 C55 205 37 181 45 155 C68 163 82 182 85 204Z"/><path d="M82 180 C109 178 124 154 113 131 C94 142 83 159 82 180Z"/>
-   <path d="M68 148 C43 145 31 123 42 102 C60 114 68 130 68 148Z"/><path d="M62 124 C82 116 90 95 77 78 C63 92 59 108 62 124Z"/>
-   <path d="M50 98 C32 88 29 70 41 56 C52 70 55 84 50 98Z"/>
-  </g>
   <symbol id="i-calc" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><rect x="8" y="6" width="8" height="3.5" rx=".6"/><path d="M8.5 13h.01M12 13h.01M15.5 13h.01M8.5 16.5h.01M12 16.5h.01M15.5 16.5h.01"/></symbol>
   <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></symbol>
   <symbol id="i-list" viewBox="0 0 24 24"><rect x="5" y="3.5" width="14" height="17" rx="2"/><path d="M8.5 8.5h7M8.5 12h7M8.5 15.5h4"/></symbol>
@@ -350,7 +353,7 @@ html.js .art .dash{animation:fl 6s ease-in-out infinite}
     <a class="btn primary header-cta" href="calculadora-costos.html">Calcular mis costos <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
     <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menú"><span></span><span></span><span></span></button>
   </div>
-<div class="sw" aria-hidden="true"><i></i></div>
+<div class="sw" aria-hidden="true"></div>
 </header>
 
 <div class="mobile-menu" id="menu">
@@ -366,8 +369,7 @@ html.js .art .dash{animation:fl 6s ease-in-out infinite}
 <main id="contenido">
 
 <section class="hero" id="inicio">
-  <svg class="bot hero-a" viewBox="0 0 180 410" aria-hidden="true"><use href="#bot-rosemary"/></svg>
-  <svg class="bot hero-b" viewBox="0 0 180 410" aria-hidden="true"><use href="#bot-oregano"/></svg>
+  <div class="flora f-hero" aria-hidden="true"><img src="romero.webp" alt="" onerror="this.parentNode.remove()"><span class="rotulo">romero</span></div>
   <div class="wrap hero-grid">
     <div>
       <p class="eyebrow">Gestión gastronómica</p>
@@ -413,8 +415,8 @@ html.js .art .dash{animation:fl 6s ease-in-out infinite}
 </section>
 
 <section class="problemas" id="problemas">
-  <svg class="bot bl" viewBox="0 0 180 410" aria-hidden="true"><use href="#bot-oregano"/></svg>
-  <svg class="bot tr" viewBox="0 0 180 410" aria-hidden="true"><use href="#bot-rosemary"/></svg>
+  <div class="flora f-bl" aria-hidden="true"><img src="perejil.webp" alt="" onerror="this.parentNode.remove()"><span class="rotulo">perejil</span></div>
+  <img class="mitad" src="plato1.webp" alt="" aria-hidden="true" loading="lazy" onerror="this.remove()">
   <div class="wrap">
     <div class="head">
       <p class="eyebrow">¿Te pasa esto?</p>
@@ -451,8 +453,7 @@ html.js .art .dash{animation:fl 6s ease-in-out infinite}
 </section>
 
 <section class="herr" id="herramientas">
-  <svg class="bot tl" viewBox="0 0 180 410" aria-hidden="true"><use href="#bot-sage"/></svg>
-  <svg class="bot tr" viewBox="0 0 180 410" aria-hidden="true"><use href="#bot-rosemary"/></svg>
+  <div class="flora f-herr" aria-hidden="true"><img src="tomillo.webp" alt="" onerror="this.parentNode.remove()"><span class="rotulo">tomillo</span></div>
   <div class="wrap">
     <div class="head">
       <p class="eyebrow">Dos formas de empezar hoy</p>
@@ -461,7 +462,6 @@ html.js .art .dash{animation:fl 6s ease-in-out infinite}
     </div>
     <div class="tools">
       <article class="tool">
-        <img class="sticker" src="plato1.webp" alt="" aria-hidden="true" loading="lazy" onerror="this.remove()">
         <div class="tool-in">
           <span class="icon"><svg class="ico" aria-hidden="true"><use href="#i-calc"/></svg></span>
           <div>
@@ -504,8 +504,8 @@ html.js .art .dash{animation:fl 6s ease-in-out infinite}
 </section>
 
 <section class="ayuda" id="ayuda">
-  <svg class="bot bl" viewBox="0 0 180 410" aria-hidden="true"><use href="#bot-tomillo"/></svg>
-  <svg class="bot tr" viewBox="0 0 180 410" aria-hidden="true"><use href="#bot-rosemary"/></svg>
+  <div class="flora f-bl" aria-hidden="true"><img src="curry.webp" alt="" onerror="this.parentNode.remove()"><span class="rotulo">curry</span></div>
+  <img class="mitad" src="plato2.webp" alt="" aria-hidden="true" loading="lazy" onerror="this.remove()">
   <div class="wrap">
     <div class="head">
       <p class="eyebrow">Cómo te ayudo</p>
@@ -536,7 +536,7 @@ html.js .art .dash{animation:fl 6s ease-in-out infinite}
 </section>
 
 <section class="proceso" id="como-empezamos">
-  <svg class="bot bl" viewBox="0 0 180 410" aria-hidden="true"><use href="#bot-sage"/></svg>
+  <div class="flora f-tr" aria-hidden="true"><img src="oregano.webp" alt="" onerror="this.parentNode.remove()"><span class="rotulo">orégano</span></div>
   <div class="wrap">
     <div class="head">
       <p class="eyebrow">Cómo empezamos</p>
@@ -568,7 +568,7 @@ html.js .art .dash{animation:fl 6s ease-in-out infinite}
 </section>
 
 <section class="quien" id="quien-soy">
-  <svg class="bot bl" viewBox="0 0 180 410" aria-hidden="true"><use href="#bot-oregano"/></svg>
+  <div class="flora f-bl" aria-hidden="true"><img src="albahaca.webp" alt="" onerror="this.parentNode.remove()"><span class="rotulo">albahaca</span></div>
   <div class="wrap quien-grid">
     <div>
       <p class="eyebrow">Quién soy</p>
@@ -587,15 +587,12 @@ html.js .art .dash{animation:fl 6s ease-in-out infinite}
       <svg class="trazo t1" viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M6 4 20 28"/></svg>
       <svg class="trazo t2" viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M6 30 26 4"/></svg>
       <svg class="trazo t3" viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M3 22 31 10"/></svg>
-      <svg class="bot ml" viewBox="0 0 180 410" aria-hidden="true"><use href="#bot-rosemary"/></svg>
-      <svg class="bot mr" viewBox="0 0 180 410" aria-hidden="true"><use href="#bot-sage"/></svg>
     </div>
   </div>
 </section>
 
 <section class="faq" id="preguntas">
-  <svg class="bot bl" viewBox="0 0 180 410" aria-hidden="true"><use href="#bot-tomillo"/></svg>
-  <svg class="bot tr" viewBox="0 0 180 410" aria-hidden="true"><use href="#bot-rosemary"/></svg>
+  <div class="flora f-faq" aria-hidden="true"><img src="cilantro.webp" alt="" onerror="this.parentNode.remove()"><span class="rotulo">cilantro</span></div>
   <div class="wrap faq-grid">
     <div class="head">
       <p class="eyebrow">Preguntas frecuentes</p>
@@ -623,9 +620,9 @@ html.js .art .dash{animation:fl 6s ease-in-out infinite}
 </section>
 
 <section class="contacto" id="contacto">
-  <svg class="bot dark tl" viewBox="0 0 180 410" aria-hidden="true"><use href="#bot-rosemary"/></svg>
-  <svg class="bot ajo" viewBox="0 0 180 410" aria-hidden="true"><use href="#bot-ajo"/></svg>
-  <svg class="bot hierbas" viewBox="0 0 180 410" aria-hidden="true"><use href="#bot-plato-hierbas"/></svg>
+  <div class="flora f-comp" aria-hidden="true"><div class="par"><img src="salvia.webp" alt="" onerror="this.parentNode.remove()"><span class="rotulo">salvia</span></div><div class="par"><img src="ajo.webp" alt="" onerror="this.parentNode.remove()"><span class="rotulo">ajo</span></div></div>
+  <div class="flora f-ajo" aria-hidden="true"><img src="ajo.webp" alt="" onerror="this.parentNode.remove()"></div>
+  <div class="flora f-hierbas" aria-hidden="true"><img src="plato-hierbas.webp" alt="" onerror="this.parentNode.remove()"></div>
   <div class="wrap c-grid">
     <div>
       <p class="eyebrow">Hablemos de tu negocio</p>
@@ -679,16 +676,6 @@ html.js .art .dash{animation:fl 6s ease-in-out infinite}
   window.addEventListener('scroll',onScroll,{passive:true});
   onScroll();
   document.getElementById('year').textContent=new Date().getFullYear();
-  [].slice.call(document.querySelectorAll('svg.bot')).forEach(function(s){
-    var u=s.querySelector('use');
-    if(!u){ return; }
-    var img=new Image();
-    img.alt='';
-    img.setAttribute('aria-hidden','true');
-    img.className=s.getAttribute('class');
-    img.onload=function(){ s.replaceWith(img); };
-    img.src=u.getAttribute('href').replace('#bot-','')+'.webp';
-  });
   var wa=document.querySelector('.wa');
   var contacto=document.getElementById('contacto');
   if('IntersectionObserver' in window&&wa&&contacto){
@@ -726,16 +713,43 @@ html.js .art .dash{animation:fl 6s ease-in-out infinite}
     el.style.setProperty('--d',((i%4)*0.08)+'s');
     io.observe(el);
   });
+  var fio=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('in'); fio.unobserve(e.target); }
+    });
+  },{threshold:.15});
+  [].slice.call(document.querySelectorAll('.flora:not(.f-hero)')).forEach(function(el){ fio.observe(el); });
+  var fh=document.querySelector('.f-hero');
+  if(fh){ setTimeout(function(){ fh.classList.add('in'); },500); }
+  var sw=document.querySelector('.sw'),secs=[].slice.call(document.querySelectorAll('main section, body > section')),dots=[],lab=null,names={inicio:'inicio',problemas:'lo que te pasa',herramientas:'herramientas',ayuda:'cómo te ayudo','como-empezamos':'cómo empezamos','quien-soy':'quién soy',preguntas:'dudas',contacto:'hablemos'};
+  if(sw){
+    secs=secs.filter(function(x){return names[x.id];});
+    secs.forEach(function(){ var d=document.createElement('b'); sw.appendChild(d); dots.push(d); });
+    lab=document.createElement('em'); sw.appendChild(lab);
+  }
+  function marks(p,max){
+    var cur=0;
+    secs.forEach(function(x,i){
+      var q=max>0?Math.min(1,x.getBoundingClientRect().top/max+window.scrollY/max):0;
+      dots[i].style.left=(q*100)+'%';
+      var on=p>=q-0.002;
+      dots[i].classList.toggle('on',on);
+      if(on){ cur=i; }
+    });
+    if(lab&&secs.length){ lab.textContent=(cur+1)+' · '+names[secs[cur].id]; }
+  }
   var busy=false;
   function frame(){
     busy=false;
     var h=window.innerHeight;
     var max=document.documentElement.scrollHeight-h;
-    document.documentElement.style.setProperty('--p',max>0?Math.min(1,window.scrollY/max):0);
-    [].slice.call(document.querySelectorAll('.bot,.sticker')).forEach(function(el){
+    var pp=max>0?Math.min(1,window.scrollY/max):0;
+    document.documentElement.style.setProperty('--p',pp);
+    marks(pp,max);
+    [].slice.call(document.querySelectorAll('.mitad')).forEach(function(el){
       var r=el.parentElement.getBoundingClientRect();
       if(r.bottom<0||r.top>h){ return; }
-      var k=el.classList.contains('sticker')?0.1:0.06;
+      var k=0.1;
       el.style.translate='0 '+Math.round((h/2-(r.top+r.height/2))*k)+'px';
     });
   }
