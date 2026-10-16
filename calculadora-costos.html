@@ -1,0 +1,486 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Calculadora de costos para gastronomía | Switch Gestión</title>
+<meta name="description" content="Calculá cuánto cuesta cada plato y a qué precio te conviene venderlo. Gratis, sin registrarte y sin salir de tu navegador.">
+<meta property="og:title" content="Calculadora de costos para gastronomía | Switch Gestión">
+<meta property="og:description" content="Cargá tus ingredientes y mirá al instante cuánto cuesta una porción y qué precio te conviene.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&amp;family=Barlow+Condensed:wght@700&amp;family=DM+Mono:wght@400;500&amp;display=swap">
+<style>
+:root{
+  --crema:#F7EFE2;
+  --crema-2:#EFE5D2;
+  --tarjeta:#FFFBF4;
+  --marron:#241A14;
+  --gris:#6B5D50;
+  --dorado:#C58A2B;
+  --naranja:#ED681D;
+  --linea:#D9CBB5;
+  --borde-input:#8F7F68;
+  --error:#A8400F;
+  --radio:14px;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--crema);color:var(--marron);font-family:'Barlow',system-ui,sans-serif;font-size:18px;line-height:1.45}
+h1,h2,h3{font-family:'Barlow Condensed','Arial Narrow',sans-serif;font-weight:700;text-transform:uppercase;line-height:1;margin:0}
+p{margin:0}
+a{color:var(--marron)}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+
+/* encabezado */
+.top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 0}
+.brand{display:inline-block;line-height:0}
+.back{font-size:16px;font-weight:500}
+
+/* hero */
+.hero{padding:24px 0 8px}
+.bar{width:96px;height:8px;background:var(--dorado);margin-bottom:20px}
+.hero h1{font-size:clamp(44px,9vw,84px);max-width:14ch}
+.hero p{margin-top:18px;max-width:46ch;font-size:20px}
+.priv{margin-top:14px;font-family:'DM Mono',monospace;font-size:14px;letter-spacing:.02em;color:var(--gris)}
+
+/* layout */
+.layout{display:grid;grid-template-columns:1fr;gap:24px;margin:28px 0 120px;align-items:start}
+@media(min-width:960px){
+  .layout{grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);margin-bottom:64px}
+  .result{position:sticky;top:16px}
+  .minibar{display:none!important}
+}
+
+/* tarjetas y pasos */
+.card{background:var(--tarjeta);border:1px solid var(--linea);border-radius:var(--radio);padding:22px}
+.card + .card{margin-top:20px}
+.step-h{display:flex;align-items:center;gap:14px;margin-bottom:6px}
+.badge{flex:none;width:44px;height:44px;border-radius:50%;border:3px solid var(--dorado);display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:26px}
+.step-h h2{font-size:34px}
+.help{font-size:16px;color:var(--gris);margin:4px 0 14px}
+.opt{font-family:'DM Mono',monospace;font-size:13px;letter-spacing:.04em;color:var(--gris);margin-left:auto}
+
+/* campos */
+label.f{display:block}
+label.f > span{display:block;font-size:15px;font-weight:600;margin-bottom:4px}
+input,select{font:inherit;font-size:17px;color:var(--marron);background:#fff;border:1.5px solid var(--borde-input);border-radius:10px;min-height:48px;padding:8px 12px;width:100%}
+input::placeholder{color:#8a7c6e}
+input:focus-visible,select:focus-visible,button:focus-visible,summary:focus-visible,a:focus-visible{outline:3px solid var(--marron);outline-offset:2px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:520px){.grid2.stack{grid-template-columns:1fr}}
+.pair{display:grid;grid-template-columns:minmax(0,1fr) 92px;gap:8px}
+.suf{position:relative}
+.suf input{padding-right:40px}
+.suf i{position:absolute;right:12px;top:50%;transform:translateY(-50%);font-style:normal;color:var(--gris);pointer-events:none}
+.pre input{padding-left:30px}
+.pre i{position:absolute;left:12px;top:50%;transform:translateY(-50%);font-style:normal;color:var(--gris);pointer-events:none}
+
+/* ingredientes */
+.row{border-top:1px solid var(--linea);padding:16px 0;display:grid;gap:12px;grid-template-columns:1fr}
+.row:first-of-type{border-top:0}
+.row .cost{display:flex;align-items:flex-end;justify-content:space-between;gap:8px;min-height:48px}
+.cost small{display:block;font-size:13px;color:var(--gris);font-family:'DM Mono',monospace}
+.cost output{font-family:'DM Mono',monospace;font-weight:500;font-size:18px;white-space:nowrap}
+.row-msg{grid-column:1 / -1;font-size:15px;color:var(--error);font-weight:500}
+.row-msg:empty{display:none}
+.del{flex:none;min-width:44px;min-height:44px;border:1.5px solid var(--borde-input);background:transparent;border-radius:10px;font-size:22px;line-height:1;cursor:pointer;color:var(--marron)}
+.del:hover{background:var(--crema-2)}
+@media(min-width:560px){
+  .row{grid-template-columns:1fr 1fr}
+  .row .f-name{grid-column:1 / -1}
+}
+
+/* botones */
+.btn{font:inherit;font-weight:600;font-size:17px;min-height:48px;padding:10px 20px;border-radius:999px;border:2px solid var(--marron);background:transparent;color:var(--marron);cursor:pointer}
+.btn:hover{background:var(--crema-2)}
+.btn.primary{background:var(--marron);color:var(--crema)}
+.btn.primary:hover{background:#3a2c22}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+
+details.more{margin-top:16px;border-top:1px solid var(--linea);padding-top:14px}
+details.more summary{cursor:pointer;font-weight:600;min-height:44px;display:flex;align-items:center}
+details.more .inner{padding-top:8px}
+
+/* resultado */
+.result h2{font-size:34px;margin-bottom:14px}
+.big{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:64px;line-height:1}
+.kpi + .kpi{margin-top:18px;padding-top:18px;border-top:1px solid var(--linea)}
+.kpi .lbl{font-size:15px;font-weight:600;color:var(--gris)}
+.kpi.main .big{font-size:76px}
+.kpi.main{background:var(--crema-2);border-radius:12px;padding:16px;margin:-4px -4px 0}
+.break{margin:18px 0 0;padding:0;list-style:none;font-size:16px}
+.break li{display:flex;justify-content:space-between;gap:12px;padding:6px 0;border-bottom:1px dashed var(--linea)}
+.break b{font-family:'DM Mono',monospace;font-weight:500}
+.break li.tot{border-bottom:0;font-weight:600}
+.verdict{margin-top:16px;font-size:17px;font-weight:500;min-height:1.4em}
+.verdict.mal{color:var(--error)}
+.note{margin-top:14px;font-size:14px;color:var(--gris)}
+.empty{color:var(--gris);font-size:17px}
+.status{font-size:15px;color:var(--gris);min-height:1.4em;margin-top:8px}
+
+/* barra fija en celular */
+.minibar{position:fixed;left:0;right:0;bottom:0;background:var(--marron);color:var(--crema);padding:10px 20px calc(10px + env(safe-area-inset-bottom));display:flex;justify-content:space-between;align-items:center;gap:12px;z-index:10;text-decoration:none}
+.minibar div{display:flex;flex-direction:column}
+.minibar small{font-family:'DM Mono',monospace;font-size:12px;opacity:.85}
+.minibar b{font-family:'Barlow Condensed',sans-serif;font-size:30px;line-height:1.05}
+.minibar span{font-weight:600;border-bottom:2px solid var(--dorado)}
+
+/* cierre */
+.cta{background:var(--marron);color:var(--crema);border-radius:var(--radio);padding:28px;margin-bottom:40px}
+.cta h2{font-size:38px;margin-bottom:10px}
+.cta p{max-width:52ch}
+.cta .btn{margin-top:18px;border-color:var(--crema);color:var(--crema);display:inline-flex;align-items:center;text-decoration:none}
+.cta .btn:hover{background:#3a2c22}
+footer{border-top:1px solid var(--linea);padding:22px 0 40px;font-size:15px;color:var(--gris)}
+
+@media print{
+  .top,.hero p.priv,.actions,.del,.minibar,.cta,details.more summary,.btn,.opt{display:none!important}
+  body{background:#fff}
+  .layout{display:block;margin:0}
+  .card{break-inside:avoid;border-color:#bbb}
+  .result{position:static}
+}
+@media(prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="top">
+  <a class="brand" href="./" aria-label="Switch Gestión, volver al inicio">
+    <svg width="132" height="101" viewBox="-4 -4 438 338" role="img" aria-label="Switch Gestión">
+      <rect x="0" y="0" width="430" height="120" rx="60" fill="none" stroke="#241A14" stroke-width="7"></rect>
+      <circle cx="340" cy="60" r="42" fill="#C58A2B" stroke="#241A14" stroke-width="4"></circle>
+      <text x="215" y="235" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="84" letter-spacing="4" fill="#241A14">SWITCH</text>
+      <text x="215" y="294" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="39" letter-spacing="12" fill="#241A14">GESTIÓN</text>
+      <path d="M145 326 H285" stroke="#C58A2B" stroke-width="7" stroke-linecap="round" fill="none"></path>
+    </svg>
+  </a>
+  <a class="back" href="./">Volver al sitio</a>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="bar"></div>
+    <h1>Calculá cuánto te cuesta cada plato</h1>
+    <p>Cargá tus ingredientes y mirá al instante cuánto cuesta una porción y a qué precio te conviene venderla.</p>
+    <p class="priv">Gratis · sin registrarte · tus datos quedan en tu navegador</p>
+    <noscript><p class="note">Necesitás activar JavaScript para usar la calculadora.</p></noscript>
+  </section>
+
+  <div class="layout">
+    <div>
+      <!-- Paso 1 -->
+      <section class="card" aria-labelledby="h-ing">
+        <div class="step-h"><span class="badge" aria-hidden="true">1</span><h2 id="h-ing">Ingredientes</h2></div>
+        <p class="help">Poné lo que pagás al comprar (ej: $4.500 por 1 kg) y cuánto usás en la receta.</p>
+        <div class="grid2 stack">
+          <label class="f"><span>Nombre del plato (opcional)</span><input id="plato" type="text" placeholder="Ej: empanadas de carne" autocomplete="off"></label>
+          <label class="f"><span>¿Cuántas porciones rinde la receta?</span><input id="rinde" type="text" inputmode="decimal" placeholder="1" autocomplete="off"></label>
+        </div>
+        <div id="rows" style="margin-top:14px"></div>
+        <div class="actions"><button type="button" class="btn" id="add">+ Agregar ingrediente</button></div>
+      </section>
+
+      <!-- Paso 2 -->
+      <section class="card" aria-labelledby="h-otros">
+        <div class="step-h"><span class="badge" aria-hidden="true">2</span><h2 id="h-otros">Otros costos</h2><span class="opt">OPCIONAL</span></div>
+        <p class="help">Todo lo que también sale de tu bolsillo cuando vendés una porción.</p>
+        <div class="grid2 stack">
+          <label class="f"><span>Lo que se pierde al preparar</span><div class="suf"><input id="perdida" type="text" inputmode="decimal" value="3" autocomplete="off"><i>%</i></div></label>
+          <label class="f"><span>Packaging por porción</span><div class="pre suf"><i>$</i><input id="pack" type="text" inputmode="decimal" placeholder="0" autocomplete="off"></div></label>
+        </div>
+        <p class="help" style="margin-top:8px">Pérdida: limpieza, recortes, lo que se tira o se rompe.</p>
+        <details class="more" id="mas">
+          <summary>Sumar costos fijos y mi sueldo</summary>
+          <div class="inner">
+            <p class="help">Alquiler, luz, gas, internet, tu sueldo… Se reparte parejo entre todas las porciones que vendés en el mes. Es una aproximación simple.</p>
+            <div class="grid2 stack">
+              <label class="f"><span>Costos fijos del mes</span><div class="pre suf"><i>$</i><input id="fijos" type="text" inputmode="decimal" placeholder="0" autocomplete="off"></div></label>
+              <label class="f"><span>Tu sueldo del mes</span><div class="pre suf"><i>$</i><input id="sueldo" type="text" inputmode="decimal" placeholder="0" autocomplete="off"></div></label>
+            </div>
+            <label class="f" style="margin-top:14px"><span>Porciones que vendés en el mes (en total)</span><input id="pormes" type="text" inputmode="decimal" placeholder="Ej: 600" autocomplete="off"></label>
+          </div>
+        </details>
+      </section>
+
+      <!-- Paso 3 -->
+      <section class="card" aria-labelledby="h-precio">
+        <div class="step-h"><span class="badge" aria-hidden="true">3</span><h2 id="h-precio">Tu precio</h2></div>
+        <p class="help">Elegí cuánto querés ganar y, si ya vendés este plato, poné a cuánto lo vendés hoy.</p>
+        <div class="grid2 stack">
+          <label class="f"><span>Ganancia que querés (% del precio)</span><div class="suf"><input id="margen" type="text" inputmode="decimal" value="30" autocomplete="off"><i>%</i></div></label>
+          <label class="f"><span>Precio al que lo vendés hoy (opcional)</span><div class="pre suf"><i>$</i><input id="precio" type="text" inputmode="decimal" placeholder="0" autocomplete="off"></div></label>
+        </div>
+      </section>
+    </div>
+
+    <!-- Resultado -->
+    <aside class="card result" id="resultado" aria-labelledby="h-res">
+      <h2 id="h-res">Resultado</h2>
+      <p class="empty" id="vacio">Cargá al menos un ingrediente completo y acá vas a ver el costo de una porción.</p>
+      <div id="datos" hidden>
+        <div class="kpi main">
+          <div class="lbl">Cuesta hacer una porción</div>
+          <div class="big" id="r-costo">$ 0,00</div>
+        </div>
+        <div class="kpi">
+          <div class="lbl">Precio sugerido para ganar <span id="r-m">30</span>%</div>
+          <div class="big" id="r-sug">$ 0,00</div>
+        </div>
+        <ul class="break" aria-label="Detalle del costo por porción">
+          <li><span>Ingredientes (con pérdida)</span><b id="b-ing">$ 0,00</b></li>
+          <li><span>Packaging</span><b id="b-pack">$ 0,00</b></li>
+          <li><span>Costos fijos y sueldo</span><b id="b-fijo">$ 0,00</b></li>
+          <li class="tot"><span>Total por porción</span><b id="b-tot">$ 0,00</b></li>
+        </ul>
+        <p class="verdict" id="veredicto" role="status"></p>
+        <p class="note" id="share"></p>
+        <div class="actions">
+          <button type="button" class="btn primary" id="copiar">Copiar resumen</button>
+          <button type="button" class="btn" id="imprimir">Imprimir</button>
+        </div>
+        <p class="status" id="estado" role="status"></p>
+      </div>
+      <div class="actions" style="margin-top:18px"><button type="button" class="btn" id="reset">Empezar de nuevo</button></div>
+      <p class="note">Calculadora de referencia: los resultados dependen de los datos que cargues.</p>
+    </aside>
+  </div>
+
+  <section class="cta" aria-labelledby="h-cta">
+    <h2 id="h-cta">¿Querés tener todo tu menú costeado?</h2>
+    <p>Con Switch Gestión llevás tus recetas, costos, ventas y gastos en un solo lugar, para decidir con números y no por intuición.</p>
+    <a class="btn" id="contacto" href="https://instagram.com/switchgestion" rel="noopener">Escribinos por Instagram</a>
+  </section>
+</main>
+
+<footer>
+  <p>Hecho por Switch Gestión. Esta calculadora no guarda tus datos en ningún servidor: quedan solo en este dispositivo.</p>
+</footer>
+</div>
+
+<a class="minibar" id="minibar" href="#resultado" hidden>
+  <div><small>COSTO POR PORCIÓN</small><b id="m-costo">$ 0,00</b></div>
+  <div style="text-align:right"><small>PRECIO SUGERIDO</small><b id="m-sug">$ 0,00</b></div>
+  <span>Ver</span>
+</a>
+
+<script>
+(function(){
+'use strict';
+
+var UNITS={g:{f:1,fam:'peso'},kg:{f:1000,fam:'peso'},ml:{f:1,fam:'vol'},l:{f:1000,fam:'vol'},u:{f:1,fam:'unidad'}};
+var UNIT_OPTS=[['g','g'],['kg','kg'],['ml','ml'],['l','litros'],['u','un.']];
+var KEY='switch_calc_costos_v1';
+var MIN_ROWS=3;
+
+var $=function(id){return document.getElementById(id)};
+var q=function(el,s){return el.querySelector(s)};
+var money=new Intl.NumberFormat('es-AR',{style:'currency',currency:'ARS',minimumFractionDigits:2,maximumFractionDigits:2});
+var pct=new Intl.NumberFormat('es-AR',{maximumFractionDigits:1});
+function fm(n){return money.format(isFinite(n)?n:0).replace(/ /g,' ')}
+
+/* Acepta 4500, 4.500, 4.500,50, 1,5 ; devuelve null (vacío), NaN (inválido) o número */
+function parseNum(v){
+  if(v==null) return null;
+  var s=String(v).trim().replace(/\s/g,'').replace(/^\$/,'');
+  if(s==='') return null;
+  if(s.indexOf('.')>-1 && s.indexOf(',')>-1){ s=s.replace(/\./g,'').replace(',','.'); }
+  else if(s.indexOf(',')>-1){ s=s.replace(',','.'); }
+  else if(/^[1-9]\d{0,2}(\.\d{3})+$/.test(s)){ s=s.replace(/\./g,''); }
+  var n=Number(s);
+  if(!isFinite(n)||n<0) return NaN;
+  return n;
+}
+function num(id,def){ var n=parseNum($(id).value); return (n===null||isNaN(n))?def:n; }
+
+function unitSelect(cls,label,sel){
+  var s='<select class="'+cls+'" aria-label="'+label+'">';
+  UNIT_OPTS.forEach(function(o){ s+='<option value="'+o[0]+'"'+(o[0]===sel?' selected':'')+'>'+o[1]+'</option>'; });
+  return s+'</select>';
+}
+
+function addRow(d){
+  d=d||{};
+  var r=document.createElement('div');
+  r.className='row'; r.setAttribute('data-row','');
+  r.innerHTML=
+    '<label class="f f-name"><span>Ingrediente</span><input class="in-name" type="text" placeholder="Ej: harina" autocomplete="off"></label>'+
+    '<label class="f"><span>Comprás</span><div class="pair"><input class="in-buyqty" type="text" inputmode="decimal" placeholder="1" autocomplete="off">'+unitSelect('in-buyunit','Unidad de compra',d.bu||'kg')+'</div></label>'+
+    '<label class="f"><span>Pagás ($)</span><input class="in-price" type="text" inputmode="decimal" placeholder="0" autocomplete="off"></label>'+
+    '<label class="f"><span>Usás en la receta</span><div class="pair"><input class="in-useqty" type="text" inputmode="decimal" placeholder="0" autocomplete="off">'+unitSelect('in-useunit','Unidad de uso',d.uu||'g')+'</div></label>'+
+    '<div class="cost"><div><small>COSTO</small><output class="cost-val">'+fm(0)+'</output></div><button type="button" class="del" aria-label="Quitar este ingrediente">×</button></div>'+
+    '<p class="row-msg"></p>';
+  $('rows').appendChild(r);
+  if(d.n!=null) q(r,'.in-name').value=d.n;
+  if(d.bq!=null) q(r,'.in-buyqty').value=d.bq;
+  if(d.p!=null) q(r,'.in-price').value=d.p;
+  if(d.uq!=null) q(r,'.in-useqty').value=d.uq;
+  return r;
+}
+
+function compute(){
+  var rows=[].slice.call(document.querySelectorAll('[data-row]'));
+  var ingTotal=0, okRows=0;
+
+  rows.forEach(function(r){
+    var bq=parseNum(q(r,'.in-buyqty').value), pr=parseNum(q(r,'.in-price').value), uq=parseNum(q(r,'.in-useqty').value);
+    var bu=UNITS[q(r,'.in-buyunit').value], uu=UNITS[q(r,'.in-useunit').value];
+    var out=q(r,'.cost-val'), msg=q(r,'.row-msg');
+    var touched=(bq!==null)||(pr!==null)||(uq!==null);
+    var cost=0, m='';
+    if(touched){
+      if(isNaN(bq)||isNaN(pr)||isNaN(uq)){ m='Revisá los números: tienen que ser positivos.'; }
+      else if(bq===null||bq<=0||pr===null||uq===null){ m='Completá cuánto comprás, cuánto pagás y cuánto usás.'; }
+      else if(bu.fam!==uu.fam){ m='Las unidades no son compatibles (por ejemplo kilos con litros).'; }
+      else { cost=(pr/(bq*bu.f))*(uq*uu.f); okRows++; }
+    }
+    ingTotal+=cost;
+    out.textContent=fm(cost);
+    msg.textContent=m;
+  });
+
+  var rinde=num('rinde',1); if(rinde<=0) rinde=1;
+  var perd=Math.min(num('perdida',0),100);
+  var pack=num('pack',0);
+  var fijos=num('fijos',0), sueldo=num('sueldo',0), pormes=num('pormes',0);
+  var margen=Math.min(num('margen',30),95);
+  var precio=num('precio',0);
+
+  var ingPorc=(ingTotal*(1+perd/100))/rinde;
+  var fijoPorc=pormes>0?(fijos+sueldo)/pormes:0;
+  var total=ingPorc+pack+fijoPorc;
+  var sug=total>0?total/(1-margen/100):0;
+
+  return {okRows:okRows,ingPorc:ingPorc,pack:pack,fijoPorc:fijoPorc,total:total,sug:sug,margen:margen,precio:precio,
+          fijosCargados:(fijos+sueldo)>0,pormes:pormes,plato:$('plato').value.trim()};
+}
+
+var last=null;
+function render(){
+  var c=compute(); last=c;
+  var hay=c.okRows>0;
+  $('vacio').hidden=hay; $('datos').hidden=!hay;
+  $('minibar').hidden=!hay;
+  if(hay){
+    $('r-costo').textContent=fm(c.total);
+    $('r-sug').textContent=fm(c.sug);
+    $('r-m').textContent=pct.format(c.margen);
+    $('b-ing').textContent=fm(c.ingPorc);
+    $('b-pack').textContent=fm(c.pack);
+    $('b-fijo').textContent=fm(c.fijoPorc);
+    $('b-tot').textContent=fm(c.total);
+    $('m-costo').textContent=fm(c.total);
+    $('m-sug').textContent=fm(c.sug);
+
+    var v=$('veredicto'); v.className='verdict';
+    if(c.precio>0){
+      var gan=c.precio-c.total, p=gan/c.precio*100;
+      if(gan>=0){ v.textContent='Con tu precio actual te quedan '+fm(gan)+' por porción ('+pct.format(p)+'% del precio).'; }
+      else { v.textContent='Con tu precio actual perdés '+fm(-gan)+' por cada porción vendida.'; v.className='verdict mal'; }
+    } else { v.textContent=''; }
+
+    var s=$('share');
+    var extra=[];
+    if(c.sug>0) extra.push('Los ingredientes son el '+pct.format(c.ingPorc/c.sug*100)+'% del precio sugerido.');
+    if(c.fijosCargados && !(c.pormes>0)) extra.push('Para repartir tus costos fijos y sueldo, indicá cuántas porciones vendés por mes.');
+    s.textContent=extra.join(' ');
+  }
+  save();
+}
+
+/* Guardado local (opcional, no rompe si el navegador lo bloquea) */
+var IDS=['plato','rinde','perdida','pack','fijos','sueldo','pormes','margen','precio'];
+function save(){
+  try{
+    var data={f:{},rows:[]};
+    IDS.forEach(function(id){data.f[id]=$(id).value});
+    [].slice.call(document.querySelectorAll('[data-row]')).forEach(function(r){
+      data.rows.push({n:q(r,'.in-name').value,bq:q(r,'.in-buyqty').value,bu:q(r,'.in-buyunit').value,p:q(r,'.in-price').value,uq:q(r,'.in-useqty').value,uu:q(r,'.in-useunit').value});
+    });
+    localStorage.setItem(KEY,JSON.stringify(data));
+  }catch(e){}
+}
+function load(){
+  try{
+    var raw=localStorage.getItem(KEY); if(!raw) return false;
+    var data=JSON.parse(raw);
+    IDS.forEach(function(id){ if(data.f && data.f[id]!=null) $(id).value=data.f[id]; });
+    if(!data.rows||!data.rows.length) return false;
+    data.rows.forEach(function(d){addRow(d)});
+    if((parseNum($('fijos').value)||0)+(parseNum($('sueldo').value)||0)>0) $('mas').open=true;
+    return true;
+  }catch(e){ return false; }
+}
+
+function resetAll(){
+  IDS.forEach(function(id){ $(id).value=''; });
+  $('perdida').value='3'; $('margen').value='30';
+  $('rows').innerHTML='';
+  for(var i=0;i<MIN_ROWS;i++) addRow();
+  try{localStorage.removeItem(KEY);}catch(e){}
+  $('mas').open=false;
+  render();
+}
+
+/* Eventos */
+document.addEventListener('input',function(e){ if(e.target.closest('.layout')) render(); });
+document.addEventListener('change',function(e){ if(e.target.closest('.layout')) render(); });
+$('add').addEventListener('click',function(){ var r=addRow(); render(); q(r,'.in-name').focus(); });
+$('rows').addEventListener('click',function(e){
+  var b=e.target.closest('.del'); if(!b) return;
+  var r=b.closest('[data-row]');
+  if(document.querySelectorAll('[data-row]').length>1){ r.parentNode.removeChild(r); }
+  else { [].slice.call(r.querySelectorAll('input')).forEach(function(i){i.value=''}); }
+  render();
+});
+
+var resetTimer=null;
+$('reset').addEventListener('click',function(){
+  var b=$('reset');
+  if(b.getAttribute('data-sure')==='1'){ clearTimeout(resetTimer); b.removeAttribute('data-sure'); b.textContent='Empezar de nuevo'; resetAll(); return; }
+  b.setAttribute('data-sure','1'); b.textContent='¿Seguro? Tocá de nuevo';
+  resetTimer=setTimeout(function(){ b.removeAttribute('data-sure'); b.textContent='Empezar de nuevo'; },4000);
+});
+
+function summary(){
+  var c=last; if(!c||!c.okRows) return '';
+  var L=[];
+  L.push('Costo de '+(c.plato||'mi plato')+' (por porción)');
+  L.push('Ingredientes (con pérdida): '+fm(c.ingPorc));
+  L.push('Packaging: '+fm(c.pack));
+  L.push('Costos fijos y sueldo: '+fm(c.fijoPorc));
+  L.push('Costo total por porción: '+fm(c.total));
+  L.push('Precio sugerido para ganar '+pct.format(c.margen)+'%: '+fm(c.sug));
+  if(c.precio>0) L.push('Precio actual: '+fm(c.precio)+' · ganancia por porción: '+fm(c.precio-c.total));
+  L.push('Calculado con la calculadora de Switch Gestión');
+  return L.join('\n');
+}
+$('copiar').addEventListener('click',function(){
+  var t=summary(), st=$('estado');
+  function ok(){ st.textContent='Resumen copiado.'; }
+  function fallback(){
+    try{
+      var ta=document.createElement('textarea'); ta.value=t; ta.setAttribute('readonly','');
+      ta.style.position='fixed'; ta.style.opacity='0'; document.body.appendChild(ta); ta.select();
+      var done=document.execCommand('copy'); document.body.removeChild(ta);
+      st.textContent=done?'Resumen copiado.':'No se pudo copiar. Probá con Imprimir.';
+    }catch(e){ st.textContent='No se pudo copiar. Probá con Imprimir.'; }
+  }
+  try{
+    if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(t).then(ok,fallback); }
+    else fallback();
+  }catch(e){ fallback(); }
+});
+$('imprimir').addEventListener('click',function(){ window.print(); });
+
+/* Inicio */
+if(!load()){ for(var i=0;i<MIN_ROWS;i++) addRow(); }
+render();
+})();
+</script>
+</body>
+</html>
