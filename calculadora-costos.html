@@ -10,7 +10,8 @@
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&amp;family=Barlow+Condensed:wght@700&amp;family=DM+Mono:wght@400;500&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&amp;family=Barlow+Condensed:wght@700&amp;family=DM+Mono:wght@400;500&amp;family=Caveat:wght@600&amp;display=swap">
+<script>if(!matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.className+=' js';}</script>
 <style>
 :root{
   --crema:#F7EFE2;
@@ -32,17 +33,22 @@ body{margin:0;background:var(--crema);color:var(--marron);font-family:'Barlow',s
 h1,h2,h3{font-family:'Barlow Condensed','Arial Narrow',sans-serif;font-weight:700;text-transform:uppercase;line-height:1;margin:0}
 p{margin:0}
 a{color:var(--marron)}
-.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+.wrap{max-width:1400px;margin:0 auto;padding:0 clamp(20px,4vw,64px);position:relative}
 
 /* encabezado */
-.top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 0}
+.top{position:sticky;top:0;z-index:50;background:rgba(247,239,226,.92);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--linea)}
+.topin{display:flex;align-items:center;justify-content:space-between;gap:16px;height:72px}
 .brand{display:inline-block;line-height:0}
-.back{font-size:16px;font-weight:500}
+.brand img{height:48px;width:auto}
+.back{font-size:16px;font-weight:600;text-decoration:none;border:2px solid var(--marron);border-radius:999px;padding:8px 18px;min-height:44px;display:inline-flex;align-items:center;transition:background .15s ease,transform .15s ease}
+.back:hover{background:var(--crema-2);transform:translateY(-2px)}
 
 /* hero */
-.hero{padding:24px 0 8px}
+.hero{position:relative;padding:36px 0 8px}
+@media(min-width:960px){.hero{padding-right:clamp(0px,9vw,150px)}}
 .bar{width:96px;height:8px;background:var(--dorado);margin-bottom:20px}
-.hero h1{font-size:clamp(44px,9vw,84px);max-width:14ch}
+.hero h1{font-size:clamp(40px,10vw,60px);max-width:15ch}
+@media(min-width:960px){.hero h1{font-size:clamp(48px,4.4vw,64px);max-width:20ch}}
 .hero p{margin-top:18px;max-width:46ch;font-size:20px}
 .priv{margin-top:14px;font-family:'DM Mono',monospace;font-size:14px;letter-spacing:.02em;color:var(--gris)}
 
@@ -62,6 +68,31 @@ a{color:var(--marron)}
 .step-h h2{font-size:34px}
 .help{font-size:16px;color:var(--gris);margin:4px 0 14px}
 .opt{font-family:'DM Mono',monospace;font-size:13px;letter-spacing:.04em;color:var(--gris);margin-left:auto}
+
+
+/* detalles */
+.flora{position:absolute;z-index:1;pointer-events:none}
+.flora img{display:block;width:100%;height:auto}
+.rotulo{display:block;text-align:center;font-family:'Caveat','Segoe Script',cursive;font-weight:600;font-size:20px;line-height:1;color:#7B5837;margin-top:4px}
+.f-romero{top:12px;right:-6px;width:64px}
+.f-oregano{display:none;right:28px;bottom:-4px;width:120px}
+.f-oregano .rotulo{color:#E3B56D}
+@media(min-width:768px){.f-romero{top:16px;width:96px}.f-oregano{display:block}}
+@media(min-width:1024px){.f-romero{top:20px;right:0;width:clamp(110px,10vw,150px)}.f-oregano{right:56px;width:150px}}
+.card{transition:border-color .2s ease,box-shadow .2s ease}
+.card:focus-within{border-color:var(--dorado);box-shadow:0 10px 26px rgba(36,26,20,.07)}
+.badge{transition:background .3s ease,border-color .3s ease}
+.badge.ok{background:var(--dorado);color:var(--marron);font-size:0}
+.badge.ok::before{content:'\2713';font-size:24px}
+.btn{transition:background .15s ease,transform .15s ease}
+.btn:hover{transform:translateY(-2px)}
+.btn:active{transform:translateY(1px)}
+@keyframes flsh{0%{opacity:.35;translate:0 5px}100%{opacity:1;translate:0 0}}
+@media(prefers-reduced-motion:no-preference){.big.flash{animation:flsh .45s ease}}
+html.js .flora{opacity:0;translate:0 14px;transition:opacity 2s ease,translate 2s ease}
+html.js .flora.in{opacity:1;translate:none}
+html.js .flora .rotulo{opacity:0;transition:opacity 1.6s ease 1.8s}
+html.js .flora.in .rotulo{opacity:1}
 
 /* campos */
 label.f{display:block}
@@ -88,6 +119,16 @@ input:focus-visible,select:focus-visible,button:focus-visible,summary:focus-visi
 .row-msg:empty{display:none}
 .del{flex:none;min-width:44px;min-height:44px;border:1.5px solid var(--borde-input);background:transparent;border-radius:10px;font-size:22px;line-height:1;cursor:pointer;color:var(--marron)}
 .del:hover{background:var(--crema-2)}
+.row .sum{display:none}
+.row.done{padding:10px 0}
+.row.done>:not(.sum){display:none}
+.row.done .sum{display:flex;align-items:center;gap:8px;grid-column:1 / -1}
+.sum-btn{flex:1;min-width:0;display:flex;align-items:center;justify-content:space-between;gap:12px;text-align:left;font:inherit;color:var(--marron);background:var(--crema-2);border:1.5px solid var(--linea);border-radius:12px;min-height:48px;padding:8px 14px;cursor:pointer}
+.sum-btn:hover{border-color:var(--dorado)}
+.sum-t{min-width:0;display:flex;flex-direction:column;font-weight:600}
+.sum-t small{font-weight:400;font-size:14px;color:var(--gris);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sum-c{margin-left:auto;font-family:'DM Mono',monospace;font-weight:500;white-space:nowrap}
+.sum-e{font-size:13px;color:var(--gris);text-decoration:underline}
 @media(min-width:560px){
   .row{grid-template-columns:1fr 1fr}
   .row .f-name{grid-column:1 / -1}
@@ -107,9 +148,15 @@ details.more .inner{padding-top:8px}
 /* resultado */
 .result h2{font-size:34px;margin-bottom:14px}
 .big{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:64px;line-height:1}
+.blk{margin-top:18px;padding-top:18px;border-top:1px solid var(--linea)}
+.blk .big{font-size:44px}
+.expl{margin-top:8px;font-size:16px;color:var(--gris)}
+.expl.mal{color:var(--error);font-weight:500}
+.expl.dif{color:var(--marron);font-weight:600}
 .kpi + .kpi{margin-top:18px;padding-top:18px;border-top:1px solid var(--linea)}
 .kpi .lbl{font-size:15px;font-weight:600;color:var(--gris)}
 .kpi.main .big{font-size:76px}
+@media(max-width:520px){.big{font-size:46px}.kpi.main .big{font-size:56px}.blk .big{font-size:38px}}
 .kpi.main{background:var(--crema-2);border-radius:12px;padding:16px;margin:-4px -4px 0}
 .break{margin:18px 0 0;padding:0;list-style:none;font-size:16px}
 .break li{display:flex;justify-content:space-between;gap:12px;padding:6px 0;border-bottom:1px dashed var(--linea)}
@@ -129,7 +176,7 @@ details.more .inner{padding-top:8px}
 .minibar span{font-weight:600;border-bottom:2px solid var(--dorado)}
 
 /* cierre */
-.cta{background:var(--marron);color:var(--crema);border-radius:var(--radio);padding:28px;margin-bottom:40px}
+.cta{position:relative;background:var(--marron);color:var(--crema);border-radius:var(--radio);padding:28px;margin-bottom:40px}
 .cta h2{font-size:38px;margin-bottom:10px}
 .cta p{max-width:52ch}
 .cta .btn{margin-top:18px;border-color:var(--crema);color:var(--crema);display:inline-flex;align-items:center;text-decoration:none}
@@ -147,17 +194,19 @@ footer{border-top:1px solid var(--linea);padding:22px 0 40px;font-size:15px;colo
 </style>
 </head>
 <body>
-<div class="wrap">
-
 <header class="top">
-  <a class="brand" href="./" aria-label="Switch Gestión, volver al inicio">
-    <img src="logo.webp" width="132" height="101" alt="Switch Gestión" decoding="async">
-  </a>
-  <a class="back" href="./">Volver al sitio</a>
+  <div class="wrap topin">
+    <a class="brand" href="index.html" aria-label="Switch Gestión, volver al inicio">
+      <img src="logo.webp" width="132" height="101" alt="Switch Gestión" decoding="async">
+    </a>
+    <a class="back" href="index.html">Volver al sitio</a>
+  </div>
 </header>
+<div class="wrap">
 
 <main>
   <section class="hero">
+    <div class="flora f-romero" aria-hidden="true"><img src="romero.webp" alt="" onerror="this.parentNode.remove()"><span class="rotulo">romero</span></div>
     <div class="bar"></div>
     <h1>Calculá cuánto te cuesta cada plato</h1>
     <p>Cargá tus ingredientes y mirá al instante cuánto cuesta una porción y a qué precio te conviene venderla.</p>
@@ -221,17 +270,23 @@ footer{border-top:1px solid var(--linea);padding:22px 0 40px;font-size:15px;colo
           <div class="lbl">Cuesta hacer una porción</div>
           <div class="big" id="r-costo">$ 0,00</div>
         </div>
-        <div class="kpi">
-          <div class="lbl">Precio sugerido para ganar <span id="r-m">30</span>%</div>
-          <div class="big" id="r-sug">$ 0,00</div>
-        </div>
         <ul class="break" aria-label="Detalle del costo por porción">
           <li><span>Ingredientes (con pérdida)</span><b id="b-ing">$ 0,00</b></li>
-          <li><span>Packaging</span><b id="b-pack">$ 0,00</b></li>
-          <li><span>Costos fijos y sueldo</span><b id="b-fijo">$ 0,00</b></li>
+          <li id="l-pack"><span>Packaging</span><b id="b-pack">$ 0,00</b></li>
+          <li id="l-fijo"><span>Costos fijos y sueldo</span><b id="b-fijo">$ 0,00</b></li>
           <li class="tot"><span>Total por porción</span><b id="b-tot">$ 0,00</b></li>
         </ul>
-        <p class="verdict" id="veredicto" role="status"></p>
+        <div class="kpi blk" id="k-hoy" hidden>
+          <div class="lbl">Hoy lo vendés a</div>
+          <div class="big" id="r-hoy">$ 0,00</div>
+          <p class="expl" id="x-hoy"></p>
+        </div>
+        <div class="kpi blk">
+          <div class="lbl">Si lo vendés al precio sugerido para ganar <span id="r-m">30</span>%</div>
+          <div class="big" id="r-sug">$ 0,00</div>
+          <p class="expl" id="x-sug"></p>
+          <p class="expl dif" id="x-dif"></p>
+        </div>
         <p class="note" id="share"></p>
         <div class="actions">
           <button type="button" class="btn primary" id="copiar">Copiar resumen</button>
@@ -248,6 +303,7 @@ footer{border-top:1px solid var(--linea);padding:22px 0 40px;font-size:15px;colo
     <h2 id="h-cta">¿Querés tener todo tu menú costeado?</h2>
     <p>Con Switch Gestión llevás tus recetas, costos, ventas y gastos en un solo lugar, para decidir con números y no por intuición.</p>
     <a class="btn" id="contacto" href="https://instagram.com/switchgestion" rel="noopener">Escribinos por Instagram</a>
+    <div class="flora f-oregano" aria-hidden="true"><img src="oregano.webp" alt="" onerror="this.parentNode.remove()"><span class="rotulo">orégano</span></div>
   </section>
 </main>
 
@@ -269,7 +325,7 @@ footer{border-top:1px solid var(--linea);padding:22px 0 40px;font-size:15px;colo
 var UNITS={g:{f:1,fam:'peso'},kg:{f:1000,fam:'peso'},ml:{f:1,fam:'vol'},l:{f:1000,fam:'vol'},u:{f:1,fam:'unidad'}};
 var UNIT_OPTS=[['g','g'],['kg','kg'],['ml','ml'],['l','litros'],['u','un.']];
 var KEY='switch_calc_costos_v1';
-var MIN_ROWS=3;
+var MIN_ROWS=1;
 
 var $=function(id){return document.getElementById(id)};
 var q=function(el,s){return el.querySelector(s)};
@@ -307,7 +363,8 @@ function addRow(d){
     '<label class="f"><span>Pagás ($)</span><input class="in-price" type="text" inputmode="decimal" placeholder="0" autocomplete="off"></label>'+
     '<label class="f"><span>Usás en la receta</span><div class="pair"><input class="in-useqty" type="text" inputmode="decimal" placeholder="0" autocomplete="off">'+unitSelect('in-useunit','Unidad de uso',d.uu||'g')+'</div></label>'+
     '<div class="cost"><div><small>COSTO</small><output class="cost-val">'+fm(0)+'</output></div><button type="button" class="del" aria-label="Quitar este ingrediente">×</button></div>'+
-    '<p class="row-msg"></p>';
+    '<p class="row-msg"></p>'+
+    '<div class="sum"><button type="button" class="sum-btn" aria-label="Editar este ingrediente"><span class="sum-t"><span class="sum-n"></span><small class="sum-d"></small></span><output class="sum-c"></output><span class="sum-e">Editar</span></button><button type="button" class="del" aria-label="Quitar este ingrediente">×</button></div>';
   $('rows').appendChild(r);
   if(d.n!=null) q(r,'.in-name').value=d.n;
   if(d.bq!=null) q(r,'.in-buyqty').value=d.bq;
@@ -335,6 +392,11 @@ function compute(){
     ingTotal+=cost;
     out.textContent=fm(cost);
     msg.textContent=m;
+    r.setAttribute('data-ok',(touched&&m==='')?'1':'0');
+    var us=q(r,'.in-useunit');
+    q(r,'.sum-n').textContent=q(r,'.in-name').value.trim()||'Ingrediente';
+    q(r,'.sum-d').textContent='Usás '+q(r,'.in-useqty').value.trim()+' '+us.options[us.selectedIndex].text;
+    q(r,'.sum-c').textContent=fm(cost);
   });
 
   var rinde=num('rinde',1); if(rinde<=0) rinde=1;
@@ -354,35 +416,52 @@ function compute(){
 }
 
 var last=null;
+function setT(id,t){
+  var el=$(id);
+  if(el.textContent!==t){ el.textContent=t; el.classList.remove('flash'); void el.offsetWidth; el.classList.add('flash'); }
+}
 function render(){
   var c=compute(); last=c;
   var hay=c.okRows>0;
   $('vacio').hidden=hay; $('datos').hidden=!hay;
   $('minibar').hidden=!hay;
   if(hay){
-    $('r-costo').textContent=fm(c.total);
-    $('r-sug').textContent=fm(c.sug);
+    setT('r-costo',fm(c.total));
+    setT('r-sug',fm(c.sug));
     $('r-m').textContent=pct.format(c.margen);
     $('b-ing').textContent=fm(c.ingPorc);
     $('b-pack').textContent=fm(c.pack);
-    $('b-fijo').textContent=fm(c.fijoPorc);
+    $('b-fijo').textContent=(c.fijosCargados&&!(c.pormes>0))?'falta dato':fm(c.fijoPorc);
+    $('l-pack').hidden=!(c.pack>0);
+    $('l-fijo').hidden=!c.fijosCargados;
+    $('k-hoy').hidden=!(c.precio>0);
+    setT('r-hoy',fm(c.precio));
     $('b-tot').textContent=fm(c.total);
     $('m-costo').textContent=fm(c.total);
     $('m-sug').textContent=fm(c.sug);
 
-    var v=$('veredicto'); v.className='verdict';
+    var xh=$('x-hoy'); xh.className='expl';
     if(c.precio>0){
       var gan=c.precio-c.total, p=gan/c.precio*100;
-      if(gan>=0){ v.textContent='Con tu precio actual te quedan '+fm(gan)+' por porción ('+pct.format(p)+'% del precio).'; }
-      else { v.textContent='Con tu precio actual perdés '+fm(-gan)+' por cada porción vendida.'; v.className='verdict mal'; }
-    } else { v.textContent=''; }
+      if(gan>=0){ xh.textContent='Te quedan '+fm(gan)+' por porción. De cada $100 que cobrás, $'+pct.format(p)+' son ganancia y $'+pct.format(100-p)+' cubren los costos.'; }
+      else { xh.textContent='Perdés '+fm(-gan)+' por cada porción vendida: no llegás a cubrir los costos.'; xh.className='expl mal'; }
+    }
+    $('x-sug').textContent='Te quedarían '+fm(c.sug-c.total)+' por porción. De cada $100 que cobrás, $'+pct.format(c.margen)+' son ganancia y $'+pct.format(100-c.margen)+' cubren los costos.';
+    var dd=c.sug-c.precio, xd=$('x-dif');
+    if(c.precio>0&&c.sug>0){
+      xd.textContent=dd>0.005?'Con el precio sugerido ganarías '+fm(dd)+' más por porción.':(dd<-0.005?'Tu precio actual ya está '+fm(-dd)+' por encima del sugerido.':'Tu precio actual coincide con el sugerido.');
+    } else { xd.textContent='Cargá a cuánto lo vendés hoy (paso 3) y lo comparamos.'; }
 
     var s=$('share');
     var extra=[];
-    if(c.sug>0) extra.push('Los ingredientes son el '+pct.format(c.ingPorc/c.sug*100)+'% del precio sugerido.');
+    if(c.sug>0) extra.push('De cada $100 del precio sugerido, $'+pct.format(c.ingPorc/c.sug*100)+' se van en ingredientes.');
     if(c.fijosCargados && !(c.pormes>0)) extra.push('Para repartir tus costos fijos y sueldo, indicá cuántas porciones vendés por mes.');
     s.textContent=extra.join(' ');
   }
+  var bg=document.querySelectorAll('.badge');
+  bg[0].classList.toggle('ok',c.okRows>0);
+  bg[1].classList.toggle('ok',c.pack>0||c.fijosCargados);
+  bg[2].classList.toggle('ok',c.precio>0);
   save();
 }
 
@@ -432,6 +511,19 @@ $('rows').addEventListener('click',function(e){
   render();
 });
 
+document.addEventListener('focusout',function(e){
+  var r=e.target.closest&&e.target.closest('[data-row]'); if(!r) return;
+  if(e.relatedTarget&&r.contains(e.relatedTarget)) return;
+  setTimeout(function(){
+    if(r.parentNode&&r.getAttribute('data-ok')==='1'&&!r.contains(document.activeElement)) r.classList.add('done');
+  },0);
+});
+$('rows').addEventListener('click',function(e){
+  var b=e.target.closest('.sum-btn'); if(!b) return;
+  var r=b.closest('[data-row]');
+  r.classList.remove('done'); q(r,'.in-name').focus();
+});
+
 var resetTimer=null;
 $('reset').addEventListener('click',function(){
   var b=$('reset');
@@ -445,8 +537,8 @@ function summary(){
   var L=[];
   L.push('Costo de '+(c.plato||'mi plato')+' (por porción)');
   L.push('Ingredientes (con pérdida): '+fm(c.ingPorc));
-  L.push('Packaging: '+fm(c.pack));
-  L.push('Costos fijos y sueldo: '+fm(c.fijoPorc));
+  if(c.pack>0) L.push('Packaging: '+fm(c.pack));
+  if(c.fijosCargados) L.push('Costos fijos y sueldo: '+fm(c.fijoPorc));
   L.push('Costo total por porción: '+fm(c.total));
   L.push('Precio sugerido para ganar '+pct.format(c.margen)+'%: '+fm(c.sug));
   if(c.precio>0) L.push('Precio actual: '+fm(c.precio)+' · ganancia por porción: '+fm(c.precio-c.total));
@@ -474,6 +566,13 @@ $('imprimir').addEventListener('click',function(){ window.print(); });
 /* Inicio */
 if(!load()){ for(var i=0;i<MIN_ROWS;i++) addRow(); }
 render();
+(function(){
+  var fl=[].slice.call(document.querySelectorAll('.flora'));
+  if(!document.documentElement.classList.contains('js')||!('IntersectionObserver' in window)){ return; }
+  var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }); },{threshold:.15});
+  fl.forEach(function(el){ io.observe(el); });
+})();
+[].slice.call(document.querySelectorAll('[data-row][data-ok="1"]')).forEach(function(r){ r.classList.add('done'); });
 })();
 </script>
 </body>
