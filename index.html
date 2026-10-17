@@ -105,11 +105,11 @@ nav.mainnav a:hover{text-decoration:underline;text-decoration-color:var(--dorado
 .pcard a:hover{text-decoration:underline;text-underline-offset:4px}
 
 .herr{background:linear-gradient(var(--crema),#F3E6D3)}
-.tools{display:grid;gap:20px;grid-template-columns:1fr}
+.tools{display:grid;gap:20px;grid-template-columns:minmax(0,1fr)}
 .tool{position:relative;overflow:visible;background:rgba(255,251,244,.85);border:1px solid rgba(211,178,131,.5);border-radius:22px;min-height:340px}
 .tool-in{position:relative;z-index:2;display:flex;gap:16px;padding:26px 22px}
 .tool-in .icon{width:60px;height:60px;font-size:32px}
-.tool-in>div{max-width:340px}
+.tool-in>div{max-width:340px;min-width:0}
 .tool h3{font-family:var(--f-display);text-transform:uppercase;font-size:32px;line-height:1;margin:6px 0 12px}
 .tool p{color:var(--gris);font-size:16px;margin-bottom:12px}
 .tool ul{list-style:none;margin:0 0 18px;padding:0;font-size:15.5px}
@@ -193,7 +193,7 @@ footer{background:var(--crema);border-top:1px solid var(--linea);padding:28px 0 
   .hero-ctas{flex-direction:row;max-width:none}
   .hero-ctas .btn{width:auto}
   .cards4{grid-template-columns:repeat(2,1fr)}
-  .tools{grid-template-columns:repeat(2,1fr);gap:22px}
+  .tools{gap:22px}
   .tool-in{padding:28px}
   .steps{grid-template-columns:repeat(2,1fr);gap:28px 22px}
   .foot{grid-template-columns:auto 1fr auto;align-items:center;gap:24px}
@@ -201,6 +201,7 @@ footer{background:var(--crema);border-top:1px solid var(--linea);padding:28px 0 
   footer{padding-bottom:40px}
 }
 @media(min-width:1024px){
+  .tools{grid-template-columns:repeat(2,minmax(0,1fr))}
   nav.mainnav{display:block}
   .header-cta{display:inline-flex}
   .burger{display:none}
@@ -306,6 +307,7 @@ html.js .flora.in .rotulo{opacity:1}
   .f-hero{top:56px;right:0;width:clamp(110px,10vw,150px)}
   .hero-grid{padding-right:clamp(0px,9vw,150px)}
 }
+@media(max-width:480px){.tool h3{font-size:27px}.tool-in{gap:12px;padding:24px 18px}.tool-in .icon{width:52px;height:52px;font-size:28px}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
@@ -420,7 +422,7 @@ html.js .flora.in .rotulo{opacity:1}
   <div class="flora f-herr" aria-hidden="true"><img src="tomillo.webp" alt="" onerror="this.parentNode.remove()"><span class="rotulo">tomillo</span></div>
   <div class="wrap">
     <div class="head">
-      <p class="eyebrow">Tres formas de empezar</p>
+      <p class="eyebrow">Cuatro formas de empezar</p>
       <h2 class="h2">Elegí la herramienta que necesitás</h2>
       <p class="sec-sub">Las dos primeras son gratis y no piden registrarte.</p>
     </div>
@@ -463,7 +465,7 @@ html.js .flora.in .rotulo{opacity:1}
           <svg viewBox="0 0 200 300" preserveAspectRatio="xMidYMid slice"><g fill="none" stroke="#8F5E12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="50" y="40" width="120" height="180" rx="8" transform="rotate(-6 110 130)"/><g transform="rotate(-6 110 130)"><path d="M76 80H146M76 106H146M76 132H120"/><path d="M70 164l8 8 14-16M104 168H146"/><path d="M62 40v180" stroke-dasharray="2 9"/></g><path d="M158 214l34-60 10 6-34 60-14 4z"/></g></svg>
         </div>
       </article>
-      <article class="tool tool-wide">
+      <article class="tool">
         <div class="tool-in">
           <span class="icon"><svg class="ico" aria-hidden="true"><use href="#i-chart"/></svg></span>
           <div>
@@ -479,6 +481,24 @@ html.js .flora.in .rotulo{opacity:1}
         </div>
         <div class="tool-art" aria-hidden="true">
           <svg viewBox="0 0 200 300" preserveAspectRatio="xMidYMid meet"><g fill="none" stroke="#8F5E12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="50" y="40" width="110" height="170" rx="8"/><path d="M66 70H144M66 96H144M66 122H120M66 148H144M66 174H110"/><circle cx="150" cy="215" r="26"/><path d="M138 215 147 224 163 206"/></g></svg>
+        </div>
+      </article>
+      <article class="tool">
+        <div class="tool-in">
+          <span class="icon"><svg class="ico" aria-hidden="true"><use href="#i-bulb"/></svg></span>
+          <div>
+            <p class="eyebrow">Recursos gratuitos</p>
+            <h3>Recursos con IA</h3>
+            <p>Qué pedirle a la inteligencia artificial para ahorrar tiempo en tu negocio, con prompts listos para copiar y pegar.</p>
+            <ul>
+              <li><svg class="ico" aria-hidden="true"><use href="#i-tick"/></svg>Prompts por área: costos, recetas, equipo</li>
+              <li><svg class="ico" aria-hidden="true"><use href="#i-tick"/></svg>Copiás, pegás y completás tus datos</li>
+            </ul>
+            <a class="btn primary" href="recursos-ia.html">Ver recursos <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </div>
+        </div>
+        <div class="tool-art" aria-hidden="true">
+          <svg viewBox="0 0 200 300" preserveAspectRatio="xMidYMid slice"><g fill="none" stroke="#8F5E12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M44 70h112a10 10 0 0110 10v70a10 10 0 01-10 10H96l-26 22v-22H44a10 10 0 01-10-10V80a10 10 0 0110-10z"/><path d="M62 98h76M62 122h50"/><path d="M158 200v40M138 220h40M60 214v24M48 226h24"/></g></svg>
         </div>
       </article>
     </div>
