@@ -1,0 +1,485 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Recursos con IA | Switch Gestión</title>
+<meta name="description" content="Cómo usar la inteligencia artificial en tu negocio: qué podés pedirle, cómo lograr buenos resultados y prompts listos para copiar y pegar.">
+<meta name="theme-color" content="#F7EFE2">
+<meta property="og:title" content="Recursos con IA | Switch Gestión">
+<meta property="og:description" content="Cómo usar la IA en tu negocio y prompts listos para copiar y pegar.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_AR">
+<link rel="icon" href="logo.webp" type="image/webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&amp;family=Barlow+Condensed:wght@700&amp;family=DM+Mono:wght@400;500&amp;family=Caveat:wght@600&amp;display=swap">
+<style>
+:root{
+  --crema:#F7EFE2; --crema-2:#EFE5D2; --tarjeta:#FFFBF4; --marron:#241A14; --gris:#6B5D50;
+  --dorado:#C58A2B; --dorado-t:#8F5E12; --linea:#D9CBB5; --verde:#2F7D46; --verde-h:#276A3B;
+  --f-display:'Barlow Condensed','Arial Narrow',sans-serif; --f-body:'Barlow',system-ui,sans-serif; --f-mono:'DM Mono',ui-monospace,monospace; --f-mano:'Caveat',cursive;
+  --header-h:72px;
+}
+*{box-sizing:border-box}
+html,body{overflow-x:clip}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:calc(var(--header-h) + 8px)}
+body{margin:0;background:var(--crema);color:var(--marron);font-family:var(--f-body);font-size:18px;line-height:1.5}
+img,svg{max-width:100%}
+img{display:block}
+h1,h2,h3,p{margin:0}
+h1,h2{font-family:var(--f-display);font-weight:700;text-transform:uppercase;line-height:.95}
+a{color:var(--marron)}
+:focus-visible{outline:3px solid var(--marron);outline-offset:3px}
+.wrap{max-width:1100px;margin:0 auto;padding:0 clamp(20px,4vw,64px)}
+section{padding:56px 0}
+.ico{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.eyebrow{display:flex;align-items:center;gap:10px;font-family:var(--f-mono);font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--gris)}
+.eyebrow::before{content:'';width:40px;height:5px;border-radius:3px;background:var(--dorado)}
+.h2{font-size:clamp(34px,6vw,52px);margin-top:12px;max-width:20ch}
+.sub{margin-top:12px;max-width:56ch;color:var(--gris)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:10px 24px;border-radius:999px;border:2px solid var(--marron);background:transparent;color:var(--marron);font:inherit;font-weight:600;font-size:16.5px;text-decoration:none;cursor:pointer;transition:background .15s ease,color .15s ease,transform .15s ease}
+.btn:hover{background:var(--crema-2);transform:translateY(-2px)}
+.btn.primary{background:var(--marron);color:var(--crema)}
+.btn.primary:hover{background:#3a2c22}
+.btn.wa-btn{background:var(--verde);border-color:var(--verde);color:#fff}
+.btn.wa-btn:hover{background:var(--verde-h)}
+.btn .ico{font-size:18px}
+.topbar{position:sticky;top:0;z-index:100;height:var(--header-h);display:flex;align-items:center;background:rgba(247,239,226,.92);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--linea)}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;width:100%;max-width:1400px}
+.brand{display:inline-block;line-height:0}
+.brand img{height:52px;width:auto}
+.topbar .btn{min-height:44px;padding:8px 18px;font-size:15.5px}
+.hero{padding:44px 0 32px}
+.hero h1{font-size:clamp(40px,9vw,72px);margin:16px 0;max-width:14ch}
+.hero p.lead{max-width:50ch;font-size:19px;color:#3d3028}
+.ficha-sec{background:linear-gradient(var(--crema),#F3E6D3)}
+.ficha{margin-top:28px;background:var(--tarjeta);border:1px solid var(--linea);border-radius:22px;padding:clamp(18px,3vw,36px);box-shadow:0 18px 40px rgba(36,26,20,.08)}
+.ficha-top{display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start;justify-content:space-between;border-bottom:2px solid var(--marron);padding-bottom:16px}
+.ficha-top h3{font-family:var(--f-display);text-transform:uppercase;font-size:clamp(30px,5vw,44px);line-height:1;color:var(--gris)}
+.ver{font-family:var(--f-mono);font-size:12.5px;color:var(--gris);text-align:right}
+.chips{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:16px 0}
+.chip{border:1px dashed var(--linea);border-radius:12px;padding:10px 12px;font-size:14px;color:var(--gris)}
+.chip b{display:block;font-family:var(--f-mono);font-weight:500;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--dorado-t);margin-bottom:2px}
+.bloque{margin-top:24px}
+.bloque h4{margin:0 0 10px;font-family:var(--f-display);text-transform:uppercase;font-size:24px;letter-spacing:.02em}
+.tabla{width:100%;border-collapse:collapse;font-size:15px}
+.tabla th{font-family:var(--f-mono);font-weight:500;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;text-align:left;color:var(--gris);padding:8px 6px;border-bottom:1px solid var(--linea)}
+.tabla td{padding:10px 6px;border-bottom:1px dashed var(--linea);color:var(--gris)}
+.tabla .vos{background:rgba(197,138,43,.12);border-radius:6px;color:var(--dorado-t);font-family:var(--f-mono);font-size:13px}
+.tabla td:nth-child(n+2){white-space:nowrap}
+.pasos{list-style:none;margin:0;padding:0;counter-reset:p}
+.pasos li{counter-increment:p;display:flex;gap:12px;padding:10px 0;border-bottom:1px dashed var(--linea);color:var(--gris);font-size:15.5px}
+.pasos li::before{content:counter(p);flex:none;width:28px;height:28px;border-radius:50%;background:var(--marron);color:var(--crema);font-family:var(--f-mono);font-size:13px;display:grid;place-items:center}
+.dos{display:grid;gap:16px}
+.caja{border:1px dashed var(--linea);border-radius:12px;padding:14px;color:var(--gris);font-size:15px}
+.leyenda{display:flex;flex-wrap:wrap;gap:12px 24px;margin-top:20px;font-size:14.5px;color:var(--gris)}
+.leyenda span{display:inline-flex;align-items:center;gap:8px}
+.leyenda i{width:16px;height:16px;border-radius:5px;display:inline-block}
+.l-vos{background:rgba(197,138,43,.3)}
+.l-receta{border:1px dashed var(--gris)}
+.nota-mano{font-family:var(--f-mano);font-weight:600;font-size:24px;color:#7B5837;margin-top:14px}
+.inc{display:grid;gap:16px;margin-top:28px}
+.inc article{background:var(--tarjeta);border:1px solid var(--linea);border-radius:18px;padding:22px}
+.inc h3{font-family:var(--f-display);text-transform:uppercase;font-size:26px;line-height:1;margin-bottom:8px}
+.inc p{color:var(--gris);font-size:16px}
+.ejemplo{margin-top:24px;background:var(--tarjeta);border:1px solid var(--linea);border-radius:18px;padding:clamp(18px,3vw,28px)}
+.ejemplo h3{font-family:var(--f-display);text-transform:uppercase;font-size:28px;line-height:1;margin-bottom:8px}
+.ejemplo p{color:var(--gris);font-size:16px}
+.ej-grid{display:grid;gap:12px;margin:16px 0}
+.ej-grid div{border:1px dashed var(--linea);border-radius:12px;padding:14px;color:var(--gris);font-size:15.5px}
+.ej-grid div>b:first-child{display:block;font-family:var(--f-mono);font-weight:500;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--dorado-t);margin-bottom:4px}
+.ej-nota{color:var(--marron)!important;font-weight:500}
+.conc{background:linear-gradient(var(--crema),#F3E6D3)}
+
+.hero h1{max-width:18ch}
+.atajos{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.atajos .btn{min-height:44px;padding:8px 18px;font-size:15.5px}
+.inc p+p{margin-top:8px}
+.inc a{color:var(--dorado-t);font-weight:600}
+.dos2{display:grid;gap:16px;margin-top:24px}
+.dos2 .caja h4{font-family:var(--f-display);text-transform:uppercase;font-size:24px;margin:0 0 8px;color:var(--marron)}
+.dos2 .caja ul{margin:0;padding-left:20px}
+.dos2 .caja li{margin:4px 0}
+.area{margin-top:52px}
+.area h3{font-family:var(--f-display);text-transform:uppercase;font-size:clamp(30px,5vw,40px);line-height:1}
+.area p{color:var(--gris);margin-top:6px;max-width:56ch}
+.prompts{display:grid;gap:16px;margin-top:20px}
+.prompt{display:flex;flex-direction:column;background:var(--tarjeta);border:1px solid var(--linea);border-radius:18px;padding:22px}
+.prompt h4{margin:0;font-family:var(--f-display);text-transform:uppercase;font-size:24px;line-height:1.05}
+.prompt .para{margin-top:6px;color:var(--gris);font-size:15.5px}
+.txt{margin-top:12px;padding:14px;background:var(--crema);border:1px dashed var(--linea);border-radius:12px;color:var(--marron);font-size:15px;white-space:pre-wrap;overflow-wrap:anywhere;flex:1}
+.prompt .btn{margin-top:14px;align-self:flex-start;min-height:44px;padding:8px 20px;font-size:15.5px}
+.prompts.uno{grid-template-columns:1fr}
+@media(min-width:768px){
+  .inc.cuatro{grid-template-columns:repeat(2,1fr)}
+  .dos2{grid-template-columns:1fr 1fr}
+  .prompts{grid-template-columns:1fr 1fr}
+  .prompts.uno{grid-template-columns:1fr}
+}
+.has-bot{position:relative;overflow:hidden}
+.has-bot>.wrap{position:relative;z-index:1}
+.bot{position:absolute;display:none;pointer-events:none;z-index:0;text-align:center;animation:flota 9s ease-in-out infinite}
+.bot img{display:block;width:auto;max-width:none;margin:0 auto}
+.bot span{display:block;margin-top:2px;font-family:var(--f-mano);font-weight:600;font-size:22px;line-height:1;color:#7B5837}
+.cierre .bot span{color:#E6D9C3}
+@keyframes flota{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.bot.m{display:block;right:16px;bottom:10px}
+.bot.m img{height:84px}
+.hero.has-bot{padding-bottom:112px}
+.ph{background:rgba(197,138,43,.22);color:var(--dorado-t);border-radius:5px;padding:0 3px;font-family:var(--f-mono);font-size:.92em}
+.nota-area{font-family:var(--f-mano);font-weight:600;font-size:24px;color:#7B5837;margin-top:8px}
+.btn .ico{flex:none}
+@media(min-width:900px){
+  .bot{display:block}
+  .hero.has-bot{padding-bottom:32px}
+  .bot.m{bottom:auto;right:5%;top:28px}
+  .bot.m img{height:clamp(190px,22vw,290px)}
+  .b-tr{top:26px;right:4%}
+  .b-tr img{height:clamp(120px,13vw,175px)}
+  .b-izq{left:4%;bottom:14px}
+  .b-izq img{height:150px}
+  .b-der{right:5%;bottom:14px}
+  .b-der img{height:150px}
+}
+@media(prefers-reduced-motion:reduce){.bot{animation:none}}
+.cierre{background:var(--marron);color:var(--crema);text-align:center}
+.cierre h2{font-size:clamp(34px,6vw,52px);margin:0 auto;max-width:18ch}
+.cierre p{margin:14px auto 24px;max-width:52ch;color:#E6D9C3}
+footer{padding:36px 0;border-top:1px solid var(--linea);font-size:14.5px;color:var(--gris)}
+.foot{display:flex;flex-wrap:wrap;gap:16px 32px;align-items:center;justify-content:space-between}
+.foot ul{list-style:none;display:flex;gap:20px;margin:0;padding:0;flex-wrap:wrap}
+.foot a{color:var(--gris)}
+@media(min-width:768px){
+  .chips{grid-template-columns:repeat(4,1fr)}
+  .dos{grid-template-columns:1fr 1fr}
+  .inc{grid-template-columns:repeat(3,1fr)}
+  .ej-grid{grid-template-columns:1fr 1fr}
+  section{padding:80px 0}
+}
+html.js .reveal{opacity:0;translate:0 18px;transition:opacity .7s ease,translate .7s ease}
+html.js .reveal.in{opacity:1;translate:0 0}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+<script>if(!matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.className+=' js';}</script>
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="Switch Gestión, volver al inicio"><img src="logo.webp" width="132" height="101" alt="Switch Gestión"></a>
+    <a class="btn" href="index.html#herramientas">Volver al inicio</a>
+  </div>
+</header>
+
+<main>
+<section class="hero has-bot">
+  <div class="bot m" aria-hidden="true"><img src="romero.webp" alt="" loading="lazy" onerror="this.parentNode.remove()"><span>romero</span></div>
+  <div class="wrap">
+    <p class="eyebrow">Recursos con IA</p>
+    <h1>Aprovechar la tecnología a nuestro favor</h1>
+    <p class="lead">La inteligencia artificial sirve para ahorrar horas, ordenar tu negocio y hacerte la vida más fácil. No importa cuál uses: lo que cambia el resultado es cómo se lo pedís.</p>
+    <nav class="atajos" aria-label="Ir a una parte de la página">
+      <a class="btn" href="#pedirle">Qué podés pedirle</a>
+      <a class="btn" href="#habitos">Cómo usarla bien</a>
+      <a class="btn" href="#base">Prompt base</a>
+      <a class="btn" href="#prompts">Prompts por área</a>
+    </nav>
+  </div>
+</section>
+
+<section id="pedirle" class="has-bot">
+  <div class="bot b-tr" aria-hidden="true"><img src="perejil.webp" alt="" loading="lazy" onerror="this.parentNode.remove()"><span>perejil</span></div>
+  <div class="wrap">
+    <p class="eyebrow">Qué podés pedirle</p>
+    <h2 class="h2">La IA hace mucho más que responder preguntas</h2>
+    <p class="sub">Según la herramienta que uses, puede hacer todo esto. No todas hacen todo ni en todos los planes: si no puede algo, tiene que decírtelo.</p>
+    <div class="inc">
+      <article class="reveal">
+        <h3>Buscar información actualizada</h3>
+        <p>Precios, normativas, proveedores, tendencias. Pedile siempre que te diga de dónde sacó cada dato.</p>
+      </article>
+      <article class="reveal">
+        <h3>Leer tus archivos y fotos</h3>
+        <p>Planillas, PDFs, facturas o una foto de tu receta anotada a mano. Le pasás el material y te lo ordena, resume o compara.</p>
+      </article>
+      <article class="reveal">
+        <h3>Hacer cálculos y tablas</h3>
+        <p>Costos, márgenes y escenarios: "¿y si sube la carne 20 %?". Pedile que muestre la cuenta para poder verificarla.</p>
+      </article>
+      <article class="reveal">
+        <h3>Crear el trabajo terminado</h3>
+        <p>Fichas, checklists, manuales, mensajes, presupuestos, guiones. Pedí el documento hecho, no la explicación de cómo hacerlo.</p>
+      </article>
+      <article class="reveal">
+        <h3>Crear y editar imágenes</h3>
+        <p>Piezas para redes, flyers e ilustraciones. Está disponible en algunas herramientas, no en todas.</p>
+      </article>
+      <article class="reveal">
+        <h3>Automatizar lo repetitivo</h3>
+        <p>Planillas con fórmulas, formularios, respuestas tipo y tareas que hacés todos los días, incluso sin saber programar.</p>
+      </article>
+    </div>
+    <p class="nota-mano">no importa cuál uses: importa para qué la usás</p>
+  </div>
+</section>
+
+<section id="habitos" class="conc has-bot">
+  <div class="bot b-tr" aria-hidden="true"><img src="tomillo.webp" alt="" loading="lazy" onerror="this.parentNode.remove()"><span>tomillo</span></div>
+  <div class="wrap">
+    <p class="eyebrow">Cómo usarla bien</p>
+    <h2 class="h2">Seis hábitos para que te facilite la vida</h2>
+    <p class="sub">La diferencia entre una respuesta genérica y una que te sirve está en cómo la pedís.</p>
+    <div class="inc">
+      <article class="reveal">
+        <h3>1. Contale el contexto</h3>
+        <p>Quién sos, qué negocio tenés, en qué ciudad y para quién es. Cuanto más contexto, menos genérica la respuesta.</p>
+      </article>
+      <article class="reveal">
+        <h3>2. Pedí el resultado, no la explicación</h3>
+        <p>"Armame la ficha de esta receta" rinde más que "¿cómo se hace una ficha?". Si hay una forma de entregarte el trabajo hecho, que lo haga.</p>
+      </article>
+      <article class="reveal">
+        <h3>3. Que te pregunte lo que le falta</h3>
+        <p>Cerrá el pedido con: "si te falta información, preguntame antes de responder". Así no inventa datos para rellenar.</p>
+      </article>
+      <article class="reveal">
+        <h3>4. Decile el formato</h3>
+        <p>Una tabla, pasos numerados, un mensaje de WhatsApp o cinco ideas. Si no lo pedís, elige ella.</p>
+      </article>
+      <article class="reveal">
+        <h3>5. Pedile que verifique y que separe</h3>
+        <p>Que revise las cuentas, cite las fuentes y distinga lo que es un dato de lo que es una suposición o una recomendación.</p>
+      </article>
+      <article class="reveal">
+        <h3>6. Corregí conversando</h3>
+        <p>La primera respuesta es un borrador. Pedile "más corto", "más simple" o "cambiá esto" hasta que quede como lo necesitás.</p>
+      </article>
+    </div>
+    <div class="dos2">
+      <div class="caja"><h4>Usala para</h4>
+        <ul>
+          <li>Borradores y primeras versiones de casi cualquier texto.</li>
+          <li>Ordenar ideas y material desordenado.</li>
+          <li>Ponerle palabras a lo que ya sabés hacer.</li>
+          <li>Armar listas, tablas y checklists.</li>
+          <li>Preparar mensajes, guiones y respuestas a clientes.</li>
+        </ul>
+      </div>
+      <div class="caja"><h4>Revisá siempre</h4>
+        <ul>
+          <li>Las cuentas y los costos: verificalos con tu planilla o con la <a href="calculadora-costos.html">calculadora de costos</a>.</li>
+          <li>Precios, impuestos y normas actuales: pueden estar desactualizados.</li>
+          <li>Temas legales, contables o de salud: consultá con un profesional.</li>
+          <li>Si dice que hizo algo que no podía (abrir un archivo que no le diste, mandar un mail), desconfiá.</li>
+          <li>No cargues claves, datos bancarios ni datos personales de tus clientes.</li>
+          <li>Los números de tu negocio tienen que ser los tuyos, nunca inventados.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="base" class="has-bot">
+  <div class="bot b-tr" aria-hidden="true"><img src="oregano.webp" alt="" loading="lazy" onerror="this.parentNode.remove()"><span>orégano</span></div>
+  <div class="wrap">
+    <p class="eyebrow">Dejá el criterio armado</p>
+    <h2 class="h2">Un prompt base para trabajar mejor</h2>
+    <p class="sub">Pegalo una vez al empezar una conversación, o en las instrucciones personalizadas si tu herramienta las tiene. Le da criterio: que piense antes de responder, verifique, no invente y te entregue el trabajo terminado.</p>
+    <div class="prompts uno">
+      <article class="prompt reveal">
+        <h4>Prompt base: asistente con criterio</h4>
+        <p class="para">Sirve para cualquier tema. Completá lo que está entre [corchetes] y pegalo al empezar.</p>
+        <div class="txt" id="pbase">Quiero que trabajes como un asistente experto en resolver problemas de mi negocio: [tipo de negocio] en [ciudad].
+
+Cada vez que te escriba:
+
+1. Antes de responder, pensá qué resultado concreto necesito y qué tipo de tarea es (consulta, investigación, análisis, creación, planificación o comparación). No me muestres ese análisis: mostrame las decisiones importantes y el resultado.
+2. Si podés resolverlo con lo que sabés, respondé directo. Si la información puede haber cambiado (precios, normas, proveedores), buscala en fuentes actuales y decime de dónde salió, si tenés búsqueda web.
+3. Si te paso un archivo o una foto, leelo antes de opinar. Si hay que calcular, calculá y verificá el resultado en lugar de estimarlo de memoria.
+4. Dame el resultado terminado (tabla, ficha, checklist, mensaje o documento) en lugar de explicarme cómo se hace.
+5. Si te falta un dato indispensable, preguntame de forma concreta. Si podés avanzar con un supuesto de bajo riesgo, decime cuál es y seguí.
+6. Diferenciá datos verificados, estimaciones y recomendaciones. No inventes datos, cifras ni fuentes.
+7. Si no podés hacer algo (abrir un archivo, buscar en internet, enviar un mensaje), decímelo. Nunca digas que lo hiciste si no lo hiciste.
+8. Si ves un error en mi planteo, señalalo y proponé una alternativa. Si hay varias opciones, recomendá una y explicá por qué en pocas palabras.
+9. Sé claro y directo, sin explicaciones genéricas. Terminá con un próximo paso concreto.
+
+Ante cada consulta, preguntate: ¿cuál es la forma más simple y suficiente de darme un resultado útil para mi negocio?</div>
+        <button type="button" class="btn" data-copiar="pbase"><svg class="ico" aria-hidden="true" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg> Copiar prompt</button>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="prompts" class="conc has-bot">
+  <div class="bot b-tr" aria-hidden="true"><img src="albahaca.webp" alt="" loading="lazy" onerror="this.parentNode.remove()"><span>albahaca</span></div>
+  <div class="wrap">
+    <p class="eyebrow">Prompts por área</p>
+    <h2 class="h2">Copiá, completá lo que está entre corchetes y probalo</h2>
+    <p class="sub">Cada prompt ya trae el contexto armado. Cambiá los datos entre [corchetes] por los de tu negocio y pegalo en la herramienta que elegiste.</p>
+    <nav class="atajos" aria-label="Áreas de prompts">
+      <a class="btn" href="#costos">Costos y precios</a>
+      <a class="btn" href="#recetas">Recetas y estandarización</a>
+      <a class="btn" href="#delegar">Delegar y equipo</a>
+    </nav>
+
+    <div class="area" id="costos">
+      <h3>Costos y precios</h3>
+      <p>Para saber cuánto te cuesta lo que vendés y a cuánto conviene venderlo.</p>
+      <p class="nota-area">empezá por tu plato más vendido</p>
+      <div class="prompts">
+        <article class="prompt reveal">
+          <h4>Calcular el costo de un plato</h4>
+          <p class="para">Para saber cuánto te cuesta hacer una receta y cada porción.</p>
+          <div class="txt" id="p1">Tengo [tipo de negocio] en [ciudad]. Quiero calcular cuánto me cuesta hacer [nombre del plato]. Estos son los ingredientes, con la cantidad que uso y lo que pagué por cada uno: [ingrediente, cantidad que uso, precio y cantidad que compré]. La receta rinde [cantidad] porciones. Calculá el costo total de la receta y el costo por porción, y mostralo en una tabla. Si te falta algún dato, preguntame antes de calcular.</div>
+          <button type="button" class="btn" data-copiar="p1"><svg class="ico" aria-hidden="true" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg> Copiar prompt</button>
+        </article>
+        <article class="prompt reveal">
+          <h4>Poner el precio de venta</h4>
+          <p class="para">Para llegar a un precio que te deje la ganancia que buscás.</p>
+          <div class="txt" id="p2">Mi producto [nombre] me cuesta $[costo] por porción. Quiero que de cada $100 que cobro me queden $[ganancia] de ganancia. Explicame paso a paso cómo calcular el precio con esa ganancia sobre el precio de venta (margen, no markup) y decime cuánto tendría que cobrar. Después preguntame por otros costos que debería sumar, como packaging, costos fijos y mi sueldo.</div>
+          <button type="button" class="btn" data-copiar="p2"><svg class="ico" aria-hidden="true" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg> Copiar prompt</button>
+        </article>
+        <article class="prompt reveal">
+          <h4>Ver cuánto me afecta un aumento</h4>
+          <p class="para">Para decidir qué hacer cuando un ingrediente sube de precio.</p>
+          <div class="txt" id="p3">El ingrediente [nombre] subió de $[precio anterior] a $[precio nuevo] el kilo. Mi producto [nombre] lleva [cantidad] por porción y lo vendo a $[precio de venta]. Decime cuánto subió el costo por porción, cuánto bajó mi margen y qué opciones tengo (subir el precio, ajustar la cantidad o cambiar el ingrediente), con ventajas y desventajas de cada una.</div>
+          <button type="button" class="btn" data-copiar="p3"><svg class="ico" aria-hidden="true" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg> Copiar prompt</button>
+        </article>
+        <article class="prompt reveal">
+          <h4>Encontrar dónde se va la plata</h4>
+          <p class="para">Para ordenar los gastos del mes y ver dónde ahorrar.</p>
+          <div class="txt" id="p4">Estos son mis gastos del mes: [pegá la lista con descripción y monto]. Agrupalos por categoría, decime cuáles pesan más sobre el total y proponeme 5 preguntas para revisar dónde puedo ahorrar sin bajar la calidad de lo que vendo.</div>
+          <button type="button" class="btn" data-copiar="p4"><svg class="ico" aria-hidden="true" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg> Copiar prompt</button>
+        </article>
+      </div>
+    </div>
+
+    <div class="area" id="recetas">
+      <h3>Recetas y estandarización</h3>
+      <p>Para que cada receta salga igual, la haga quien la haga.</p>
+      <p class="nota-area">probalo con la receta que más hacés</p>
+      <div class="prompts">
+        <article class="prompt reveal">
+          <h4>Convertir mi receta en una ficha estandarizada</h4>
+          <p class="para">Para pasar una receta casera a una ficha que salga igual cada vez.</p>
+          <div class="txt" id="p5">Te paso mi receta tal como la hago, con medidas a ojo: [pegá la receta]. Armame una ficha estandarizada con rendimiento, peso por porción, tiempo total, vida útil, ingredientes con cantidades en gramos, ml o unidades, procedimiento en pasos numerados (con tiempos y temperaturas), puntos críticos y conservación. Donde falte un dato, no lo inventes: hacé una lista de preguntas para que yo las responda.</div>
+          <button type="button" class="btn" data-copiar="p5"><svg class="ico" aria-hidden="true" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg> Copiar prompt</button>
+        </article>
+        <article class="prompt reveal">
+          <h4>Pasar medidas a ojo a gramos</h4>
+          <p class="para">Para reemplazar el "un puñado" o el "chorrito" por una medida que se pueda repetir.</p>
+          <div class="txt" id="p6">En mis recetas uso estas medidas a ojo: [por ejemplo: un puñado, una cucharada sopera, un chorrito]. Proponeme un equivalente aproximado en gramos o ml para cada una y explicame cómo pesarlo la primera vez para confirmarlo en mi cocina.</div>
+          <button type="button" class="btn" data-copiar="p6"><svg class="ico" aria-hidden="true" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg> Copiar prompt</button>
+        </article>
+        <article class="prompt reveal">
+          <h4>Hacer más o menos cantidad</h4>
+          <p class="para">Para escalar una receta sin que cambie el resultado.</p>
+          <div class="txt" id="p7">Mi receta rinde [cantidad] porciones con estas cantidades: [lista]. Necesito que rinda [cantidad nueva] porciones. Recalculá todas las cantidades en una tabla y avisame qué pasos o tiempos de cocción podrían cambiar al hacer más o menos cantidad.</div>
+          <button type="button" class="btn" data-copiar="p7"><svg class="ico" aria-hidden="true" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg> Copiar prompt</button>
+        </article>
+        <article class="prompt reveal">
+          <h4>Armar el "si pasa esto, hacé esto"</h4>
+          <p class="para">Para anticipar los errores más comunes de una receta y cómo se arreglan.</p>
+          <div class="txt" id="p8">Mi receta es [nombre] y estos son sus pasos: [pegá los pasos]. Listame los 5 problemas más comunes en una tabla de tres columnas: si pasa…, puede ser por…, se soluciona…. Dejá claro que son hipótesis para que yo las confirme con mi experiencia antes de usarlas.</div>
+          <button type="button" class="btn" data-copiar="p8"><svg class="ico" aria-hidden="true" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg> Copiar prompt</button>
+        </article>
+      </div>
+    </div>
+
+    <div class="area" id="delegar">
+      <h3>Delegar y equipo</h3>
+      <p>Para sacar tareas de tu cabeza y que otros las puedan hacer.</p>
+      <p class="nota-area">si sabés hacerla, ya la podés escribir</p>
+      <div class="prompts">
+        <article class="prompt reveal">
+          <h4>Escribir un procedimiento para que lo haga otra persona</h4>
+          <p class="para">Para sacar una tarea de tu cabeza y dejarla por escrito.</p>
+          <div class="txt" id="p9">Quiero delegar esta tarea: [describila como la hacés hoy, con todos los detalles]. Convertila en un procedimiento paso a paso, claro para alguien que nunca la hizo: qué se hace, con qué herramientas, cuánto tiempo lleva, cómo sé que quedó bien y qué hacer si algo sale mal. Al final, hacime las preguntas que necesites para completar lo que falte.</div>
+          <button type="button" class="btn" data-copiar="p9"><svg class="ico" aria-hidden="true" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg> Copiar prompt</button>
+        </article>
+        <article class="prompt reveal">
+          <h4>Armar una checklist de apertura o cierre</h4>
+          <p class="para">Para que el local abra y cierre igual todos los días.</p>
+          <div class="txt" id="p10">Mi negocio es [tipo de negocio]. Armame una checklist de [apertura o cierre] con las tareas en orden, el tiempo estimado de cada una y quién la hace ([puestos]). Que sea corta, que entre en una hoja y que se pueda tildar.</div>
+          <button type="button" class="btn" data-copiar="p10"><svg class="ico" aria-hidden="true" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg> Copiar prompt</button>
+        </article>
+        <article class="prompt reveal">
+          <h4>Pedirle una tarea a alguien del equipo</h4>
+          <p class="para">Para dar una instrucción clara, sin malos entendidos.</p>
+          <div class="txt" id="p11">Necesito pedirle a [persona o puesto] que [tarea]. Redactá un mensaje de WhatsApp claro y amable que diga qué espero, para cuándo, cómo tiene que quedar y a quién consulta si tiene dudas. Tono: [cercano o formal].</div>
+          <button type="button" class="btn" data-copiar="p11"><svg class="ico" aria-hidden="true" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg> Copiar prompt</button>
+        </article>
+        <article class="prompt reveal">
+          <h4>Decidir qué delegar primero</h4>
+          <p class="para">Para ordenar tus tareas y empezar por las que más te liberan.</p>
+          <div class="txt" id="p12">Estas son las tareas que hago yo en mi negocio: [lista]. Ayudame a ordenarlas según cuánto tiempo me llevan, cuánto me cuesta equivocarme y qué tan fácil es enseñarlas. Decime cuáles conviene delegar primero y por qué.</div>
+          <button type="button" class="btn" data-copiar="p12"><svg class="ico" aria-hidden="true" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg> Copiar prompt</button>
+        </article>
+      </div>
+    </div>
+
+    <p class="nota-mano">pronto sumo ventas, marketing, finanzas, compras y más</p>
+  </div>
+</section>
+
+<section class="cierre has-bot">
+  <div class="bot b-izq" aria-hidden="true"><img src="ajo.webp" alt="" loading="lazy" onerror="this.parentNode.remove()"><span>ajo</span></div>
+  <div class="bot b-der" aria-hidden="true"><img src="plato-hierbas.webp" alt="" loading="lazy" onerror="this.parentNode.remove()"><span>a cocinar</span></div>
+  <div class="wrap">
+    <h2>¿Querés que armemos juntos los tuyos?</h2>
+    <p>Contame qué tarea te lleva más tiempo en tu negocio y vemos cómo resolverla con IA.</p>
+    <a class="btn wa-btn" href="https://wa.me/5492284673329?text=Hola%2C%20vengo%20de%20la%20web%20de%20Switch%20Gesti%C3%B3n%20y%20quiero%20saber%20m%C3%A1s%20sobre%20usar%20IA%20en%20mi%20negocio." target="_blank" rel="noopener">Escribime por WhatsApp <svg class="ico" aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <a class="brand" href="index.html" aria-label="Switch Gestión, volver al inicio"><img src="logo.webp" width="132" height="101" alt="Switch Gestión"></a>
+    <nav aria-label="Legal">
+      <ul>
+        <li><a href="legal.html#aviso">Aviso legal</a></li>
+        <li><a href="legal.html#privacidad">Privacidad</a></li>
+        <li><a href="legal.html#terminos">Términos</a></li>
+      </ul>
+    </nav>
+    <div>
+      <span>© <span id="year"></span> Switch Gestión · Olavarría, Argentina</span><br>
+      <a href="https://www.instagram.com/switchgestion/" target="_blank" rel="noopener">Diseño &amp; creación web · @Switchgestion</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var y=document.getElementById('year'); if(y){ y.textContent=new Date().getFullYear(); }
+  [].slice.call(document.querySelectorAll('.txt')).forEach(function(el){
+    var partes=el.textContent.split(/(\[[^\]]+\])/); el.textContent='';
+    partes.forEach(function(p){
+      if(/^\[[^\]]+\]$/.test(p)){ var sp=document.createElement('span'); sp.className='ph'; sp.textContent=p; el.appendChild(sp); }
+      else if(p){ el.appendChild(document.createTextNode(p)); }
+    });
+  });
+  document.addEventListener('click',function(e){
+    var b=e.target.closest('[data-copiar]'); if(!b){ return; }
+    var el=document.getElementById(b.getAttribute('data-copiar')); if(!el){ return; }
+    var t=el.textContent.trim();
+    var orig=b.getAttribute('data-orig')||b.innerHTML; b.setAttribute('data-orig',orig);
+    var ok=function(){ b.textContent='¡Copiado!'; setTimeout(function(){ b.innerHTML=orig; },1800); };
+    var fb=function(){
+      var ta=document.createElement('textarea'); ta.value=t; ta.style.position='fixed'; ta.style.opacity='0';
+      document.body.appendChild(ta); ta.select();
+      try{ document.execCommand('copy'); ok(); }catch(x){ b.textContent='Seleccionalo y copialo a mano'; }
+      document.body.removeChild(ta);
+    };
+    if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(t).then(ok,fb); }else{ fb(); }
+  });
+  if(!document.documentElement.classList.contains('js')||!('IntersectionObserver' in window)){ return; }
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  },{threshold:.15});
+  [].slice.call(document.querySelectorAll('.reveal')).forEach(function(el){ io.observe(el); });
+})();
+</script>
+</body>
+</html>
