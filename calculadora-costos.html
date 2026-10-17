@@ -78,7 +78,17 @@ a{color:var(--marron)}
 .f-oregano{display:none;right:28px;bottom:-4px;width:120px}
 .f-oregano .rotulo{color:#E3B56D}
 @media(min-width:768px){.f-romero{top:16px;width:96px}.f-oregano{display:block}}
-@media(min-width:1024px){.f-romero{top:20px;right:0;width:clamp(110px,10vw,150px)}.f-oregano{right:56px;width:150px}}
+@media(min-width:1024px){.f-romero{top:20px;right:0;width:clamp(110px,10vw,150px)}.f-oregano{right:56px;width:130px}}
+.f-alba,.f-salvia,.f-tomillo,.f-perejil{display:none}
+.f-perejil{right:clamp(20px,4vw,64px);bottom:0;width:70px}
+.f-salvia{right:calc(clamp(20px,4vw,64px) + 90px);bottom:0;width:60px}
+@media(min-width:768px){.f-perejil{display:block;width:80px}.f-salvia{display:block;width:70px;right:calc(clamp(20px,4vw,64px) + 100px)}.cta h2,.cta p{max-width:calc(100% - 200px)}}
+@media(min-width:1024px){.f-alba{display:block;top:46px;right:clamp(150px,13vw,210px);width:clamp(80px,7vw,110px)}.f-tomillo{display:block;top:30px;right:clamp(290px,24vw,380px);width:clamp(80px,7vw,100px)}}
+.f-perejil img,.f-salvia img{max-height:120px;width:auto;margin:0 auto}
+.f-oregano img{max-height:200px;width:auto;margin:0 auto}
+.f-romero img,.f-alba img,.f-tomillo img{max-height:260px;width:auto;margin:0 auto}
+footer{position:relative}
+html,body{overflow-x:clip}
 .card{transition:border-color .2s ease,box-shadow .2s ease}
 .card:focus-within{border-color:var(--dorado);box-shadow:0 10px 26px rgba(36,26,20,.07)}
 .badge{transition:background .3s ease,border-color .3s ease}
@@ -206,6 +216,8 @@ footer{border-top:1px solid var(--linea);padding:22px 0 40px;font-size:15px;colo
 
 <main>
   <section class="hero">
+    <div class="flora f-tomillo" aria-hidden="true"><img src="tomillo.webp" alt="" onerror="this.parentNode.remove()"><span class="rotulo">tomillo</span></div>
+    <div class="flora f-alba" aria-hidden="true"><img src="albahaca.webp" alt="" onerror="this.parentNode.remove()"><span class="rotulo">albahaca</span></div>
     <div class="flora f-romero" aria-hidden="true"><img src="romero.webp" alt="" onerror="this.parentNode.remove()"><span class="rotulo">romero</span></div>
     <div class="bar"></div>
     <h1>Calculá cuánto te cuesta cada plato</h1>
@@ -308,6 +320,8 @@ footer{border-top:1px solid var(--linea);padding:22px 0 40px;font-size:15px;colo
 </main>
 
 <footer>
+  <div class="flora f-salvia" aria-hidden="true"><img src="salvia.webp" alt="" onerror="this.parentNode.remove()"><span class="rotulo">salvia</span></div>
+  <div class="flora f-perejil" aria-hidden="true"><img src="perejil.webp" alt="" onerror="this.parentNode.remove()"><span class="rotulo">perejil</span></div>
   <p>Hecho por Switch Gestión. Esta calculadora no guarda tus datos en ningún servidor: quedan solo en este dispositivo.</p>
 </footer>
 </div>
