@@ -53,7 +53,7 @@ a{color:var(--marron)}
 .priv{margin-top:14px;font-family:'DM Mono',monospace;font-size:14px;letter-spacing:.02em;color:var(--gris)}
 
 /* layout */
-.layout{display:grid;grid-template-columns:1fr;gap:24px;margin:28px 0 120px;align-items:start}
+.layout{display:grid;grid-template-columns:minmax(0,1fr);gap:24px;margin:28px 0 120px;align-items:start}
 @media(min-width:960px){
   .layout{grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);margin-bottom:64px}
   .result{position:sticky;top:16px}
@@ -63,7 +63,7 @@ a{color:var(--marron)}
 /* tarjetas y pasos */
 .card{background:var(--tarjeta);border:1px solid var(--linea);border-radius:var(--radio);padding:22px}
 .card + .card{margin-top:20px}
-.step-h{display:flex;align-items:center;gap:14px;margin-bottom:6px}
+.step-h{display:flex;align-items:center;flex-wrap:wrap;gap:6px 14px;margin-bottom:6px}
 .badge{flex:none;width:44px;height:44px;border-radius:50%;border:3px solid var(--dorado);display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:26px}
 .step-h h2{font-size:34px}
 .help{font-size:16px;color:var(--gris);margin:4px 0 14px}
@@ -120,7 +120,7 @@ input:focus-visible,select:focus-visible,button:focus-visible,summary:focus-visi
 .pre i{position:absolute;left:12px;top:50%;transform:translateY(-50%);font-style:normal;color:var(--gris);pointer-events:none}
 
 /* ingredientes */
-.row{border-top:1px solid var(--linea);padding:16px 0;display:grid;gap:12px;grid-template-columns:1fr}
+.row{border-top:1px solid var(--linea);padding:16px 0;display:grid;gap:12px;grid-template-columns:minmax(0,1fr)}
 .row:first-of-type{border-top:0}
 .row .cost{display:flex;align-items:flex-end;justify-content:space-between;gap:8px;min-height:48px}
 .cost small{display:block;font-size:13px;color:var(--gris);font-family:'DM Mono',monospace}
@@ -140,7 +140,7 @@ input:focus-visible,select:focus-visible,button:focus-visible,summary:focus-visi
 .sum-c{margin-left:auto;font-family:'DM Mono',monospace;font-weight:500;white-space:nowrap}
 .sum-e{font-size:13px;color:var(--gris);text-decoration:underline}
 @media(min-width:560px){
-  .row{grid-template-columns:1fr 1fr}
+  .row{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
   .row .f-name{grid-column:1 / -1}
 }
 
