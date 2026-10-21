@@ -324,6 +324,26 @@ html.js .sis-nota b{display:inline-block;animation:fl 3.2s ease-in-out infinite}
   .sis-nota{position:absolute;left:calc(100% + 6px);top:50%;margin:0;padding:0;width:max-content;transform:translateY(-35%);gap:6px;font-size:28px}
   .sis-nota svg{width:56px;height:38px;transform:none}
 }
+.webp{background:#F3E6D3;padding:40px 0}
+.web-grid{display:grid;gap:20px;align-items:center}
+.web-grid>*{min-width:0}
+.web-act .btn{width:100%}
+.web-list{list-style:none;margin:10px 0 0;padding:0;font-size:16.5px}
+.web-list li{display:flex;gap:10px;align-items:flex-start;margin:6px 0}
+.web-list .ico{color:var(--dorado);margin-top:5px;stroke-width:2.4}
+.web-monto{font-family:var(--f-display);font-weight:700;font-size:clamp(46px,9vw,64px);line-height:1}
+.web-nota{margin-top:6px;color:var(--gris);font-size:16px}
+.web-aviso{margin-top:14px;font-family:var(--f-mono);font-size:12px;color:var(--gris)}
+.web-modal{border:0;padding:0;border-radius:22px;background:var(--tarjeta);color:var(--marron);width:calc(100% - 32px);max-width:620px;max-height:calc(100dvh - 32px);overflow:auto;box-shadow:0 30px 80px rgba(36,26,20,.35)}
+.web-modal::backdrop{background:rgba(36,26,20,.6)}
+.wm-in{position:relative;padding:clamp(22px,4vw,36px)}
+.wm-in h2{font-size:clamp(34px,6vw,46px);margin-top:10px}
+.wm-in h3{font-family:var(--f-display);text-transform:uppercase;font-size:24px;line-height:1;margin-top:24px}
+.wm-precio{margin-top:16px;padding:16px 18px;border:2px solid var(--marron);border-radius:16px;background:var(--crema)}
+.wm-in .btn{margin-top:24px}
+.wm-x{position:absolute;top:12px;right:12px;width:44px;height:44px;border-radius:50%;border:1.5px solid var(--marron);background:transparent;color:var(--marron);font-size:26px;line-height:1;cursor:pointer}
+.wm-x:hover{background:var(--crema-2)}
+@media(min-width:768px){.webp{padding:48px 0}.web-grid{grid-template-columns:1fr auto;gap:40px}.web-act .btn{width:auto}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
@@ -398,6 +418,19 @@ html.js .sis-nota b{display:inline-block;animation:fl 3.2s ease-in-out infinite}
         </span>
       </div>
       <p class="priv">Gratis · sin registrarte · tus datos quedan en tu navegador</p>
+    </div>
+  </div>
+</section>
+
+<section class="webp" id="web-propia">
+  <div class="wrap web-grid">
+    <div>
+      <p class="eyebrow">Presencia digital</p>
+      <h2 class="h2">¿Querés tener tu propia web?</h2>
+      <p class="sec-sub">Una web hecha a medida para tu negocio gastronómico, para que te encuentren y te escriban.</p>
+    </div>
+    <div class="web-act">
+      <button type="button" class="btn primary" data-web-open aria-haspopup="dialog">Ver qué incluye y el precio <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></button>
     </div>
   </div>
 </section>
@@ -531,7 +564,7 @@ html.js .sis-nota b{display:inline-block;animation:fl 3.2s ease-in-out infinite}
             <h3>Tu negocio en un solo lugar</h3>
             <p>Ventas, costos reales de cada receta, ingredientes y panel de control. Empezás con lo básico y sumás módulos cuando los necesitás.</p>
             <ul>
-              <li><svg class="ico" aria-hidden="true"><use href="#i-tick"/></svg>Sistema básico desde $15.000 por mes</li>
+              <li><svg class="ico" aria-hidden="true"><use href="#i-tick"/></svg>Sistema básico desde $20.000 por mes</li>
               <li><svg class="ico" aria-hidden="true"><use href="#i-tick"/></svg>Módulos a pedido: finanzas, tienda online y más</li>
             </ul>
             <a class="btn primary" href="sistema.html">Conocer el sistema <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
@@ -697,6 +730,36 @@ html.js .sis-nota b{display:inline-block;animation:fl 3.2s ease-in-out infinite}
   </div>
 </footer>
 
+<dialog class="web-modal" id="web-modal" aria-labelledby="web-modal-t">
+  <div class="wm-in">
+    <button type="button" class="wm-x" data-web-close aria-label="Cerrar">×</button>
+    <p class="eyebrow">Web gastronómica personalizada</p>
+    <h2 id="web-modal-t">Tu propia web</h2>
+    <div class="wm-precio">
+      <div class="web-monto">$150.000</div>
+      <p class="web-nota">Pago único · incluye un año de dominio</p>
+    </div>
+    <h3>Qué secciones tiene</h3>
+    <ul class="web-list">
+      <li><svg class="ico" aria-hidden="true"><use href="#i-tick"/></svg>Inicio con tu presentación y botón de contacto</li>
+      <li><svg class="ico" aria-hidden="true"><use href="#i-tick"/></svg>Qué ofrecés: tu carta o tus productos</li>
+      <li><svg class="ico" aria-hidden="true"><use href="#i-tick"/></svg>Quién sos y cómo trabajás</li>
+      <li><svg class="ico" aria-hidden="true"><use href="#i-tick"/></svg>Preguntas frecuentes</li>
+      <li><svg class="ico" aria-hidden="true"><use href="#i-tick"/></svg>Contacto y ubicación</li>
+      <li><svg class="ico" aria-hidden="true"><use href="#i-tick"/></svg>Aviso legal y privacidad</li>
+    </ul>
+    <h3>Qué incluye</h3>
+    <ul class="web-list">
+      <li><svg class="ico" aria-hidden="true"><use href="#i-tick"/></svg>Diseño personalizado con tu marca y tu estilo</li>
+      <li><svg class="ico" aria-hidden="true"><use href="#i-tick"/></svg>Se ve bien en celular y en computadora</li>
+      <li><svg class="ico" aria-hidden="true"><use href="#i-tick"/></svg>Botón para que te escriban por WhatsApp</li>
+      <li><svg class="ico" aria-hidden="true"><use href="#i-tick"/></svg>Un año de dominio incluido</li>
+    </ul>
+    <a class="btn wa-btn" href="https://wa.me/5492284673329?text=Hola%2C%20vengo%20de%20la%20web%20de%20Switch%20Gesti%C3%B3n%20y%20quiero%20tener%20mi%20propia%20web%20para%20mi%20negocio%20gastron%C3%B3mico." target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg>Quiero mi web <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+    <p class="web-aviso">Precio en pesos argentinos, actualizado a octubre de 2026. Pueden cambiar; el precio que cuenta es el que acordemos al empezar.</p>
+  </div>
+</dialog>
+
 <a class="wa" href="https://wa.me/5492284673329?text=Hola%2C%20vengo%20de%20la%20web%20de%20Switch%20Gesti%C3%B3n%20y%20quiero%20ordenar%20mi%20negocio%20gastron%C3%B3mico." target="_blank" rel="noopener" aria-label="Escribime por WhatsApp">
   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.38 5.07L2 22l5.07-1.33A9.94 9.94 0 0012 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm5.2 14.2c-.22.62-1.28 1.18-1.77 1.24-.45.06-.98.08-1.58-.1-.36-.11-.83-.27-1.42-.53-2.5-1.08-4.13-3.6-4.26-3.77-.12-.17-1.02-1.36-1.02-2.6s.65-1.84.88-2.09c.22-.25.5-.31.66-.31.17 0 .33 0 .48.01.15.01.36-.06.56.43.22.53.74 1.83.8 1.96.06.13.1.28.02.45-.08.17-.12.28-.24.43-.12.15-.25.33-.36.44-.12.12-.24.25-.1.5.14.25.62 1.02 1.33 1.65.91.81 1.68 1.07 1.93 1.19.25.12.4.1.55-.06.15-.17.62-.72.78-.97.16-.25.32-.2.53-.12.22.08 1.39.66 1.63.78.24.12.4.18.46.28.06.11.06.6-.16 1.22z"/></svg>
 </a>
@@ -718,6 +781,19 @@ html.js .sis-nota b{display:inline-block;animation:fl 3.2s ease-in-out infinite}
   window.addEventListener('scroll',onScroll,{passive:true});
   onScroll();
   document.getElementById('year').textContent=new Date().getFullYear();
+  var wm=document.getElementById('web-modal');
+  if(wm){
+    [].slice.call(document.querySelectorAll('[data-web-open]')).forEach(function(b){
+      b.addEventListener('click',function(){
+        if(typeof wm.showModal==='function'){ wm.showModal(); document.body.style.overflow='hidden'; } else { wm.setAttribute('open',''); }
+      });
+    });
+    [].slice.call(wm.querySelectorAll('[data-web-close]')).forEach(function(b){
+      b.addEventListener('click',function(){ if(wm.close){ wm.close(); } else { wm.removeAttribute('open'); } });
+    });
+    wm.addEventListener('click',function(e){ if(e.target===wm&&wm.close){ wm.close(); } });
+    wm.addEventListener('close',function(){ document.body.style.overflow=''; });
+  }
   var wa=document.querySelector('.wa');
   var contacto=document.getElementById('contacto');
   if('IntersectionObserver' in window&&wa&&contacto){
@@ -734,7 +810,7 @@ html.js .sis-nota b{display:inline-block;animation:fl 3.2s ease-in-out infinite}
       io.unobserve(el);
     });
   },{threshold:.2,rootMargin:'0px 0px -6% 0px'});
-  [].slice.call(document.querySelectorAll('.head,.pcard,.tool,.pilar,.step,.quien-grid>div,.faq-list,.c-grid>div')).forEach(function(el,i){
+  [].slice.call(document.querySelectorAll('.head,.pcard,.tool,.pilar,.step,.quien-grid>div,.faq-list,.c-grid>div,.web-grid>div')).forEach(function(el,i){
     el.classList.add('reveal');
     el.style.setProperty('--d',((i%4)*0.08)+'s');
     io.observe(el);
@@ -747,7 +823,7 @@ html.js .sis-nota b{display:inline-block;animation:fl 3.2s ease-in-out infinite}
   [].slice.call(document.querySelectorAll('.flora:not(.f-hero)')).forEach(function(el){ fio.observe(el); });
   var fh=document.querySelector('.f-hero');
   if(fh){ setTimeout(function(){ fh.classList.add('in'); },500); }
-  var sw=document.querySelector('.sw'),secs=[].slice.call(document.querySelectorAll('main section, body > section')),dots=[],lab=null,names={inicio:'inicio',problemas:'lo que te pasa',herramientas:'herramientas',ayuda:'cómo te ayudo','como-empezamos':'cómo empezamos','quien-soy':'quién soy',preguntas:'dudas',contacto:'hablemos'};
+  var sw=document.querySelector('.sw'),secs=[].slice.call(document.querySelectorAll('main section, body > section')),dots=[],lab=null,names={inicio:'inicio','web-propia':'tu web',problemas:'lo que te pasa',herramientas:'herramientas',ayuda:'cómo te ayudo','como-empezamos':'cómo empezamos','quien-soy':'quién soy',preguntas:'dudas',contacto:'hablemos'};
   if(sw){
     secs=secs.filter(function(x){return names[x.id];});
     secs.forEach(function(){ var d=document.createElement('b'); sw.appendChild(d); dots.push(d); });
