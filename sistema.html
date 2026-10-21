@@ -207,6 +207,14 @@ html.js .reveal.in{opacity:1;translate:0 0}
   .precios{grid-template-columns:.8fr 1.2fr;align-items:start}
   .pasos2{grid-template-columns:repeat(4,1fr)}
 }
+.gal{display:flex;flex-wrap:wrap;justify-content:center;gap:36px 24px;margin-top:32px}
+.gcard{flex:0 1 100%;text-align:center}
+.gcard .shot img{max-width:220px}
+.gcard h3{font-family:var(--f-display);text-transform:uppercase;font-size:28px;line-height:1;margin-top:6px}
+.gcard p{color:var(--gris);font-size:15.5px;margin:8px auto 0;max-width:30ch}
+.gcard .tag{margin:14px 0 8px}
+@media(min-width:600px){.gcard{flex-basis:calc(50% - 12px)}}
+@media(min-width:900px){.gcard{flex-basis:calc((100% - 48px)/3)}}
 @media(max-width:480px){.mod-i,.pack{flex-direction:column;gap:6px}}
 </style>
 <script>if(!matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.className+=' js';}</script>
@@ -231,7 +239,6 @@ html.js .reveal.in{opacity:1;translate:0 0}
       <a class="btn" href="#basico">Qué incluye</a>
       <a class="btn" href="#modulos">Módulos</a>
     </nav>
-    <figure class="shot hero-shot"><img src="sist-panel.webp" alt="Panel de control del sistema con ventas, ganancia y resumen del mes" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>Panel de control</figcaption></figure>
   </div>
 </section>
 
@@ -241,44 +248,37 @@ html.js .reveal.in{opacity:1;translate:0 0}
     <p class="eyebrow">Sistema básico</p>
     <h2 class="h2">Lo que necesitás para empezar a ordenar</h2>
     <p class="sub">Incluye las pantallas del día a día. Todo funciona desde el celular y desde la computadora.</p>
-
-    <div class="feat">
-      <div class="reveal">
+    <div class="gal">
+      <article class="gcard">
+        <figure class="shot"><img src="sist-panel.webp" alt="Panel de control con ventas, ganancia y resumen del mes" loading="lazy" onerror="this.closest('figure').remove()"></figure>
         <span class="tag">Incluido</span>
-        <h3>Vender rápido, sin perder el hilo</h3>
-        <p>Armás el pedido, elegís el pago y listo. Cada venta guarda su costo y su ganancia en ese momento, así el historial no cambia solo.</p>
-        <ul><li>Nueva venta con carrito</li><li>Historial de ventas</li><li>Ticket para compartir por WhatsApp</li></ul>
-      </div>
-      <figure class="shot"><img src="sist-venta.webp" alt="Pantalla de nueva venta con el carrito armado" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>Nueva venta</figcaption></figure>
-    </div>
-
-    <div class="feat inv">
-      <div class="reveal">
+        <h3>Panel de control</h3>
+        <p>Ventas, ganancia y resumen del mes en una sola pantalla.</p>
+      </article>
+      <article class="gcard">
+        <figure class="shot"><img src="sist-venta.webp" alt="Pantalla de nueva venta con el carrito armado" loading="lazy" onerror="this.closest('figure').remove()"></figure>
         <span class="tag">Incluido</span>
-        <h3>Saber cuánto cuesta cada producto</h3>
-        <p>Cargás la receta y el sistema calcula el costo real, con la merma de cada ingrediente, y te muestra el margen de cada producto.</p>
-        <ul><li>Catálogo con precio, costo y margen</li><li>Receta de cada producto</li><li>Aviso si el margen es bajo</li></ul>
-      </div>
-      <figure class="shot"><img src="sist-catalogo.webp" alt="Catálogo de productos con precio, costo y margen" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>Catálogo</figcaption></figure>
-    </div>
-
-    <div class="feat">
-      <div class="reveal">
+        <h3>Vender rápido</h3>
+        <p>Armás el pedido, elegís el pago y listo. Cada venta guarda su costo y su ganancia en ese momento.</p>
+      </article>
+      <article class="gcard">
+        <figure class="shot"><img src="sist-catalogo.webp" alt="Catálogo de productos con precio, costo y margen" loading="lazy" onerror="this.closest('figure').remove()"></figure>
         <span class="tag">Incluido</span>
-        <h3>Costos reales de la receta</h3>
-        <p>Si cambia el precio de un ingrediente, el costo de las recetas se actualiza. Ves enseguida qué producto dejó de ser rentable.</p>
-      </div>
-      <figure class="shot"><img src="sist-receta.webp" alt="Receta de un producto con costo, merma y margen" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>Receta de un producto</figcaption></figure>
-    </div>
-
-    <div class="feat inv">
-      <div class="reveal">
+        <h3>Catálogo con margen</h3>
+        <p>Precio, costo y margen de cada producto, con aviso si el margen es bajo.</p>
+      </article>
+      <article class="gcard">
+        <figure class="shot"><img src="sist-receta.webp" alt="Receta de un producto con costo, merma y margen" loading="lazy" onerror="this.closest('figure').remove()"></figure>
+        <span class="tag">Incluido</span>
+        <h3>Costo real de la receta</h3>
+        <p>Si cambia el precio de un ingrediente, el costo de las recetas se actualiza.</p>
+      </article>
+      <article class="gcard">
+        <figure class="shot"><img src="sist-ingredientes.webp" alt="Lista de ingredientes con costo y stock" loading="lazy" onerror="this.closest('figure').remove()"></figure>
         <span class="tag">Incluido</span>
         <h3>Ingredientes y stock</h3>
-        <p>Tus ingredientes con su costo y su stock. Al vender, el sistema descuenta lo que se usó.</p>
-        <ul><li>Costo por ingrediente</li><li>Stock actualizado con cada venta</li><li>Ajuste de stock con motivo</li></ul>
-      </div>
-      <figure class="shot"><img src="sist-ingredientes.webp" alt="Lista de ingredientes con costo y stock" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>Ingredientes</figcaption></figure>
+        <p>Costo de cada ingrediente y stock que se descuenta con cada venta.</p>
+      </article>
     </div>
   </div>
 </section>
@@ -289,32 +289,25 @@ html.js .reveal.in{opacity:1;translate:0 0}
     <p class="eyebrow">Módulos</p>
     <h2 class="h2">Sumás solo lo que necesitás</h2>
     <p class="sub">Los módulos se habilitan cuando los necesitás, sin instalar nada nuevo.</p>
-
-    <div class="feat">
-      <div class="reveal">
+    <div class="gal">
+      <article class="gcard">
+        <figure class="shot"><img src="sist-gastos.webp" alt="Pantalla de gastos del negocio" loading="lazy" onerror="this.closest('figure').remove()"></figure>
         <span class="tag mod">Módulo · Finanzas</span>
         <h3>Gastos y cajas</h3>
-        <p>Anotás alquiler, servicios, sueldos y compras, y cerrás la caja. Tus gastos dejan de estar en la cabeza o en un cuaderno.</p>
-      </div>
-      <figure class="shot"><img src="sist-gastos.webp" alt="Pantalla de gastos del negocio" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>Gastos</figcaption></figure>
-    </div>
-
-    <div class="feat inv">
-      <div class="reveal">
+        <p>Alquiler, servicios, sueldos y compras anotados, y cierre de caja.</p>
+      </article>
+      <article class="gcard">
+        <figure class="shot"><img src="sist-salud.webp" alt="Salud del negocio con punto de equilibrio y resultados" loading="lazy" onerror="this.closest('figure').remove()"></figure>
         <span class="tag mod">Módulo · Salud del negocio</span>
-        <h3>Cuánto tenés que vender para no perder</h3>
-        <p>Punto de equilibrio y resultados por rubro, para ver si el mes cierra y dónde se va la plata. Necesita el módulo de Finanzas.</p>
-      </div>
-      <figure class="shot"><img src="sist-salud.webp" alt="Salud del negocio con punto de equilibrio y resultados" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>Salud del negocio</figcaption></figure>
-    </div>
-
-    <div class="feat">
-      <div class="reveal">
+        <h3>Salud del negocio</h3>
+        <p>Punto de equilibrio y resultados por rubro. Necesita el módulo de Finanzas.</p>
+      </article>
+      <article class="gcard">
+        <figure class="shot"><img src="sist-tienda.webp" alt="Tienda online con catálogo y carrito" loading="lazy" onerror="this.closest('figure').remove()"></figure>
         <span class="tag mod">Módulo · Tienda online</span>
-        <h3>Tu catálogo con carrito</h3>
-        <p>Tus clientes arman el pedido desde el celular y te llega al sistema. Pago en efectivo o transferencia, retiro o envío.</p>
-      </div>
-      <figure class="shot"><img src="sist-tienda.webp" alt="Tienda online con catálogo y carrito" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>Tienda online</figcaption></figure>
+        <h3>Tienda online</h3>
+        <p>Tus clientes arman el pedido desde el celular y te llega al sistema.</p>
+      </article>
     </div>
 
     <div class="dos2">
