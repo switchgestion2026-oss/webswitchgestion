@@ -31,7 +31,7 @@ h1,h2,h3,p{margin:0}
 h1,h2{font-family:var(--f-display);font-weight:700;text-transform:uppercase;line-height:.95}
 a{color:var(--marron)}
 :focus-visible{outline:3px solid var(--marron);outline-offset:3px}
-.wrap{max-width:1100px;margin:0 auto;padding:0 clamp(20px,4vw,64px)}
+.wrap{max-width:1400px;margin:0 auto;padding:0 clamp(20px,4vw,64px)}
 section{padding:56px 0}
 .ico{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex:none}
 .eyebrow{display:flex;align-items:center;gap:10px;font-family:var(--f-mono);font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--gris)}
@@ -207,14 +207,14 @@ html.js .reveal.in{opacity:1;translate:0 0}
   .precios{grid-template-columns:.8fr 1.2fr;align-items:start}
   .pasos2{grid-template-columns:repeat(4,1fr)}
 }
-.gal{display:flex;flex-wrap:wrap;justify-content:center;gap:36px 24px;margin-top:32px}
+.gal{display:flex;flex-wrap:wrap;justify-content:center;gap:48px 40px;margin-top:32px}
 .gcard{flex:0 1 100%;text-align:center}
-.gcard .shot img{width:auto;max-width:100%;height:460px;object-fit:contain}
+.gcard .shot img{width:auto;max-width:100%;height:clamp(440px,38vw,560px);object-fit:contain}
 .gcard h3{font-family:var(--f-display);text-transform:uppercase;font-size:28px;line-height:1;margin-top:6px}
 .gcard p{color:var(--gris);font-size:15.5px;margin:8px auto 0;max-width:30ch}
 .gcard .tag{margin:14px 0 8px}
 @media(min-width:600px){.gcard{flex-basis:calc(50% - 12px)}}
-@media(min-width:900px){.gcard{flex-basis:calc((100% - 48px)/3)}}
+@media(min-width:900px){.gcard{flex-basis:calc((100% - 80px)/3)}}
 @media(max-width:480px){.mod-i,.pack{flex-direction:column;gap:6px}}
 </style>
 <script>if(!matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.className+=' js';}</script>
