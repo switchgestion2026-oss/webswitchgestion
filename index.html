@@ -18,8 +18,8 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_AR">
 <meta property="og:url" content="https://switchgestion2026-oss.github.io/webswitchgestion/">
-<meta property="og:image" content="https://switchgestion2026-oss.github.io/webswitchgestion/assets/logo.webp">
-<link rel="icon" href="assets/logo.webp" type="image/webp">
+<meta property="og:image" content="https://switchgestion2026-oss.github.io/webswitchgestion/logo.webp">
+<link rel="icon" href="logo.webp" type="image/webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,500&amp;family=Barlow+Condensed:wght@700&amp;family=DM+Mono:wght@400;500&amp;family=Caveat:wght@500;600&amp;display=swap">
@@ -331,10 +331,16 @@ html.js .sis-nota b{display:inline-block;animation:fl 3.2s ease-in-out infinite}
   .sis-nota{position:absolute;left:calc(100% + 6px);top:50%;margin:0;padding:0;width:max-content;transform:translateY(-35%);gap:6px;font-size:28px}
   .sis-nota svg{width:56px;height:38px;transform:none}
 }
-.webp{background:#F3E6D3;padding:40px 0}
-.web-grid{display:grid;gap:20px;align-items:center}
-.web-grid>*{min-width:0}
-.web-act .btn{width:100%}
+.webp{background:#F3E6D3;padding:56px 0}
+.webp .cards4{margin-top:0}
+.web-tipos{margin-top:36px}
+.web-tipos-t{font-family:var(--f-display);text-transform:uppercase;font-size:26px;line-height:1}
+.web-tipos ul{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:10px;grid-template-columns:1fr}
+.web-tipos li{border:1px dashed var(--dorado);border-radius:14px;padding:12px 16px;background:rgba(255,251,244,.6)}
+.web-tipos b{display:block;font-size:17px}
+.web-tipos span{display:block;color:var(--gris);font-size:15px;margin-top:2px}
+.web-cta{display:flex;flex-direction:column;gap:12px;margin-top:32px}
+.web-cta .btn{width:100%}
 .web-list{list-style:none;margin:10px 0 0;padding:0;font-size:16.5px}
 .web-list li{display:flex;gap:10px;align-items:flex-start;margin:6px 0}
 .web-list .ico{color:var(--dorado);margin-top:5px;stroke-width:2.4}
@@ -350,7 +356,8 @@ html.js .sis-nota b{display:inline-block;animation:fl 3.2s ease-in-out infinite}
 .wm-in .btn{margin-top:24px}
 .wm-x{position:absolute;top:12px;right:12px;width:44px;height:44px;border-radius:50%;border:1.5px solid var(--marron);background:transparent;color:var(--marron);font-size:26px;line-height:1;cursor:pointer}
 .wm-x:hover{background:var(--crema-2)}
-@media(min-width:768px){.webp{padding:48px 0}.web-grid{grid-template-columns:1fr auto;gap:40px}.web-act .btn{width:auto}}
+@media(min-width:768px){.webp{padding:80px 0}.web-tipos ul{grid-template-columns:repeat(2,1fr)}.web-cta{flex-direction:row;flex-wrap:wrap}.web-cta .btn{width:auto}}
+@media(min-width:1024px){.web-tipos ul{grid-template-columns:repeat(3,1fr)}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
@@ -379,7 +386,7 @@ html.js .sis-nota b{display:inline-block;animation:fl 3.2s ease-in-out infinite}
 
 <header class="topbar" id="topbar">
   <div class="wrap">
-    <a class="brand" href="#inicio" aria-label="Switch Gestión, ir al inicio"><img src="assets/logo.webp" width="132" height="101" alt="Switch Gestión"></a>
+    <a class="brand" href="#inicio" aria-label="Switch Gestión, ir al inicio"><img src="logo.webp" width="132" height="101" alt="Switch Gestión"></a>
     <nav class="mainnav" aria-label="Principal">
       <ul>
         <li><a href="#herramientas">Calculadora</a></li>
@@ -409,8 +416,8 @@ html.js .sis-nota b{display:inline-block;animation:fl 3.2s ease-in-out infinite}
 <main id="contenido">
 
 <section class="hero" id="inicio">
-  <img class="hero-bg" src="assets/hero-dashboard.webp" alt="" aria-hidden="true" fetchpriority="high" onerror="this.remove()">
-  <div class="flora f-hero" aria-hidden="true"><img src="assets/romero.webp" alt="" onerror="this.parentNode.remove()"><span class="rotulo">romero</span></div>
+  <img class="hero-bg" src="hero-dashboard.webp" alt="" aria-hidden="true" fetchpriority="high" onerror="this.remove()">
+  <div class="flora f-hero" aria-hidden="true"><img src="romero.webp" alt="" onerror="this.parentNode.remove()"><span class="rotulo">romero</span></div>
   <div class="wrap hero-grid">
     <div>
       <p class="eyebrow">Gestión gastronómica</p>
@@ -430,21 +437,55 @@ html.js .sis-nota b{display:inline-block;animation:fl 3.2s ease-in-out infinite}
 </section>
 
 <section class="webp" id="web-propia">
-  <div class="wrap web-grid">
-    <div>
+  <div class="wrap">
+    <div class="head">
       <p class="eyebrow">Presencia digital</p>
-      <h2 class="h2">¿Querés tener tu propia web?</h2>
-      <p class="sec-sub">Una web hecha a medida para tu negocio gastronómico, para que te encuentren y te escriban.</p>
+      <h2 class="h2">¿Para qué sirve una web en gastronomía?</h2>
+      <p class="sec-sub">No es solo tener una página: es un lugar tuyo donde tus clientes te encuentran, ven qué ofrecés y te piden.</p>
     </div>
-    <div class="web-act">
+    <div class="cards4">
+      <article class="pcard">
+        <span class="icon"><svg class="ico" aria-hidden="true"><use href="#i-search"/></svg></span>
+        <h3>Que te encuentren</h3>
+        <p>Cuando alguien busca dónde comer o dónde pedir, aparecen tu horario, tu dirección y tu carta.</p>
+      </article>
+      <article class="pcard">
+        <span class="icon"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg></span>
+        <h3>Que te elijan</h3>
+        <p>Tu carta, tus fotos y tu forma de trabajar, siempre actualizadas y a un clic.</p>
+      </article>
+      <article class="pcard">
+        <span class="icon"><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg></span>
+        <h3>Que te pidan o reserven</h3>
+        <p>Botón de WhatsApp, pedidos o reservas, sin depender de que te escriban por redes.</p>
+      </article>
+      <article class="pcard">
+        <span class="icon"><svg class="ico" aria-hidden="true"><use href="#i-chart"/></svg></span>
+        <h3>Que te conozca más gente</h3>
+        <p>Con publicidad online llevás gente a tu web y ves cuántos entran y qué hacen. Sin web, el anuncio no tiene adónde llevar.</p>
+      </article>
+    </div>
+    <div class="web-tipos" aria-label="Tipos de web">
+      <p class="web-tipos-t">Cada negocio usa su web distinto</p>
+      <ul>
+        <li><b>Restaurante</b><span>Carta, ubicación, horarios y reservas</span></li>
+        <li><b>Delivery</b><span>Pedidos y zona de entrega</span></li>
+        <li><b>Productos por encargo</b><span>Catálogo y pedido por WhatsApp</span></li>
+        <li><b>Catering y eventos</b><span>Qué ofrecés y cómo pedir presupuesto</span></li>
+        <li><b>Blog</b><span>Recetas, notas y recursos para tu comunidad</span></li>
+        <li><b>Landing para vender</b><span>Recetarios, guías, planillas o cursos online</span></li>
+      </ul>
+    </div>
+    <div class="web-cta">
       <button type="button" class="btn primary" data-web-open aria-haspopup="dialog">Ver qué incluye y el precio <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+      <a class="btn" href="https://wa.me/5492284673329?text=Hola%2C%20vengo%20de%20la%20web%20de%20Switch%20Gesti%C3%B3n%20y%20quiero%20consultar%20por%20publicidad%20online%20para%20mi%20negocio%20gastron%C3%B3mico." target="_blank" rel="noopener">Consultar por publicidad</a>
     </div>
   </div>
 </section>
 
 <section class="problemas" id="problemas">
-  <div class="flora f-bl" aria-hidden="true"><img src="assets/perejil.webp" alt="" onerror="this.parentNode.remove()"><span class="rotulo">perejil</span></div>
-  <img class="mitad" src="assets/plato1.webp" alt="" aria-hidden="true" loading="lazy" onerror="this.remove()">
+  <div class="flora f-bl" aria-hidden="true"><img src="perejil.webp" alt="" onerror="this.parentNode.remove()"><span class="rotulo">perejil</span></div>
+  <img class="mitad" src="plato1.webp" alt="" aria-hidden="true" loading="lazy" onerror="this.remove()">
   <div class="wrap">
     <div class="head">
       <p class="eyebrow">¿Te pasa esto?</p>
@@ -481,7 +522,7 @@ html.js .sis-nota b{display:inline-block;animation:fl 3.2s ease-in-out infinite}
 </section>
 
 <section class="herr" id="herramientas">
-  <div class="flora f-herr" aria-hidden="true"><img src="assets/tomillo.webp" alt="" onerror="this.parentNode.remove()"><span class="rotulo">tomillo</span></div>
+  <div class="flora f-herr" aria-hidden="true"><img src="tomillo.webp" alt="" onerror="this.parentNode.remove()"><span class="rotulo">tomillo</span></div>
   <div class="wrap">
     <div class="head">
       <p class="eyebrow">Cinco formas de empezar</p>
@@ -586,8 +627,8 @@ html.js .sis-nota b{display:inline-block;animation:fl 3.2s ease-in-out infinite}
 </section>
 
 <section class="ayuda" id="ayuda">
-  <div class="flora f-bl" aria-hidden="true"><img src="assets/curry.webp" alt="" onerror="this.parentNode.remove()"><span class="rotulo">curry</span></div>
-  <img class="mitad" src="assets/plato2.webp" alt="" aria-hidden="true" loading="lazy" onerror="this.remove()">
+  <div class="flora f-bl" aria-hidden="true"><img src="curry.webp" alt="" onerror="this.parentNode.remove()"><span class="rotulo">curry</span></div>
+  <img class="mitad" src="plato2.webp" alt="" aria-hidden="true" loading="lazy" onerror="this.remove()">
   <div class="wrap">
     <div class="head">
       <p class="eyebrow">Cómo te ayudo</p>
@@ -611,14 +652,14 @@ html.js .sis-nota b{display:inline-block;animation:fl 3.2s ease-in-out infinite}
       </div>
       <div class="plato" aria-hidden="true" hidden>
         <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice"><rect width="400" height="300" fill="#EFE5D2"/><g fill="none" stroke="#8F5E12" stroke-width="2.5" stroke-linecap="round"><circle cx="200" cy="150" r="104"/><circle cx="200" cy="150" r="78"/><path d="M160 130c14-22 52-24 72-4M168 170c20 18 52 12 66-8"/><circle cx="196" cy="150" r="8"/><path d="M330 60v90M322 60v26a8 8 0 0016 0V60M70 60v90M70 60c-10 14-10 40 0 52"/></g></svg>
-        <img src="assets/plato2.webp" alt="" loading="lazy" onerror="this.remove()">
+        <img src="plato2.webp" alt="" loading="lazy" onerror="this.remove()">
       </div>
     </div>
   </div>
 </section>
 
 <section class="proceso" id="como-empezamos">
-  <div class="flora f-tr" aria-hidden="true"><img src="assets/oregano.webp" alt="" onerror="this.parentNode.remove()"><span class="rotulo">orégano</span></div>
+  <div class="flora f-tr" aria-hidden="true"><img src="oregano.webp" alt="" onerror="this.parentNode.remove()"><span class="rotulo">orégano</span></div>
   <div class="wrap">
     <div class="head">
       <p class="eyebrow">Cómo empezamos</p>
@@ -650,8 +691,8 @@ html.js .sis-nota b{display:inline-block;animation:fl 3.2s ease-in-out infinite}
 </section>
 
 <section class="quien" id="quien-soy">
-  <div class="flora f-bl" aria-hidden="true"><img src="assets/albahaca.webp" alt="" onerror="this.parentNode.remove()"><span class="rotulo">albahaca</span></div>
-  <div class="flora f-br" aria-hidden="true"><img src="assets/Albahacacherry.webp" alt="" onerror="this.parentNode.remove()"><span class="rotulo">albahaca cherry</span></div>
+  <div class="flora f-bl" aria-hidden="true"><img src="albahaca.webp" alt="" onerror="this.parentNode.remove()"><span class="rotulo">albahaca</span></div>
+  <div class="flora f-br" aria-hidden="true"><img src="Albahacacherry.webp" alt="" onerror="this.parentNode.remove()"><span class="rotulo">albahaca cherry</span></div>
   <div class="wrap quien-grid">
     <div>
       <p class="eyebrow">Quién soy</p>
@@ -664,7 +705,7 @@ html.js .sis-nota b{display:inline-block;animation:fl 3.2s ease-in-out infinite}
       <svg class="estrella" aria-hidden="true" viewBox="0 0 48 48"><use href="#i-star"/></svg>
       <div class="foto" aria-hidden="true">
         <svg viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice"><rect width="200" height="250" fill="#E9D7BE"/><g fill="none" stroke="#8F5E12" stroke-width="2.5" stroke-linecap="round"><circle cx="100" cy="98" r="34"/><path d="M36 232c4-50 30-76 64-76s60 26 64 76"/></g></svg>
-        <img src="assets/perfil.webp" alt="Flor, creadora de Switch Gestión" loading="lazy" onerror="this.remove()">
+        <img src="perfil.webp" alt="Flor, creadora de Switch Gestión" loading="lazy" onerror="this.remove()">
       </div>
       <p class="nota">Más negocios gastronómicos organizados y con futuro <svg class="corazon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 017-2.6A4 4 0 0119 10c0 5.6-7 10-7 10z"/></svg><svg class="sub" viewBox="0 0 120 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M2 8C20 2 36 12 58 6S96 2 118 7"/></svg></p>
       <svg class="trazo t1" viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M6 4 20 28"/></svg>
@@ -675,7 +716,7 @@ html.js .sis-nota b{display:inline-block;animation:fl 3.2s ease-in-out infinite}
 </section>
 
 <section class="faq" id="preguntas">
-  <div class="flora f-faq" aria-hidden="true"><img src="assets/cilantro.webp" alt="" onerror="this.parentNode.remove()"><span class="rotulo">cilantro</span></div>
+  <div class="flora f-faq" aria-hidden="true"><img src="cilantro.webp" alt="" onerror="this.parentNode.remove()"><span class="rotulo">cilantro</span></div>
   <div class="wrap faq-grid">
     <div class="head">
       <p class="eyebrow">Preguntas frecuentes</p>
@@ -703,8 +744,8 @@ html.js .sis-nota b{display:inline-block;animation:fl 3.2s ease-in-out infinite}
 </section>
 
 <section class="contacto" id="contacto">
-  <div class="flora f-ajo" aria-hidden="true"><img src="assets/ajo.webp" alt="" onerror="this.parentNode.remove()"></div>
-  <div class="flora f-hierbas" aria-hidden="true"><img src="assets/plato-hierbas.webp" alt="" onerror="this.parentNode.remove()"></div>
+  <div class="flora f-ajo" aria-hidden="true"><img src="ajo.webp" alt="" onerror="this.parentNode.remove()"></div>
+  <div class="flora f-hierbas" aria-hidden="true"><img src="plato-hierbas.webp" alt="" onerror="this.parentNode.remove()"></div>
   <div class="wrap c-grid">
     <div>
       <p class="eyebrow">Hablemos de tu negocio</p>
@@ -722,7 +763,7 @@ html.js .sis-nota b{display:inline-block;animation:fl 3.2s ease-in-out infinite}
 
 <footer>
   <div class="wrap foot">
-    <a class="brand" href="#inicio" aria-label="Switch Gestión, ir al inicio"><img src="assets/logo.webp" width="132" height="101" alt="Switch Gestión"></a>
+    <a class="brand" href="#inicio" aria-label="Switch Gestión, ir al inicio"><img src="logo.webp" width="132" height="101" alt="Switch Gestión"></a>
     <nav aria-label="Legal">
       <ul>
         <li><a href="legal.html#aviso">Aviso legal</a></li>
@@ -762,6 +803,14 @@ html.js .sis-nota b{display:inline-block;animation:fl 3.2s ease-in-out infinite}
       <li><svg class="ico" aria-hidden="true"><use href="#i-tick"/></svg>Botón para que te escriban por WhatsApp</li>
       <li><svg class="ico" aria-hidden="true"><use href="#i-tick"/></svg>Un año de dominio incluido</li>
     </ul>
+    <h3>Se puede sumar</h3>
+    <ul class="web-list">
+      <li><svg class="ico" aria-hidden="true"><use href="#i-tick"/></svg>Blog o sección de recursos</li>
+      <li><svg class="ico" aria-hidden="true"><use href="#i-tick"/></svg>Landing para vender recetarios, guías, planillas o cursos online</li>
+      <li><svg class="ico" aria-hidden="true"><use href="#i-tick"/></svg>Carta y pedidos online</li>
+      <li><svg class="ico" aria-hidden="true"><use href="#i-tick"/></svg>Publicidad online: armado y gestión de campañas</li>
+    </ul>
+    <p class="web-nota">Lo que se suma se cotiza aparte, según lo que necesite tu negocio.</p>
     <a class="btn wa-btn" href="https://wa.me/5492284673329?text=Hola%2C%20vengo%20de%20la%20web%20de%20Switch%20Gesti%C3%B3n%20y%20quiero%20tener%20mi%20propia%20web%20para%20mi%20negocio%20gastron%C3%B3mico." target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg>Quiero mi web <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
     <p class="web-aviso">Precio en pesos argentinos, actualizado a octubre de 2026. Pueden cambiar; el precio que cuenta es el que acordemos al empezar.</p>
   </div>
