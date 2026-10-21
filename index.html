@@ -190,7 +190,7 @@ footer{background:var(--crema);border-top:1px solid var(--linea);padding:28px 0 
 
 @media(min-width:768px){
   section{padding:80px 0}
-  .hero-ctas{flex-direction:row;max-width:none}
+  .hero-ctas{flex-direction:row;flex-wrap:wrap;max-width:none}
   .hero-ctas .btn{width:auto}
   .cards4{grid-template-columns:repeat(2,1fr)}
   .tools{gap:22px}
@@ -308,6 +308,22 @@ html.js .flora.in .rotulo{opacity:1}
   .hero-grid{padding-right:clamp(0px,9vw,150px)}
 }
 @media(max-width:480px){.tool h3{font-size:27px}.tool-in{gap:12px;padding:24px 18px}.tool-in .icon{width:52px;height:52px;font-size:28px}}
+.sis-wrap{display:block}
+.sis-wrap .btn{width:100%}
+.sis-nota{display:flex;align-items:center;gap:8px;margin-top:6px;padding-left:18px;color:#7B5837;font-family:'Caveat','Segoe Script',cursive;font-weight:600;font-size:24px;line-height:1}
+.sis-nota svg{width:48px;height:32px;color:var(--dorado);transform:rotate(60deg);flex:none}
+.sis-nota b{font-weight:600}
+html.js .sis-nota b{display:inline-block;animation:fl 3.2s ease-in-out infinite}
+@media(min-width:768px){
+  .sis-wrap{flex-basis:100%}
+  .sis-wrap .btn{width:auto}
+}
+@media(min-width:1100px){
+  .sis-wrap{flex-basis:auto;position:relative;display:inline-block}
+  .sis-wrap .btn{width:auto}
+  .sis-nota{position:absolute;left:calc(100% + 6px);top:50%;margin:0;padding:0;width:max-content;transform:translateY(-35%);gap:6px;font-size:28px}
+  .sis-nota svg{width:56px;height:38px;transform:none}
+}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
@@ -340,6 +356,7 @@ html.js .flora.in .rotulo{opacity:1}
     <nav class="mainnav" aria-label="Principal">
       <ul>
         <li><a href="#herramientas">Calculadora</a></li>
+        <li><a href="sistema.html">Sistema</a></li>
         <li><a href="#ayuda">Cómo te ayudo</a></li>
         <li><a href="#quien-soy">Quién soy</a></li>
         <li><a href="#contacto">Contacto</a></li>
@@ -354,6 +371,7 @@ html.js .flora.in .rotulo{opacity:1}
 <div class="mobile-menu" id="menu">
   <ul>
     <li><a href="#herramientas">Calculadora</a></li>
+    <li><a href="sistema.html">Sistema</a></li>
     <li><a href="#ayuda">Cómo te ayudo</a></li>
     <li><a href="#quien-soy">Quién soy</a></li>
     <li><a href="#contacto">Contacto</a></li>
@@ -374,6 +392,10 @@ html.js .flora.in .rotulo{opacity:1}
       <div class="hero-ctas">
         <a class="btn primary" href="calculadora-costos.html">Calcular mis costos <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
         <a class="btn" href="formulario.html">Ver cómo está mi negocio</a>
+        <span class="sis-wrap">
+          <a class="btn" href="sistema.html">Conocer el sistema</a>
+          <span class="sis-nota" aria-hidden="true"><svg viewBox="0 0 60 40" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M56 14C40 4 20 8 6 24M6 24l3-13M6 24l13-5"/></svg><b>¡nuevo! el sistema de gestión</b></span>
+        </span>
       </div>
       <p class="priv">Gratis · sin registrarte · tus datos quedan en tu navegador</p>
     </div>
@@ -422,9 +444,9 @@ html.js .flora.in .rotulo{opacity:1}
   <div class="flora f-herr" aria-hidden="true"><img src="tomillo.webp" alt="" onerror="this.parentNode.remove()"><span class="rotulo">tomillo</span></div>
   <div class="wrap">
     <div class="head">
-      <p class="eyebrow">Cuatro formas de empezar</p>
+      <p class="eyebrow">Cinco formas de empezar</p>
       <h2 class="h2">Elegí la herramienta que necesitás</h2>
-      <p class="sec-sub">Son gratis y no piden registrarte.</p>
+      <p class="sec-sub">Las dos primeras son gratis y no piden registrarte.</p>
     </div>
     <div class="tools">
       <article class="tool">
@@ -499,6 +521,24 @@ html.js .flora.in .rotulo{opacity:1}
         </div>
         <div class="tool-art" aria-hidden="true">
           <svg viewBox="0 0 200 300" preserveAspectRatio="xMidYMid slice"><g fill="none" stroke="#8F5E12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M44 70h112a10 10 0 0110 10v70a10 10 0 01-10 10H96l-26 22v-22H44a10 10 0 01-10-10V80a10 10 0 0110-10z"/><path d="M62 98h76M62 122h50"/><path d="M158 200v40M138 220h40M60 214v24M48 226h24"/></g></svg>
+        </div>
+      </article>
+      <article class="tool tool-wide">
+        <div class="tool-in">
+          <span class="icon"><svg class="ico" aria-hidden="true"><use href="#i-target"/></svg></span>
+          <div>
+            <p class="eyebrow">Sistema de gestión</p>
+            <h3>Tu negocio en un solo lugar</h3>
+            <p>Ventas, costos reales de cada receta, ingredientes y panel de control. Empezás con lo básico y sumás módulos cuando los necesitás.</p>
+            <ul>
+              <li><svg class="ico" aria-hidden="true"><use href="#i-tick"/></svg>Sistema básico desde $15.000 por mes</li>
+              <li><svg class="ico" aria-hidden="true"><use href="#i-tick"/></svg>Módulos a pedido: finanzas, tienda online y más</li>
+            </ul>
+            <a class="btn primary" href="sistema.html">Conocer el sistema <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </div>
+        </div>
+        <div class="tool-art" aria-hidden="true">
+          <svg viewBox="0 0 200 300" preserveAspectRatio="xMidYMid meet"><g fill="none" stroke="#8F5E12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="30" y="60" width="140" height="100" rx="8"/><path d="M30 84h140M54 184h92M100 160v24"/><path d="M50 130v-24M72 130v-14M94 130v-32M116 130v-20"/></g></svg>
         </div>
       </article>
     </div>
