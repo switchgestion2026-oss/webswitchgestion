@@ -11,7 +11,7 @@
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sistema de gestión para gastronomía | Switch Gestión</title>
-<meta name="description" content="Un sistema de gestión para tu negocio gastronómico: ventas, costos reales, ingredientes y panel en un solo lugar. Desde $20.000 por mes, con módulos que sumás cuando los necesitás.">
+<meta name="description" content="Un sistema de gestión para tu negocio gastronómico: ventas, costos reales, ingredientes y panel en un solo lugar. Desde $20.000 por mes, en tres planes según lo que necesites.">
 <meta name="theme-color" content="#F7EFE2">
 <meta property="og:title" content="Sistema de gestión para gastronomía | Switch Gestión">
 <meta property="og:description" content="Ventas, costos reales y panel de tu negocio gastronómico en un solo lugar.">
@@ -185,7 +185,11 @@ html.js .reveal.in{opacity:1;translate:0 0}
 .tag.mod{background:rgba(197,138,43,.14)}
 .precios{display:grid;gap:16px;margin-top:28px}
 .plan{background:var(--tarjeta);border:1px solid var(--linea);border-radius:22px;padding:clamp(20px,3vw,32px)}
-.plan.base{border:2px solid var(--marron)}
+.plan{display:flex;flex-direction:column}
+.plan.dest{border:2px solid var(--marron);box-shadow:0 18px 40px rgba(36,26,20,.12)}
+.plan ul{flex:1}
+.plan .btn{margin-top:20px;align-self:flex-start}
+.plan .tag.top{background:var(--marron);border-color:var(--marron);color:var(--crema)}
 .plan h3{font-family:var(--f-display);text-transform:uppercase;font-size:30px;line-height:1}
 .precio{margin-top:10px;font-family:var(--f-display);font-weight:700;font-size:clamp(40px,7vw,56px);line-height:1}
 .precio small{font-family:var(--f-body);font-weight:500;font-size:16px;color:var(--gris)}
@@ -211,7 +215,7 @@ html.js .reveal.in{opacity:1;translate:0 0}
   .feat{grid-template-columns:1fr 340px;gap:48px}
   .feat.inv>.shot{order:-1}
   .feat.inv{grid-template-columns:340px 1fr}
-  .precios{grid-template-columns:.8fr 1.2fr;align-items:start}
+  .precios{grid-template-columns:repeat(3,1fr);align-items:stretch}
   .pasos2{grid-template-columns:repeat(4,1fr)}
 }
 .gal{display:flex;flex-wrap:wrap;justify-content:center;gap:48px 40px;margin-top:32px}
@@ -294,32 +298,32 @@ html.js .reveal.in{opacity:1;translate:0 0}
   <div class="bot b-izq" aria-hidden="true"><img src="assets/albahaca.webp" alt="" loading="lazy" onerror="this.parentNode.remove()"><span>albahaca</span></div>
   <div class="wrap">
     <p class="eyebrow">Módulos</p>
-    <h2 class="h2">Sumás solo lo que necesitás</h2>
-    <p class="sub">Los módulos se habilitan cuando los necesitás, sin instalar nada nuevo.</p>
+    <h2 class="h2">Más herramientas a medida que crecés</h2>
+    <p class="sub">Se activan según tu plan, sin instalar nada nuevo. Si crecés, subís de plan y listo.</p>
     <div class="gal">
       <article class="gcard">
         <figure class="shot"><img src="assets/sist-gastos.webp" alt="Pantalla de gastos del negocio" loading="lazy" onerror="this.closest('figure').remove()"></figure>
-        <span class="tag mod">Módulo · Finanzas</span>
+        <span class="tag mod">Plan Profesional · Finanzas</span>
         <h3>Gastos y cajas</h3>
         <p>Alquiler, servicios, sueldos y compras anotados, y cierre de caja.</p>
       </article>
       <article class="gcard">
         <figure class="shot"><img src="assets/sist-salud.webp" alt="Salud del negocio con punto de equilibrio y resultados" loading="lazy" onerror="this.closest('figure').remove()"></figure>
-        <span class="tag mod">Módulo · Salud del negocio</span>
+        <span class="tag mod">Plan Profesional · Salud del negocio</span>
         <h3>Salud del negocio</h3>
-        <p>Punto de equilibrio y resultados por rubro. Necesita el módulo de Finanzas.</p>
+        <p>Punto de equilibrio y resultados por rubro.</p>
       </article>
       <article class="gcard">
         <figure class="shot"><img src="assets/sist-tienda.webp" alt="Tienda online con catálogo y carrito" loading="lazy" onerror="this.closest('figure').remove()"></figure>
-        <span class="tag mod">Módulo · Tienda online</span>
+        <span class="tag mod">Plan Premium · Tienda online</span>
         <h3>Tienda online</h3>
         <p>Tus clientes arman el pedido desde el celular y te llega al sistema.</p>
       </article>
     </div>
 
     <div class="dos2">
-      <div class="caja reveal"><h4>Módulo · Ingeniería de menú</h4>Ves qué productos son estrella, caballo, puzzle o perro según lo que se vende y lo que dejan. Sirve para decidir qué empujar y qué cambiar.</div>
-      <div class="caja reveal"><h4>Módulo · Manual operativo</h4>Un lugar para dejar escrito cómo se hace cada cosa en tu negocio, para que otra persona la haga igual.</div>
+      <div class="caja reveal"><h4>Plan Profesional · Ingeniería de menú</h4>Ves qué productos son estrella, caballo, puzzle o perro según lo que se vende y lo que dejan. Sirve para decidir qué empujar y qué cambiar.</div>
+      <div class="caja reveal"><h4>Plan Profesional · Manual operativo</h4>Un lugar para dejar escrito cómo se hace cada cosa en tu negocio, para que otra persona la haga igual.</div>
     </div>
   </div>
 </section>
@@ -328,27 +332,31 @@ html.js .reveal.in{opacity:1;translate:0 0}
   <div class="bot b-tr" aria-hidden="true"><img src="assets/oregano.webp" alt="" loading="lazy" onerror="this.parentNode.remove()"><span>orégano</span></div>
   <div class="wrap">
     <p class="eyebrow">Precios</p>
-    <h2 class="h2">Empezás con lo básico y crecés a tu ritmo</h2>
+    <h2 class="h2">Elegí el plan que se ajusta a tu negocio</h2>
     <div class="precios">
-      <article class="plan base reveal">
-        <span class="tag">Sistema básico</span>
-        <h3>Cuota mensual</h3>
+      <article class="plan reveal">
+        <span class="tag">Orden base</span>
+        <h3>Inicial</h3>
         <div class="precio" data-precio="base">$20.000 <small>por mes</small></div>
-        <p>Incluye ventas, historial, catálogo, recetas con costo real, ingredientes y panel de control.</p>
-        <ul><li>Se instala en tu propio Google Drive</li><li>Tus datos son tuyos</li><li>Mantenimiento y mejoras incluidos</li></ul>
-        <a class="btn wa-btn" style="margin-top:20px" href="https://wa.me/5492284673329?text=Hola%2C%20vengo%20de%20la%20web%20de%20Switch%20Gesti%C3%B3n%20y%20quiero%20pedir%20el%20sistema%20de%20gesti%C3%B3n." target="_blank" rel="noopener">Pedir el sistema <svg class="ico" aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <p>Lo necesario para dejar de vender a ojo.</p>
+        <ul><li>Panel de control y ventas diarias</li><li>Catálogo con margen de cada producto</li><li>Recetas con costo real</li><li>Ingredientes y stock</li><li>Mantenimiento y mejoras incluidos</li></ul>
+        <a class="btn wa-btn" href="https://wa.me/5492284673329?text=Hola%2C%20vengo%20de%20la%20web%20de%20Switch%20Gesti%C3%B3n%20y%20quiero%20pedir%20el%20sistema%20de%20gesti%C3%B3n.%20Me%20interesa%20el%20plan%20Inicial." target="_blank" rel="noopener">Pedir plan Inicial <svg class="ico" aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </article>
+      <article class="plan dest reveal">
+        <span class="tag top">Más elegido</span>
+        <h3>Profesional</h3>
+        <div class="precio" data-precio="profesional">$35.000 <small>por mes</small></div>
+        <p>Para ver cuánto ganás de verdad y decidir con números.</p>
+        <ul><li>Todo lo del plan Inicial</li><li>Gastos y cajas</li><li>Salud del negocio y punto de equilibrio</li><li>Ingeniería de menú</li><li>Manual operativo</li></ul>
+        <a class="btn wa-btn" href="https://wa.me/5492284673329?text=Hola%2C%20vengo%20de%20la%20web%20de%20Switch%20Gesti%C3%B3n%20y%20quiero%20pedir%20el%20sistema%20de%20gesti%C3%B3n.%20Me%20interesa%20el%20plan%20Profesional." target="_blank" rel="noopener">Pedir plan Profesional <svg class="ico" aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </article>
       <article class="plan reveal">
-        <h3>Módulos</h3>
-        <p>Pago único por cada módulo. Funcionan mientras mantengas la cuota mensual.</p>
-        <div class="mods">
-          <div class="mod-i"><div><b>Finanzas</b><span>Gastos y cajas</span></div><em data-precio="finanzas">$30.000</em></div>
-          <div class="mod-i"><div><b>Salud del negocio</b><span>Requiere el módulo de Finanzas</span></div><em data-precio="salud">$30.000</em></div>
-          <div class="mod-i"><div><b>Ingeniería de menú</b><span>Estrella, caballo, puzzle y perro</span></div><em data-precio="menu">$30.000</em></div>
-          <div class="mod-i"><div><b>Manual operativo</b><span>Cómo se hace cada cosa</span></div><em data-precio="manual">$30.000</em></div>
-          <div class="mod-i"><div><b>Tienda online</b><span>Catálogo con carrito y pedidos online</span></div><em data-precio="tienda">$80.000</em></div>
-        </div>
-        <div class="pack"><div><b>Pack con todos los módulos</b><span style="display:block;color:var(--gris);font-size:14.5px">Un solo pago, todo incluido</span></div><em data-precio="pack">$150.000</em></div>
+        <span class="tag">Negocio escalable</span>
+        <h3>Premium</h3>
+        <div class="precio" data-precio="premium">$55.000 <small>por mes</small></div>
+        <p>Para sumar ventas online sin salir del sistema.</p>
+        <ul><li>Todo lo del plan Profesional</li><li>Tienda online con catálogo y carrito</li><li>Los pedidos de tus clientes llegan al sistema</li></ul>
+        <a class="btn wa-btn" href="https://wa.me/5492284673329?text=Hola%2C%20vengo%20de%20la%20web%20de%20Switch%20Gesti%C3%B3n%20y%20quiero%20pedir%20el%20sistema%20de%20gesti%C3%B3n.%20Me%20interesa%20el%20plan%20Premium." target="_blank" rel="noopener">Pedir plan Premium <svg class="ico" aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </article>
     </div>
     <p class="aviso">Precios en pesos argentinos, actualizados a octubre de 2026. Pueden cambiar; el precio que cuenta es el que acordemos al empezar.</p>
@@ -363,7 +371,7 @@ html.js .reveal.in{opacity:1;translate:0 0}
       <li class="reveal"><h3>Me escribís</h3><p>Por WhatsApp. Me contás cómo trabajás y qué necesitás.</p></li>
       <li class="reveal"><h3>Lo instalo</h3><p>Preparo tu copia del sistema en tu Google Drive.</p></li>
       <li class="reveal"><h3>Te explico</h3><p>Te paso el instructivo y te muestro cómo cargar tus productos y recetas.</p></li>
-      <li class="reveal"><h3>Sumás módulos</h3><p>Cuando los necesites, los habilito sin que tengas que migrar nada.</p></li>
+      <li class="reveal"><h3>Subís de plan</h3><p>Cuando lo necesites, activo las herramientas del plan nuevo sin que migres nada.</p></li>
     </ol>
   </div>
 </section>
